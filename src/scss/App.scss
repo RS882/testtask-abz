@@ -1,0 +1,11 @@
+.app {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+
+	// Прижимаем footer
+	> main {
+		flex: 1 1 auto;
+	}
+}
