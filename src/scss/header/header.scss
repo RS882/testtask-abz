@@ -14,7 +14,7 @@
 		width: 100vw;
 		height: 100vh;
 		background-color: rgba(0, 0, 0, 0.5);
-		transform: translateX(-105%);
+		transform: translateX(105%);
 		transition: transform 0.3s ease 0s;
 		&._active {
 			transform: translateX(0);
@@ -22,6 +22,8 @@
 	}
 	&__container {
 		display: flex;
+		border: 1px solid #000;
+		flex: 1 0 100%;
 	}
 
 	&__body {
@@ -35,7 +37,7 @@
 		flex-direction: column;
 		transform: translateX(-105%);
 		z-index: 20;
-		transition: transform 0.3s ease 0s;
+
 		@media (min-width: ($md2 + px)) {
 			position: relative;
 			height: inherit;
@@ -49,6 +51,10 @@
 		}
 		&._active {
 			transform: translateX(0);
+			transition: transform 0.3s ease 0s;
+		}
+		&._transition {
+			transition: transform 0.3s ease 0s;
 		}
 	}
 	&__logo {

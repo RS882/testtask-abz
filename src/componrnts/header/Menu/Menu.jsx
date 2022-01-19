@@ -15,18 +15,22 @@ const Menu = (props) => {
 
 //=========================================================================
 const MenuContainer = (props) => {
-	const [menuItems, setMenuItems] =
-		useState(['About me', 'Relationships', 'Requirements', 'Users', 'Sign Up']);
 
-	const burgerMEnu = [...menuItems.filter(el => el !== 'Requirements'),
+
+	const pcMenu = ['About me', 'Relationships', 'Requirements', 'Users', 'Sign Up'];
+	const burgerMenu = [...pcMenu.filter(el => el !== 'Requirements'),
 		'Terms and Conditions', 'How it works', 'Partnership', 'Help',
 		'Level testimonial', 'Contact us', 'Articles', 'Our news', 'Testimonials',
 		'Licenses', 'Privacy Policy'];
 
+
+
+	const menuItems = props.isBurgerMenu ? burgerMenu : pcMenu;
+
 	const onClickItem = (e) => {
 		console.log(e.target.style.color = `#00BDD3`);
 	}
-	return <Menu menuItems={burgerMEnu} onClickItem={onClickItem} />
+	return <Menu menuItems={menuItems} onClickItem={onClickItem} />
 }
 
 

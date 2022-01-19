@@ -8,7 +8,8 @@ const Header = (props) => {
 
 	const [activeClass, setActiveClass] = useState('');
 	const onClickBurgerBtn = () => setActiveClass('_active');
-	const onClickNotMenu = () => setActiveClass('');
+	const onClickNotMenu = () => setActiveClass('_transition');
+
 
 
 	return (
@@ -20,7 +21,7 @@ const Header = (props) => {
 							<img src={logo} alt='logo' />
 						</NavLink>
 					</div>
-					<MenuContainer />
+					<MenuContainer isBurgerMenu={activeClass === '_active' || false} />
 				</div>
 				<div className={`header__lock ${activeClass}`} onClick={onClickNotMenu}></div>
 				<BurgerMenu onClickBurgerBtn={onClickBurgerBtn} />
