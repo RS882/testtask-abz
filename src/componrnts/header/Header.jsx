@@ -1,24 +1,14 @@
-
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from './../../assets/img/Logo.svg';
-
 import BurgerMenu from './burgerMenu/BurgerMenu';
 import MenuContainer from './Menu/Menu';
-
 
 const Header = (props) => {
 
 	const [activeClass, setActiveClass] = useState('');
-
-	const onClickBurgerBtn = () => {
-
-		setActiveClass('_active');
-	}
-
-	const onClickNotMenu = () => {
-		setActiveClass('');
-	}
+	const onClickBurgerBtn = () => setActiveClass('_active');
+	const onClickNotMenu = () => setActiveClass('');
 
 
 	return (
@@ -31,14 +21,10 @@ const Header = (props) => {
 						</NavLink>
 					</div>
 					<MenuContainer />
-
 				</div>
 				<div className={`header__lock ${activeClass}`} onClick={onClickNotMenu}></div>
-
 				<BurgerMenu onClickBurgerBtn={onClickBurgerBtn} />
-
 			</div>
-
 		</header>
 	)
 }

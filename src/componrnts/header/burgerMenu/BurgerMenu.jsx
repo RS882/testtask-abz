@@ -18,7 +18,7 @@ const BurgerMenu = (props) => {
 				</NavLink>
 			</div>
 			<button type="button" onClick={props.onClickBurgerBtn} className="burger__btn">
-				<div>
+				<div className="burger__btn">
 					<img src={burgerMenu} alt='Menu burger' />
 				</div>
 			</button>

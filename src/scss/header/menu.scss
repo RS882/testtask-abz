@@ -1,5 +1,5 @@
 .menu {
-	margin: 30px 0 17px 30px;
+	margin: 30px 0 30px 0px;
 	overflow-y: auto;
 
 	@media (min-width: ($md2 + px)) {
@@ -8,16 +8,33 @@
 	}
 	&__list {
 		display: flex;
+		flex-wrap: wrap;
 		flex-direction: column;
 		@media (min-width: ($md2 + px)) {
 			flex-direction: row;
 			align-items: center;
+			justify-content: space-between;
 		}
 	}
 
 	&__item {
+		padding: 0px 0px 0px 16px;
+		margin-left: 8px;
+		margin-right: 8px;
+		height: 40px;
 		line-height: $lineHeight;
 		margin-bottom: 22px;
+		display: flex;
+		align-items: center;
+		transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
+		// border: 1px solid #000;
+
+		&:hover,
+		&:focus {
+			background-color: rgba(0, 189, 211, 0.1);
+			color: #00bdd3;
+			border-radius: 4px;
+		}
 		&:nth-child(5n + 5) {
 			border-bottom: 1px solid #e0e0e0;
 			padding: 0 0 30px 0;
@@ -29,13 +46,12 @@
 		&:nth-child(5n + 6) {
 			padding-top: 30px;
 		}
-
 		@media (min-width: ($md2 + px)) {
 			padding-bottom: 16px;
 			padding: 7px 16px;
 			border-bottom: none;
 			margin-bottom: 0;
-			transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
+
 			&:nth-child(5n + 5) {
 				border-bottom: none;
 				padding: 7px 16px 7px 16px;
@@ -46,14 +62,6 @@
 			}
 			&:nth-child(5n + 6) {
 				padding: 7px 16px 7px 16px;
-			}
-
-			@media (any-hover: hover) {
-				&:hover,
-				&:focus {
-					background-color: rgba(0, 189, 211, 0.1);
-					color: #00bdd3;
-				}
 			}
 		}
 	}
