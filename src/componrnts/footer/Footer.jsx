@@ -3,7 +3,7 @@ const Footer = (props) => {
 
 	return (
 		<div>
-			Footer
+			{/* Footer */}
 		</div>
 	)
 }

@@ -3,7 +3,7 @@ const Main = (props) => {
 
 	return (
 		<main>
-			Main
+			{/* Main */}
 		</main>
 	)
 }

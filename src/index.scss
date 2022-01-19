@@ -38,5 +38,33 @@ $tablet: em(991.98); // Планшеты, некоторые телефоны в
 $mobile: em(767.98); // Телефоны L
 $mobileSmall: em(479.98); // Телефоны S
 
+//=======================================================
+$md1: $maxWidthContainer + 140; //без px
+$md2: 1024;
+$md3: 768;
+
+// Переменные стиль трансформации
+$transform: 0.3s ease 0s;
+//=========================================
 @import "./scss/resetStyle.scss";
 @import "./scss/App.scss";
+
+.container {
+	max-width: none;
+	padding: 0 16px;
+	margin: 0 auto;
+	width: 100%;
+	@media (min-width: ($md3 + px)) {
+		max-width: 704px;
+		padding: 0;
+	}
+	@media (min-width: ($md2 + px)) {
+		max-width: 904 + 30 + px;
+		padding: 0px 0px 0px 15px;
+	}
+	@media (min-width: ($md1 + px)) {
+		max-width: $maxWidthContainer + 30 + px;
+	}
+}
+
+@import "./scss/header/header.scss";
