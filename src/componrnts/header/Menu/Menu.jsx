@@ -23,14 +23,21 @@ const MenuContainer = (props) => {
 		'Level testimonial', 'Contact us', 'Articles', 'Our news', 'Testimonials',
 		'Licenses', 'Privacy Policy'];
 
+	const cutArray = (arr, n = 0) => arr.reduce((res, el, i, ar) => {
+		if (!n) return ar;
+		if (i === 0 || i % n === 0) res.push([]);
+		res[res.length - 1].push(el);
+		return res;
+	}, []);
 
-
-	const menuItems = props.isBurgerMenu ? burgerMenu : pcMenu;
+	const menuItems = props.isBurgerMenu ? cutArray(burgerMenu, 5) : pcMenu;
 
 	const onClickItem = (e) => {
 		console.log(e.target.style.color = `#00BDD3`);
 	}
-	return <Menu menuItems={menuItems} onClickItem={onClickItem} />
+	return <Menu menuItems={menuItems}
+		onClickItem={onClickItem}
+		isBurgerMenu={props.isBurgerMenu} />
 }
 
 
