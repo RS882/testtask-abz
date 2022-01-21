@@ -1,15 +1,8 @@
-
-
 import { NavLink } from 'react-router-dom';
 import logo from './../../../assets/img/Logo.svg';
 import burgerMenu from './../../../assets/img/Menu.svg';
 
-
-
 const BurgerMenu = (props) => {
-
-
-
 	return (
 		<div className="header__burger burger">
 			<div className="burger__logo logo">
@@ -27,5 +20,4 @@ const BurgerMenu = (props) => {
 
 	)
 }
-
 export default BurgerMenu;

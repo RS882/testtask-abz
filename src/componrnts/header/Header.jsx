@@ -5,18 +5,15 @@ import BurgerMenu from './burgerMenu/BurgerMenu';
 import MenuContainer from './Menu/Menu';
 import { useMediaQuery } from './../Hook/useMediaQuery';
 
-const Header = (props) => {
+const Header = () => {
 
 	const [activeClass, setActiveClass] = useState('');
 	const onClickBurgerBtn = () => setActiveClass('_active');
 	const onClickNotMenu = () => setActiveClass('_transition');
-	const endTransition = () => {
-		if (activeClass === '_transition') setActiveClass('');
-	};
+	const endTransition = () => (activeClass === '_transition') && setActiveClass('');
 	const is1024 = (useMediaQuery('(min-width: 1024px)'));
-	useEffect(() => {
-		if (is1024) setActiveClass('');
-	})
+
+	useEffect(() => { if (is1024) setActiveClass('') }, [is1024]);
 	return (
 		<header className="header">
 			<div onTransitionEnd={endTransition} className="header__container container">

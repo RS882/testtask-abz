@@ -14,10 +14,9 @@
 		width: 100vw;
 		height: 100vh;
 		background-color: rgba(0, 0, 0, 0.5);
-		transform: translateX(105%);
-		transition: transform 0.3s ease 0s;
+		display: none;
 		&._active {
-			transform: translateX(0);
+			display: block;
 		}
 	}
 	&__container {
