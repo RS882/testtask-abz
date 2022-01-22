@@ -1,14 +1,14 @@
-import { combineReducers, createStore } from "redux";
-import headerReducer from './headerReducer';
+// import { combineReducers, createStore } from "redux";
+// import headerReducer from './headerReducer';
 
-const redusers = combineReducers({
-	header: headerReducer,
-});
-
-
-const store = createStore(redusers)
+// const redusers = combineReducers({
+// 	header: headerReducer,
+// });
 
 
-window.store = store;
+// const store = createStore(redusers)
 
-export default store;
+
+// window.store = store;
+
+// export default store;

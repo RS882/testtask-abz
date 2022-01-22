@@ -4,11 +4,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const headerSlice = createSlice({
 	name: 'header',
 	initialState: {
-		value: new Set(),
+		visitedLinkId: new Set(),
 	},
 	reducers: {
 		addVisitedLink: (state, action) => {
-			state.value = state.value.add(action.payload);
+			state.visitedLinkId = state.visitedLinkId.add(action.payload);
 		}
 
 	},

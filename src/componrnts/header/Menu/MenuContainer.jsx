@@ -1,8 +1,9 @@
 
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { addVisitedLink } from '../../redux/headerSlice';
 
-import { addVisitedLink } from '../../redux/headerReducer';
+// import { addVisitedLink } from '../../redux/headerReducer';
 import Menu from './Menu';
 
 
@@ -15,7 +16,7 @@ const MenuContainer = (props) => {
 		'Terms and Conditions', 'How it works', 'Partnership', 'Help',
 		'Level testimonial', 'Contact us', 'Articles', 'Our news', 'Testimonials',
 		'Licenses', 'Privacy Policy'];
-
+	console.log(visitedLinkId);
 	const cutArray = (arr, n = 0) => arr.reduce((res, el, i, ar) => {
 		if (!n) return ar;
 		if (i === 0 || i % n === 0) res.push([]);
@@ -29,7 +30,7 @@ const MenuContainer = (props) => {
 
 	return <Menu menuItems={menuItems}
 		onClickItem={onClickItem}
-		visitedLinkId={visitedLinkId}
+		visitedLinkId={[1, 2, 3]}
 		isBurgerMenu={props.isBurgerMenu} />
 }
 
