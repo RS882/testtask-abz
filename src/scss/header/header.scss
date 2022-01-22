@@ -56,13 +56,11 @@
 		}
 	}
 	&__logo {
-		border-bottom: 1px solid #e0e0e0;
 	}
 
 	&__menu {
 	}
 	&__burger {
-		display: flex;
 	}
 }
 .logo {
@@ -71,6 +69,7 @@
 		margin: 16px;
 		width: 104px;
 		height: 26px;
+
 		img {
 			width: 100%;
 		}
@@ -80,22 +79,5 @@
 	}
 }
 
-.burger {
-	flex: 1 0 100%;
-	justify-content: space-between;
-	align-items: center;
-	&__logo {
-	}
-	&__btn {
-		width: 24px;
-		height: 24px;
-		img {
-			width: 100%;
-		}
-	}
-	@media (min-width: ($md2 + px)) {
-		display: none;
-	}
-}
-
 @import "./menu.scss";
+@import "./burgerMenu.scss";

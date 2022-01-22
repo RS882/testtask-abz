@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from './../../assets/img/Logo.svg';
 import BurgerMenu from './burgerMenu/BurgerMenu';
-import MenuContainer from './Menu/Menu';
+
 import { useMediaQuery } from './../Hook/useMediaQuery';
+import MenuContainer from './Menu/MenuContainer';
 
 const Header = () => {
 
