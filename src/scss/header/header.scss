@@ -1,11 +1,13 @@
 .header {
 	position: fixed;
+	background-color: #fff;
 	top: 0;
 	left: 0;
 	width: 100%;
 	min-height: 60px;
 	display: flex;
 	align-items: center;
+	z-index: 100;
 	box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.15), 0px 4px 15px rgba(0, 0, 0, 0.15);
 	&__lock {
 		position: fixed;

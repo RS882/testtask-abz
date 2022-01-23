@@ -24,11 +24,6 @@ $maxWidthContainer: 1170;
 // (30 = по 15px слева и справа, 0 = нет отступа)
 $containerPadding: 0;
 
-// Тип адаптива:
-// 1 = отзывчивость (у контейнера нет брейкпоинтов),
-// 2 = по брейк-поинтам (контейнер меняет свою ширину по брейк-поинтам)
-$responsiveType: 1;
-
 // Ширина страбатывания первого брейкпоинта
 $containerWidth: $maxWidthContainer + $containerPadding;
 
@@ -39,12 +34,10 @@ $mobile: em(767.98); // Телефоны L
 $mobileSmall: em(479.98); // Телефоны S
 
 //=======================================================
-$md1: $maxWidthContainer + 140; //без px
-$md2: 1024;
-$md3: 768;
+$md1: $maxWidthContainer + 222; //без px
+$md2: 1023.98;
+$md3: 767.98;
 
-// Переменные стиль трансформации
-$transform: 0.3s ease 0s;
 //=========================================
 @import "./scss/resetStyle.scss";
 @import "./scss/App.scss";
@@ -53,7 +46,7 @@ $transform: 0.3s ease 0s;
 	max-width: none;
 	padding: 0 16px;
 	margin: 0 auto;
-	// width: 100%;
+
 	@media (min-width: ($md3 + px)) {
 		max-width: 704px;
 		padding: 0;
@@ -66,5 +59,7 @@ $transform: 0.3s ease 0s;
 		max-width: $maxWidthContainer + 30 + px;
 	}
 }
-
+@import "./scss/button.scss";
 @import "./scss/header/header.scss";
+@import "./scss/main/main.scss";
+@import "./scss/footer/footer.scss";

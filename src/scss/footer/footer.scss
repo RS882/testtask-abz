@@ -1,0 +1,23 @@
+.footer {
+	display: flex;
+	flex-direction: column;
+
+	&__foot-img {
+		height: 124px;
+		margin-top: 25px;
+		background-repeat: no-repeat;
+		background-position: 100% 100%;
+		@media (min-width: ($md3 + px)) {
+			height: 177px;
+			margin-top: 0px;
+		}
+	}
+	&__text {
+		height: 57px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		line-height: $lineHeight;
+		background-color: #fff;
+	}
+}

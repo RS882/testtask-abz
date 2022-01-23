@@ -39,7 +39,7 @@
 		transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
 		&:hover,
 		&:focus {
-			background-color: rgba(0, 189, 211, 0.1);
+			background-color: rgba($color: $secondaryColor, $alpha: 0.1);
 			color: $secondaryColor;
 			border-radius: 4px;
 		}

@@ -4,9 +4,6 @@
 	flex-direction: column;
 	overflow: hidden;
 	position: relative;
-
-	// Прижимаем footer
-	> main {
-		flex: 1 1 auto;
-	}
+	background-color: $bgColor;
+	line-height: $lineHeight;
 }

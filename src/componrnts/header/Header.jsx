@@ -2,19 +2,19 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from './../../assets/img/Logo.svg';
 import BurgerMenu from './burgerMenu/BurgerMenu';
-
-import { useMediaQuery } from './../Hook/useMediaQuery';
 import MenuContainer from './Menu/MenuContainer';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
-
+	const is1024 = useSelector(state => state.mediaQuery.breakPoints.is1024)
 	const [activeClass, setActiveClass] = useState('');
+	useEffect(() => { if (is1024) setActiveClass('') }, [is1024]);
+
 	const onClickBurgerBtn = () => setActiveClass('_active');
 	const onClickNotMenu = () => setActiveClass('_transition');
 	const endTransition = () => (activeClass === '_transition') && setActiveClass('');
-	const is1024 = (useMediaQuery('(min-width: 1024px)'));
 
-	useEffect(() => { if (is1024) setActiveClass('') }, [is1024]);
+
 	return (
 		<header className="header">
 			<div onTransitionEnd={endTransition} className="header__container container">
