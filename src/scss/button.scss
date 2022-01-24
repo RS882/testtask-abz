@@ -1,5 +1,21 @@
+@mixin btn_prop_pse($width, $height) {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	height: $height;
+	width: $width;
+	background-color: rgba(126, 126, 126, 0.5);
+	border-radius: inherit;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease 0s, visibility 0.3s ease 0s;
+}
+
 .btn {
 	&__btn {
+		position: relative;
 		width: 148px;
 		height: 50px;
 		background-color: $primaryColor;
@@ -8,12 +24,41 @@
 		justify-content: center;
 		align-items: center;
 		transition: all 0.3s ease 0s;
+		overflow: hidden;
+		user-select: none;
 		&:hover {
 			background-color: #ffe302;
 		}
 		&:disabled {
 			background-color: #b4b4b4;
 			color: #fff;
+			cursor: auto;
+		}
+
+		&:before {
+			@include btn_prop_pse(120/148 * 100%, inherit);
+		}
+		&:after {
+			@include btn_prop_pse(134/148 * 100%, 86/50 * 100%);
+		}
+
+		&:focus {
+			background-color: $primaryColor;
+			&:before {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+		&:active {
+			background-color: $primaryColor;
+			&:before {
+				opacity: 0;
+				visibility: hidden;
+			}
+			&:after {
+				opacity: 1;
+				visibility: visible;
+			}
 		}
 	}
 }

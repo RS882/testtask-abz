@@ -39,6 +39,20 @@ $md2: 1023.98;
 $md3: 767.98;
 
 //=========================================
+
+@mixin cut_string_elips($str) {
+	display: -webkit-box;
+	-webkit-line-clamp: $str;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+@mixin cut_first_string {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+//===============================================
 @import "./scss/resetStyle.scss";
 @import "./scss/App.scss";
 

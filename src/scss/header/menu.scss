@@ -52,9 +52,7 @@
 			margin: 0px 0px 0px 0px;
 		}
 		a {
-			overflow: hidden;
-			white-space: nowrap;
-			text-overflow: ellipsis;
+			@include cut_first_string;
 			text-transform: capitalize;
 		}
 	}

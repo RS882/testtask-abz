@@ -1,0 +1,43 @@
+.usercard {
+	border: 1px solid #000;
+	height: 313px;
+	background-color: #fff;
+	&__body {
+		height: inherit;
+		margin: 0px 30px;
+		padding: 36px 0px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border: 1px solid rgb(184, 28, 28);
+	}
+
+	&__img {
+		margin-bottom: 15px;
+		img {
+			width: 70px;
+			height: 70px;
+			border-radius: 50%;
+			border: 1px solid rgb(139, 216, 15);
+		}
+	}
+	&__name {
+		font-size: 22px;
+		line-height: 28px;
+		margin-bottom: 4px;
+		@include cut_string_elips(2);
+	}
+	&__position {
+		@include cut_string_elips(2);
+	}
+
+	&__contacts {
+		width: 100%;
+		@include cut_first_string;
+	}
+}
+
+.item-card {
+	border: 1px solid rgb(73, 22, 190);
+	text-align: center;
+}
