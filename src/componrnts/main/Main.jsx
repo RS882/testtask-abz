@@ -4,6 +4,7 @@ import Button from '../button/button';
 import Banner from './Banner/Banner';
 import Article from './Article/Article';
 import Users from './Users/Users';
+import Login from '../LoginPage/LoginPage';
 
 const Main = (props) => {
 
@@ -14,6 +15,7 @@ const Main = (props) => {
 			<Banner />
 			<Article />
 			<Users />
+			<Login />
 
 			{/* <div className='main__wrapper'>
 				<div className='main__bg'>
