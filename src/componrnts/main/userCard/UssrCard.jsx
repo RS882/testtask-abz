@@ -5,21 +5,31 @@ const UserCard = (props) => {
 
 	return (
 		<div className="usercard">
-			<div className="usercard__body">
-				<div className="usercard__img item-card">
-					<img src={notPhoto} alt='user' />
-					{/* {props.photo} */}
+			<div className="usercard__body ">
+				<div className="usercard__item item-card" >
+					<div className="item-card__img">
+						<img onError={console.log('error')} src={props.photo || notPhoto} alt='user' />
+
+					</div>
 				</div>
-				<h3 className=" usercard__name item-card">{props.name}</h3>
-				<div className=" usercard__position item-card">{props.position}</div>
-				<div className="usercard__contacts item-card">
-					<a href={`mailto:${props.email}`}>{props.email}</a>
+				<div className="usercard__item item-card" data-title={props.name}>
+					<h3 className="item-card__name " >{props.name} </h3>
 				</div>
-				<div className="usercard__contacts item-card">
-					<a href={`tel:${props.phone}`}>{props.phone}</a>
+				<div className="usercard__item item-card" data-title={props.position}>
+					<div className=" item-card__position " >{props.position}</div>
+				</div>
+				<div className="usercard__item item-card" data-title={props.email}>
+					<div className="item-card__contacts " >
+						<a href={`mailto:${props.email}`}>{props.email}</a>
+					</div>
+				</div>
+				<div className="usercard__item item-card" data-title={props.phone}>
+					<div className="item-card__contacts " >
+						<a href={`tel:${props.phone}`}>{props.phone}</a>
+					</div>
 				</div>
 			</div>
-		</div>
+		</div >
 	)
 }
 

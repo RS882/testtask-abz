@@ -19,14 +19,14 @@ const Footer = (props) => {
 	// console.log(bPoints);
 
 	const user = {
-		"id": "30",
-		"name": "	Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elitLorem ipsum dolor sit amet consectetur adipisicing elit.",
-		"email": "angel.williams@example.comangel.williams@example.comangel.williams@example.com",
-		"phone": "+380496540023",
-		"position": "Designer Lorem ipsum dolor sit amet consectetur adipisicing elit.LoLorem ipsum dolor sit amet consectetur adipisicing elit.Lo",
+		"id": "42",
+		"name": "Lorraine",
+		"email": "lorraine.morris@example.com",
+		"phone": "+380945198009",
+		"position": "Designer",
 		"position_id": "4",
-		"registration_timestamp": 1537777441,
-		"photo": "https://frontend-test-assignment-api.abz.agency/images/users/5b977ba13fb3330.jpeg"
+		"registration_timestamp": 1537629182,
+		"photo": "https://frontend-test-assignment-api.abz.agency/images/users/5b977ba293d2f42.jpeg"
 	}
 	return (
 		<footer className='footer'>
