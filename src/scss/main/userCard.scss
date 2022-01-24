@@ -9,8 +9,6 @@
 		flex-direction: column;
 		align-items: center;
 	}
-	&__item {
-	}
 }
 
 .item-card {
@@ -22,7 +20,7 @@
 		position: absolute;
 		top: calc(100% + 10px);
 		left: 25px;
-		width: 100%;
+		max-width: 100%;
 		background-color: #232f34;
 		color: #fff;
 		min-height: 32px;
@@ -58,7 +56,6 @@
 	&__position {
 		@include cut_string_elips(2);
 	}
-
 	&__contacts {
 		@include cut_first_string;
 	}
