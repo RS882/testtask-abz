@@ -1,0 +1,20 @@
+.banner {
+	border: 1px solid #000;
+	&__container {
+		border: 1px solid rgb(197, 16, 16);
+	}
+	&__article {
+		border: 1px solid rgb(16, 177, 115);
+		margin: 51px 0px;
+		max-width: 240px;
+	}
+}
+
+.article {
+	&__title {
+	}
+	&__article {
+	}
+	&__btn {
+	}
+}
