@@ -3,6 +3,7 @@ import { cutString } from "../../utilits/functions";
 import bannerImg from "./../../../assets/img/Banner_photo.webp"
 import Banner from "./Banner";
 import { onClickBtn } from '../../utilits/recirect';
+import { cutTextWithDot } from './../../utilits/functions';
 
 
 const BannerContainer = (props) => {
@@ -16,11 +17,7 @@ const BannerContainer = (props) => {
 	  frameworks are the must-have skillsets to look for when assessing 
 	  your front-end developers. `;
 
-	const dotPos = articleText.indexOf('.') + 1;
-
-	let articleTextMod = !is768 ? ((dotPos && dotPos < 117) ? cutString(articleText, dotPos, '') :
-		cutString(articleText, 120)) : cutString(articleText, 365);
-	articleTextMod = !is1024 ? articleTextMod : cutString(articleText, 860);
+	const articleTextMod = cutTextWithDot(articleText, is768, is1024);
 
 	const titleMod = cutString(title, 50);
 
