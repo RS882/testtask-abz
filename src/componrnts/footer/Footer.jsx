@@ -6,7 +6,7 @@ import footPrint_972x177 from './../../assets/img/Footprint-972x177.svg';
 
 const Footer = (props) => {
 
-	const { is768, is1392, ...rest } = useSelector(state => state.mediaQuery.breakPoints);
+	const { is768, is1392 } = useSelector(state => state.mediaQuery.breakPoints);
 
 	let bPoints = is768 ? footPrint_467x177 : footPrint_328x124;
 	bPoints = is1392 ? footPrint_972x177 : bPoints;

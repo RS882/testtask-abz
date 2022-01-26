@@ -1,19 +1,60 @@
 .banner {
-	border: 1px solid #000;
+	position: relative;
+	background-color: #edecea;
+	max-height: 469px;
+	@media (min-width: ($md3 + px)) {
+		max-height: 500px;
+	}
+	@media (min-width: ($md2 + px)) {
+		max-height: 650px;
+	}
+
+	&__bg {
+		position: absolute;
+		bottom: 0;
+		left: calc(50% + 10px);
+		transform: translateX(calc(-50% + 20px));
+		width: $md1 + px;
+		height: 360px;
+		background-position: center center;
+		background-size: contain;
+		background-repeat: no-repeat;
+		@media (min-width: ($md3 + px)) {
+			top: 0;
+			transform: translateX(-50%);
+			height: 100%;
+		}
+	}
 	&__container {
+		z-index: 30;
+		max-height: inherit;
+		position: relative;
 		border: 1px solid rgb(197, 16, 16);
 	}
 	&__article {
-		border: 1px solid rgb(16, 177, 115);
 		margin: 51px 0px;
 		max-width: 240px;
+		@media (min-width: ($md3 + px)) {
+			margin: 80px 0px;
+			max-width: 424px;
+		}
+		@media (min-width: ($md2 + px)) {
+			margin: 185px 0px;
+			max-width: 670px;
+		}
 	}
 }
-
 .article {
 	&__title {
+		font-size: 40px;
+		line-height: 40px;
+		margin-bottom: 21px;
+		@media (min-width: ($md1 + px)) {
+			margin-bottom: 32px;
+		}
 	}
 	&__article {
+		margin-bottom: 32px;
 	}
 	&__btn {
 	}
