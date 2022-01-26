@@ -1,8 +1,9 @@
 
-import Users from './Users/Users';
+
 import Login from '../LoginPage/LoginPage';
 import BannerContainer from './Banner/BannerContainer';
 import ArticleContainer from './Article/ArticleContainer';
+import UsersContainer from './Users/UsersContainer';
 
 
 const Main = (props) => {
@@ -11,7 +12,7 @@ const Main = (props) => {
 		<main className='main'>
 			<BannerContainer />
 			<ArticleContainer />
-			<Users />
+			<UsersContainer />
 			<Login />
 
 		</main>

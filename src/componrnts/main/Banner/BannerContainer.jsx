@@ -21,8 +21,6 @@ const BannerContainer = (props) => {
 
 	const titleMod = cutString(title, 50);
 
-
-
 	return <Banner titleMod={titleMod}
 		articleTextMod={articleTextMod}
 		bannerImg={bannerImg}

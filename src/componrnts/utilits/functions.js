@@ -18,7 +18,6 @@ export const cutTextWithDot = (text, is768, is1024, cutFromDot = true) => {
 	} else {
 		text768 = cutString(text, 315);
 	}
-
 	const textMod = !is768 ? text768 : cutString(text, 365);
 	return !is1024 ? textMod : cutString(text, 860);
-}
+};

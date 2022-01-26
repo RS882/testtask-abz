@@ -19,7 +19,6 @@ const ArticleContainer = (props) => {
 	Front-End Development keeps evolving.`;
 
 
-
 	let image = is768 ? image_296x260 : image_328x287;
 	image = is1024 ? image_387x340 : image;
 
