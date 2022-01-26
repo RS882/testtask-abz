@@ -2,8 +2,10 @@
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { addVisitedLink } from '../../redux/headerSlice';
+import { cutArray } from '../../utilits/functions';
 import Menu from './Menu';
-import { cutArray } from './../../unilits/functions';
+
+
 
 
 const MenuContainer = (props) => {

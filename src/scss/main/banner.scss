@@ -30,6 +30,7 @@
 		z-index: 30;
 		max-height: inherit;
 		position: relative;
+		padding-right: 15px;
 	}
 	&__article {
 		padding: 51px 0px;
@@ -52,6 +53,10 @@
 		@media (min-width: ($md1 + px)) {
 			margin-bottom: 32px;
 		}
+	}
+	&__subtitle {
+		font-size: 22px;
+		line-height: 28px;
 	}
 	&__article {
 		margin-bottom: 32px;

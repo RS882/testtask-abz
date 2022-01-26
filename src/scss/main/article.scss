@@ -1,0 +1,15 @@
+.article-main {
+	border: 1px solid #000;
+	&__container {
+		padding-right: 15px;
+		border: 1px solid rgb(207, 28, 28);
+	}
+	&__body {
+		width: inherit;
+		border: 1px solid rgb(110, 15, 218);
+	}
+	&__img {
+	}
+	&__article {
+	}
+}
