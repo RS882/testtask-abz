@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
-import { cutString } from "../../unilits/functions";
+import { cutString } from "../../utilits/functions";
 import bannerImg from "./../../../assets/img/Banner_photo.webp"
 import Banner from "./Banner";
+import { onClickBtn } from '../../utilits/recirect';
 
 
 const BannerContainer = (props) => {
@@ -22,17 +23,15 @@ const BannerContainer = (props) => {
 	articleTextMod = !is1024 ? articleTextMod : cutString(articleText, 860);
 
 	const titleMod = cutString(title, 50);
-	const onClickBtn = () => {
-		console.log(`redirect`);
-	}
 
-	return (
-		<Banner titleMod={titleMod}
-			articleTextMod={articleTextMod}
-			bannerImg={bannerImg}
-			onClickBtn={onClickBtn}
-		/>
-	)
+
+
+	return <Banner titleMod={titleMod}
+		articleTextMod={articleTextMod}
+		bannerImg={bannerImg}
+		onClickBtn={onClickBtn}
+	/>
+
 }
 
 export default BannerContainer;
