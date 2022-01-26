@@ -1,25 +1,18 @@
-
-import Banner from './Banner/Banner';
 import Article from './Article/Article';
 import Users from './Users/Users';
 import Login from '../LoginPage/LoginPage';
+import BannerContainer from './Banner/BannerContainer';
+
 
 const Main = (props) => {
 
-
 	return (
 		<main className='main'>
-
-			<Banner />
+			<BannerContainer />
 			<Article />
 			<Users />
 			<Login />
 
-			{/* <div className='main__wrapper'>
-				<div className='main__bg'>
-					<img src={banner} alt='main banner' />
-				</div>
-			</div> */}
 		</main>
 	)
 }

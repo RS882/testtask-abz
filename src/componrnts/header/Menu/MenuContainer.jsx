@@ -2,9 +2,8 @@
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { addVisitedLink } from '../../redux/headerSlice';
-
-// import { addVisitedLink } from '../../redux/headerReducer';
 import Menu from './Menu';
+import { cutArray } from './../../unilits/functions';
 
 
 const MenuContainer = (props) => {
@@ -17,12 +16,7 @@ const MenuContainer = (props) => {
 		'Level testimonial', 'Contact us', 'Articles', 'Our news', 'Testimonials',
 		'Licenses', 'Privacy Policy'];
 
-	const cutArray = (arr, n = 0) => arr.reduce((res, el, i, ar) => {
-		if (!n) return ar;
-		if (i === 0 || i % n === 0) res.push([]);
-		res[res.length - 1].push(el);
-		return res;
-	}, []);
+
 
 	const menuItems = props.isBurgerMenu ? cutArray(burgerMenu, 5) : pcMenu;
 
