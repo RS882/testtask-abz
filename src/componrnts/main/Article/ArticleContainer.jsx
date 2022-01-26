@@ -28,5 +28,5 @@ const ArticleContainer = (props) => {
 		onClickBtn={onClickBtn}
 	/>
 }
-//=========================================================
+
 export default ArticleContainer;
