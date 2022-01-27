@@ -55,9 +55,21 @@ const UsersContainer = (props) => {
 		}
 	]
 
+	const title = `Our cheerful users`;
+	const subtitle = `The best specialists are shown below`;
+
+	const onClickBtn = () => {
+
+		console.log(`show more`);
+	}
 
 	return <Users
-		users={JSON.parse(JSON.stringify(users))} />
+		users={JSON.parse(JSON.stringify(users))}
+		onClickBtn={onClickBtn}
+		title={title}
+		subtitle={subtitle}
+		disebledBtn={false}
+	/>
 }
 
 export default UsersContainer;

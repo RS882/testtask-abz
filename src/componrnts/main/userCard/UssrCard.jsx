@@ -6,11 +6,11 @@ const UserCard = (props) => {
 	const [userPhoto, setUserPhoto] = useState(props.photo);
 
 	const onErrorImg = () => {
-		console.clear();
+		// console.clear();
 		setUserPhoto(notPhoto);
 	}
 	return (
-		<div className="usercard">
+		<div className="usercard" >
 			<div className="usercard__body ">
 				<div className="usercard__item item-card" >
 					<div className="item-card__img">
