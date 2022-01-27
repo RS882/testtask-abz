@@ -23,9 +23,7 @@ const ArticleContainer = (props) => {
 	image = is1024 ? image_387x340 : image;
 
 	const textMod = cutTextWithDot(text, is768, is1024, false);
-
 	const titleMod = cutString(title, 50);
-
 	const subtitleMod = cutString(subtitle, 50);
 
 	return <Article

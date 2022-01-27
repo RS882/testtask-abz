@@ -20,12 +20,16 @@
 		height: 50px;
 		background-color: $primaryColor;
 		border-radius: 80px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		// display: flex;
+		// justify-content: center;
+		// align-items: center;
+		text-align: center;
+		line-height: 50px;
 		transition: all 0.3s ease 0s;
-		overflow: hidden;
+
 		user-select: none;
+		@include cut_first_string;
+
 		&:hover {
 			background-color: #ffe302;
 		}

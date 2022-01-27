@@ -3,11 +3,11 @@ import Header from './componrnts/header/Header';
 import Main from './componrnts/main/Main';
 import Footer from './componrnts/footer/Footer';
 import { Route, Routes } from 'react-router-dom';
-import Login from './componrnts/LoginPage/LoginPage';
 import { useDispatch } from 'react-redux';
 import { useMediaQuery } from './componrnts/Hook/useMediaQuery';
 import { setBreakPoints } from './componrnts/redux/mediaQuerySlice';
 import { useEffect } from 'react';
+import LoginPageContainer from './componrnts/LoginPage/LoginPageContainer';
 
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
             <Footer />
           </>
         } />
-        <Route path='/login' element={< Login />} />
+        <Route path='/login' element={< LoginPageContainer />} />
       </Routes>
     </div>
   );

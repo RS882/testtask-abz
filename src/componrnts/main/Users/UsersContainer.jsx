@@ -1,3 +1,4 @@
+import { cutString } from "../../utilits/functions";
 import Users from "./Users"
 
 const UsersContainer = (props) => {
@@ -55,19 +56,21 @@ const UsersContainer = (props) => {
 		}
 	]
 
-	const title = `Our cheerful users`;
+	const title = `Our cheerful users `;
 	const subtitle = `The best specialists are shown below`;
 
 	const onClickBtn = () => {
 
 		console.log(`show more`);
 	}
+	const titleMod = cutString(title, 50);
+	const subtitleMod = cutString(subtitle, 50);
 
 	return <Users
 		users={JSON.parse(JSON.stringify(users))}
 		onClickBtn={onClickBtn}
-		title={title}
-		subtitle={subtitle}
+		title={titleMod}
+		subtitle={subtitleMod}
 		disebledBtn={false}
 	/>
 }
