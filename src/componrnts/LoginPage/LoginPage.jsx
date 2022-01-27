@@ -3,23 +3,7 @@ import { Form, Field } from 'react-final-form'
 
 const Login = (props) => {
 
-	const radiosElem = props.positions.map((el, i) => {
-		return <div key={el.id}>
-			<Field
-				component={`input`}
-				className="radio__radiobtn"
-				type={`radio`}
-				name="position_id"
-				id={`position_${el.id}`}
-				value={el.id}
-				checked={!i || false}
-			/>
-			<label
-				className="radio__label"
-				htmlFor={`position_${el.id}`}>{el.name}</label>
-		</div>
 
-	})
 
 	const onSubmit = (formData) => {
 		console.log(formData);
@@ -47,6 +31,24 @@ const Login = (props) => {
 						initialValues={{ ...formData, }}
 						render={({ handleSubmit, form, submitting, pristine, errors }) => {
 
+							const radiosElem = props.positions.map((el, i) => {
+								return <div key={el.id}>
+									<Field
+										component={`input`}
+										type={`radio`}
+										name="position_id"
+										id={`position_${el.id}`}
+										value={el.id}
+										checked={!i || false}
+										hidden
+									/>
+									<label className="radio__label" htmlFor={`position_${el.id}`}>
+										<div className="radio__radiobtn" ></div>
+										{el.name}
+									</label>
+								</div>
+
+							});
 
 							return (
 								<form onSubmit={handleSubmit} className="login__form form">
@@ -86,7 +88,10 @@ const Login = (props) => {
 											className="form__input"
 											type={`file`}
 											name="photo"
+											id="file_form_type"
+											hidden
 										/>
+										<label className="form__input form__file" htmlFor="file_form_type">1111</label>
 									</div>
 									<div className="form__submit">
 										<Button
