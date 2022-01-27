@@ -61,7 +61,7 @@ $md3: 767.98;
 	}
 	@media (min-width: ($md2 + px)) {
 		max-width: 904 + 30 + px;
-		padding: 0px 0px 0px 15px;
+		padding: 0px 15px 0px 15px;
 	}
 	@media (min-width: ($md1 + px)) {
 		max-width: $maxWidthContainer + 30 + px;

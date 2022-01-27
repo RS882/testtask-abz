@@ -9,8 +9,8 @@ const Users = (props) => {
 		<div className="main__users users">
 			<div className="users__container container">
 				<div className="users__wrapper ">
-					<div className="users__title ">{props.title}</div>
-					<div className="users__subtitle ">{props.subtitle}</div>
+					<h2 className="users__title ">{props.title}</h2>
+					<h4 className="users__subtitle ">{props.subtitle}</h4>
 					<div className="users__grid ">
 						{usersElem}
 					</div>
