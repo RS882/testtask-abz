@@ -1,7 +1,10 @@
 
+import { useState } from 'react';
 
-const FormControl = ({ input, meta, helperText, ...props }) => {
 
+const Input = ({ input, meta, helperText, ...props }) => {
+
+	const [isHover, setIsHover] = useState(false);
 	// console.log(meta.error);
 	const isActiveTextInput = meta.active && input.type === `text`;
 	const isEneblFille = input.value && !meta.active && input.type === `text`;
@@ -35,53 +38,30 @@ const FormControl = ({ input, meta, helperText, ...props }) => {
 	};
 	if (isDisebled) {
 		borderStyle = { border: `1px solid ${colorFrame.disabled}`, };
-		styleHelpText = { color: colorFrame.disabled, };
+		styleHelpText = { ...styleHelpText, color: colorFrame.disabled, };
 	};
 
+	if (isHover && !hasError) {
+		styleHelpText = { ...styleVisible, transition: `opacity 0.3s ease 0s, visibility 0.3s ease 0s` };
+	};
+	if (isHover && isDisebled) {
 
-	const activeTextInput = (
-		<div className="_text-input-style" style={styleInputText}>
-			<span style={styleInputText} >{props.placeholder}</span>
-		</div>
-	);
-	const helperTextElem = (
-		<div className="_helper-text">
-			{hasError && <span style={styleHelpText}>{meta.error}<br /></span>}
-			<span style={styleHelpText}>{helperText}</span>
-		</div>
-	);
+		styleHelpText = { ...styleHelpText, color: colorFrame.disabled, transition: `opacity 0.3s ease 0s, visibility 0.3s ease 0s`, };
+	};
 
 	return (
-		<>
-			<input {...props} {...input}
-				style={borderStyle}
-			/>
-			{activeTextInput}
-			{helperTextElem}
-
-		</>
+		<div onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+			<input {...props} {...input} style={borderStyle} />
+			<div className="_text-input-style" style={styleInputText}>
+				<span style={styleInputText} >{props.placeholder}</span>
+			</div>
+			<div className="_helper-text">
+				{hasError && <span style={styleHelpText}>{meta.error}<br /></span>}
+				<span style={styleHelpText}>{helperText}</span>
+			</div>
+		</div>
 	)
 }
 
-export const Input = (props) => <FormControl {...props} />
+export default Input;
 
-// const FormControl = ({ input, meta, FormType, ...props }) => {
-// 	if (props.onFocus) input.onFocus = props.onFocus;
-// 	if (props.onBlur) input.onBlur = props.onBlur;
-// 	if (props.onChange) input.onChange = props.onChange;
-// 	const hasError = meta.error && meta.touched;
-// 	return (
-// 		<div className={s.formBox}>
-// 			<div >
-// 				<FormType {...props} {...input} style={{ border: hasError && '2px solid red' }} />
-// 			</div>
-// 			<div className={s.error}>
-// 				{hasError && <span>{meta.error}</span>}
-// 			</div>
-// 		</div>
-// 	)
-// }
-
-// export const Textarea = (props) => <FormControl {...props} FormType="textarea" />
-
-// export const Input = (props) => <FormControl {...props} FormType="input" />

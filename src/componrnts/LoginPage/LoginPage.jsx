@@ -1,6 +1,6 @@
 import Button from "../button/button";
 import { Form, Field } from 'react-final-form'
-import { Input } from './../FormControl/Form.Control';
+import Input from './../FormControl/Form.Control';
 import { composeValidators, required, minLength, maxLength, emailValid, phoneValid } from './../utilits/validators';
 
 const Login = (props) => {
@@ -63,6 +63,7 @@ const Login = (props) => {
 											className="form__input"
 											type={`text`}
 											name="name"
+											disabled
 											placeholder="Your name"
 											validate={composeValidators(required, minLengtText2, maxLengtText60)}
 											helperText="Your name should contain 2-60 characters" />
