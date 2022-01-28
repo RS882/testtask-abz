@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
 
 
 const FormControl = ({ input, meta, helperText, ...props }) => {
 
-	console.log(props);
+	// console.log(meta.error);
 	const isActiveTextInput = meta.active && input.type === `text`;
 	const isEneblFille = input.value && !meta.active && input.type === `text`;
 	const hasError = meta.error && meta.touched && input.type === `text`;
@@ -18,7 +17,7 @@ const FormControl = ({ input, meta, helperText, ...props }) => {
 	const styleVisible = { opacity: 1, visibility: 'visible', };
 	let styleInputText = { opacity: 0, visibility: `hidden`, color: colorFrame.eneblFilled, };
 	let borderStyle = { border: `1px solid ${colorFrame.eneblFilled}`, };
-	let styleHelpText = { color: `inherit`, };
+	let styleHelpText = { opacity: 0, visibility: `hidden`, color: `inherit`, };
 
 	if (isActiveTextInput) {
 		styleInputText = { ...styleVisible, color: colorFrame.active };
@@ -31,11 +30,10 @@ const FormControl = ({ input, meta, helperText, ...props }) => {
 	if (hasError) {
 		styleInputText = { ...styleVisible, color: colorFrame.error };
 		borderStyle = { border: `2px solid ${colorFrame.error}`, };
-		styleHelpText = { color: colorFrame.error, };
+		styleHelpText = { ...styleVisible, color: colorFrame.error, };
 
 	};
 	if (isDisebled) {
-
 		borderStyle = { border: `1px solid ${colorFrame.disabled}`, };
 		styleHelpText = { color: colorFrame.disabled, };
 	};
@@ -48,6 +46,7 @@ const FormControl = ({ input, meta, helperText, ...props }) => {
 	);
 	const helperTextElem = (
 		<div className="_helper-text">
+			{hasError && <span style={styleHelpText}>{meta.error}<br /></span>}
 			<span style={styleHelpText}>{helperText}</span>
 		</div>
 	);

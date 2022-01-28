@@ -1,6 +1,7 @@
 import Button from "../button/button";
 import { Form, Field } from 'react-final-form'
 import { Input } from './../FormControl/Form.Control';
+import { composeValidators, required, minLength, maxLength, emailValid, phoneValid } from './../utilits/validators';
 
 const Login = (props) => {
 
@@ -32,6 +33,9 @@ const Login = (props) => {
 						initialValues={{ ...formData, }}
 						render={({ handleSubmit, form, submitting, pristine, errors, values }) => {
 							// console.log(values);
+							const minLengtText2 = minLength(2);
+							const maxLengtText60 = maxLength(60);
+							const maxLengtText100 = maxLength(100);
 							const radiosElem = props.positions.map((el, i) => {
 								return <div key={el.id}>
 									<Field
@@ -40,7 +44,7 @@ const Login = (props) => {
 										name="position_id"
 										id={`position_${el.id}`}
 										value={el.id}
-										checked={!i || false}
+										checked={!i}
 										hidden
 									/>
 									<label className="radio__label" htmlFor={`position_${el.id}`}>
@@ -60,8 +64,8 @@ const Login = (props) => {
 											type={`text`}
 											name="name"
 											placeholder="Your name"
-
-											helperText="Username should contain 2-60 characters" />
+											validate={composeValidators(required, minLengtText2, maxLengtText60)}
+											helperText="Your name should contain 2-60 characters" />
 									</div>
 									<div className="form__input-box">
 										<Field
@@ -70,7 +74,8 @@ const Login = (props) => {
 											type={`text`}
 											name="email"
 											placeholder="Email"
-											helperText="User email, must be a valid email according to RFC2822" />
+											validate={composeValidators(required, minLengtText2, maxLengtText100, emailValid)}
+											helperText="Your email, must be a valid email according to RFC2822" />
 									</div>
 									<div className="form__input-box">
 										<Field
@@ -79,7 +84,8 @@ const Login = (props) => {
 											type={`text`}
 											name="phone"
 											placeholder="Phone"
-											helperText="User phone number. Number should start with code of Ukraine +380" />
+											validate={composeValidators(required, phoneValid)}
+											helperText="Your phone number should start with code of Ukraine +380" />
 									</div>
 									<div className="form__radiobtns radio">
 										<h5 className="radio__title">Select your position</h5>
