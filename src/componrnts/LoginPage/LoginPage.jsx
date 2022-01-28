@@ -1,5 +1,6 @@
 import Button from "../button/button";
 import { Form, Field } from 'react-final-form'
+import { Input } from './../FormControl/Form.Control';
 
 const Login = (props) => {
 
@@ -29,12 +30,12 @@ const Login = (props) => {
 							onSubmit(values);
 						}}
 						initialValues={{ ...formData, }}
-						render={({ handleSubmit, form, submitting, pristine, errors }) => {
-
+						render={({ handleSubmit, form, submitting, pristine, errors, values }) => {
+							// console.log(values);
 							const radiosElem = props.positions.map((el, i) => {
 								return <div key={el.id}>
 									<Field
-										component={`input`}
+										component={Input}
 										type={`radio`}
 										name="position_id"
 										id={`position_${el.id}`}
@@ -52,29 +53,33 @@ const Login = (props) => {
 
 							return (
 								<form onSubmit={handleSubmit} className="login__form form">
-									<div>
+									<div className="form__input-box">
 										<Field
-											component={`input`}
+											component={Input}
 											className="form__input"
 											type={`text`}
 											name="name"
-											placeholder="Your name" />
+											placeholder="Your name"
+
+											helperText="Username should contain 2-60 characters" />
 									</div>
-									<div>
+									<div className="form__input-box">
 										<Field
-											component={`input`}
+											component={Input}
 											className="form__input"
-											type={`email`}
+											type={`text`}
 											name="email"
-											placeholder="Email" />
+											placeholder="Email"
+											helperText="User email, must be a valid email according to RFC2822" />
 									</div>
-									<div>
+									<div className="form__input-box">
 										<Field
-											component={`input`}
+											component={Input}
 											className="form__input"
-											type={`tel`}
+											type={`text`}
 											name="phone"
-											placeholder="Phone" />
+											placeholder="Phone"
+											helperText="User phone number. Number should start with code of Ukraine +380" />
 									</div>
 									<div className="form__radiobtns radio">
 										<h5 className="radio__title">Select your position</h5>
@@ -84,11 +89,11 @@ const Login = (props) => {
 									</div>
 									<div>
 										<Field
-											component={`input`}
-											className="form__input"
+											component={Input}
 											type={`file`}
 											name="photo"
 											id="file_form_type"
+											helperText="Minimum size of photo 70x70px. The photo format must be jpeg/jpg type. The photo size must not be greater than 5 Mb"
 											hidden
 										/>
 										<label className="form__input form__file" htmlFor="file_form_type">1111</label>
