@@ -1,7 +1,8 @@
 import Button from "../button/button";
 import { Form, Field } from 'react-final-form'
-import Input from './../FormControl/Form.Control';
+import InputText from '../FormControl/InputText';
 import { composeValidators, required, minLength, maxLength, emailValid, phoneValid } from './../utilits/validators';
+import InputRadio from "../FormControl/InputRadio";
 
 const Login = (props) => {
 
@@ -36,30 +37,12 @@ const Login = (props) => {
 							const minLengtText2 = minLength(2);
 							const maxLengtText60 = maxLength(60);
 							const maxLengtText100 = maxLength(100);
-							const radiosElem = props.positions.map((el, i) => {
-								return <div key={el.id}>
-									<Field
-										component={Input}
-										type={`radio`}
-										name="position_id"
-										id={`position_${el.id}`}
-										value={el.id}
-										checked={!i}
-										hidden
-									/>
-									<label className="radio__label" htmlFor={`position_${el.id}`}>
-										<div className="radio__radiobtn" ></div>
-										{el.name}
-									</label>
-								</div>
-
-							});
 
 							return (
 								<form onSubmit={handleSubmit} className="login__form form">
 									<div className="form__input-box">
 										<Field
-											component={Input}
+											component={InputText}
 											className="form__input"
 											type={`text`}
 											name="name"
@@ -70,9 +53,9 @@ const Login = (props) => {
 									</div>
 									<div className="form__input-box">
 										<Field
-											component={Input}
+											component={InputText}
 											className="form__input"
-											type={`text`}
+											type={`email`}
 											name="email"
 											placeholder="Email"
 											validate={composeValidators(required, minLengtText2, maxLengtText100, emailValid)}
@@ -80,9 +63,9 @@ const Login = (props) => {
 									</div>
 									<div className="form__input-box">
 										<Field
-											component={Input}
+											component={InputText}
 											className="form__input"
-											type={`text`}
+											type={`tel`}
 											name="phone"
 											placeholder="Phone"
 											validate={composeValidators(required, phoneValid)}
@@ -91,16 +74,29 @@ const Login = (props) => {
 									<div className="form__radiobtns radio">
 										<h5 className="radio__title">Select your position</h5>
 										<div className="radio__radios">
-											{radiosElem}
+											{props.positions.map(el =>
+												<label key={el.id}>
+													<Field
+														component={InputRadio}
+														type={`radio`}
+														name="position_id"
+														value={el.id}
+														positionName={el.name}
+														valueCheck={values.position_id}
+														hidden
+													/>
+												</label>
+											)}
+
 										</div>
 									</div>
 									<div>
 										<Field
-											component={Input}
+											component={'input'}
 											type={`file`}
 											name="photo"
 											id="file_form_type"
-											helperText="Minimum size of photo 70x70px. The photo format must be jpeg/jpg type. The photo size must not be greater than 5 Mb"
+											//helperText="Minimum size of photo 70x70px. The photo format must be jpeg/jpg type. The photo size must not be greater than 5 Mb"
 											hidden
 										/>
 										<label className="form__input form__file" htmlFor="file_form_type">1111</label>
