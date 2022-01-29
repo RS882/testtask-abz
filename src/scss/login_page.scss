@@ -40,8 +40,14 @@
 		padding-left: 16px;
 		background-color: $bgColor;
 		transition: border 0.3s ease 0s;
+
 		&::placeholder {
 			color: #7e7e7e;
+		}
+		&:disabled {
+			&::placeholder {
+				color: #bcbcbc;
+			}
 		}
 	}
 	&__input-box {
