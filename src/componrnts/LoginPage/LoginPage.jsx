@@ -3,6 +3,7 @@ import { Form, Field } from 'react-final-form'
 import InputText from '../FormControl/InputText';
 import { composeValidators, required, minLength, maxLength, emailValid, phoneValid } from './../utilits/validators';
 import InputRadio from "../FormControl/InputRadio";
+import InputFile from './../FormControl/InputFile';
 
 const Login = (props) => {
 
@@ -16,7 +17,7 @@ const Login = (props) => {
 		name: ``,
 		email: ``,
 		phone: ``,
-		position_id: null,
+		position_id: props.positions[0].id + ``,
 		photo: null,
 	}
 
@@ -80,9 +81,8 @@ const Login = (props) => {
 														component={InputRadio}
 														type={`radio`}
 														name="position_id"
-														value={el.id}
+														value={el.id + ''}
 														positionName={el.name}
-														valueCheck={values.position_id}
 														hidden
 													/>
 												</label>
@@ -90,17 +90,17 @@ const Login = (props) => {
 
 										</div>
 									</div>
-									<div>
+									<label>
 										<Field
-											component={'input'}
+											component={InputFile}
 											type={`file`}
 											name="photo"
 											id="file_form_type"
-											//helperText="Minimum size of photo 70x70px. The photo format must be jpeg/jpg type. The photo size must not be greater than 5 Mb"
+											helperText="Minimum size of photo 70x70px. The photo format must be jpeg/jpg type. The photo size must not be greater than 5 Mb"
 											hidden
 										/>
-										<label className="form__input form__file" htmlFor="file_form_type">1111</label>
-									</div>
+
+									</label>
 									<div className="form__submit">
 										<Button
 											disabled={props.disebledBtn}
