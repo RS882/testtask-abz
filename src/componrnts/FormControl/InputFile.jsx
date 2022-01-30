@@ -42,6 +42,10 @@ const InputFile = ({ input, meta, helperText, ...props }) => {
 		fileNameColor = [color.main, color.disable, , `none`,];
 	};
 
+	if (input.value && isHover) {
+		fileNameColor = [color.main, , , `none`,];
+	};
+
 	if (props.disabled) {
 		fileNameColor = [color.disable, , , `none`,];
 		uploadColor = [color.disable,];
@@ -52,7 +56,7 @@ const InputFile = ({ input, meta, helperText, ...props }) => {
 		uploadColor = [color.main, color.error, 2];
 		helpColor = [color.error, 'none', 'none', 'none',];
 		styleVisible = { opacity: 1, visibility: 'visible', };
-	}
+	};
 
 
 	const styleUpload = changeColor(...uploadColor);
@@ -63,21 +67,19 @@ const InputFile = ({ input, meta, helperText, ...props }) => {
 	return (<>
 		<label className="form__file form__input"
 			onClick={() => setTouchedLabel(true)}>
-
-			<div style={styleUpload} className="form__file-label"
-				onMouseEnter={() => setIsHover(true)}
+			<div className="form__file-box" onMouseEnter={() => setIsHover(true)}
 				onMouseLeave={() => setIsHover(false)}>
-				Upload
-				<input {...input} {...props} />
+				<div style={styleUpload} className="form__file-label">
+					Upload
+					<input {...input} {...props} />
+				</div>
+				<div style={styleFileName} className="form__file-file">{input.value || `Upload your photo`}</div>
 			</div>
-			<div style={styleFileName} className="form__file-file">{input.value || `Upload your photo`}</div>
-
 			<HelperText
 				hasError={hasError}
 				styleHelpText={styleHelpText}
 				errorText={meta.error}
-				helperText={helperText}
-			/>
+				helperText={helperText} />
 		</label>
 	</>
 	)

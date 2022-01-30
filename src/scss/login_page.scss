@@ -59,6 +59,10 @@
 		margin-top: 48px;
 		margin-bottom: 50px;
 	}
+	&__file-box {
+		display: flex;
+		width: 100%;
+	}
 	&__file-label {
 		padding: 14px 15px 14px 16px;
 		border-radius: 4px 0 0 4px;

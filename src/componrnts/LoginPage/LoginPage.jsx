@@ -31,6 +31,7 @@ const Login = (props) => {
 					<Form
 						onSubmit={(values, form) => {
 							onSubmit(values);
+							// console.log(values);
 						}}
 						initialValues={{ ...formData, }}
 						render={({ handleSubmit, form, submitting, pristine, errors, values }) => {
