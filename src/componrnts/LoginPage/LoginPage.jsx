@@ -34,10 +34,20 @@ const Login = (props) => {
 						}}
 						initialValues={{ ...formData, }}
 						render={({ handleSubmit, form, submitting, pristine, errors, values }) => {
-							// console.log(values);
+
+							// console.log(form.getState());
+
 							const minLengtText2 = minLength(2);
 							const maxLengtText60 = maxLength(60);
 							const maxLengtText100 = maxLength(100);
+							// const addFile = (e) => {
+							// 	console.log(e);
+							// 	let render = new FileReader()
+							// 	render.onload = () => {
+							// 		// const img = document.createElement
+							// 	}
+							// 	console.log(render);
+							// }
 
 							return (
 								<form onSubmit={handleSubmit} className="login__form form">
@@ -47,7 +57,7 @@ const Login = (props) => {
 											className="form__input"
 											type={`text`}
 											name="name"
-											disabled
+
 											placeholder="Your name"
 											validate={composeValidators(required, minLengtText2, maxLengtText60)}
 											helperText="Your name should contain 2-60 characters" />
@@ -90,17 +100,18 @@ const Login = (props) => {
 
 										</div>
 									</div>
-									<label>
+									<div>
 										<Field
 											component={InputFile}
+											validate={composeValidators(required)}
 											type={`file`}
 											name="photo"
 											id="file_form_type"
-											helperText="Minimum size of photo 70x70px. The photo format must be jpeg/jpg type. The photo size must not be greater than 5 Mb"
+											helperText="Your photo. Min size -70x70px. Format - jpeg/jpg. Not be greater - 5 Mb"
 											hidden
 										/>
 
-									</label>
+									</div>
 									<div className="form__submit">
 										<Button
 											disabled={props.disebledBtn}

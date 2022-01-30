@@ -54,10 +54,23 @@
 		margin-bottom: 50px;
 	}
 	&__file {
-		display: block;
-		border: 1px solid #000;
+		display: flex;
+		padding-left: 0px;
 		margin-top: 48px;
 		margin-bottom: 50px;
+	}
+	&__file-label {
+		padding: 14px 15px 14px 16px;
+		border-radius: 4px 0 0 4px;
+
+		transition: color 0.3s ease 0s, border 0.3s ease 0s;
+	}
+	&__file-file {
+		padding: 14px 16px;
+		width: 100%;
+		border-radius: 0 4px 4px 0;
+		transition: color 0.3s ease 0s, border 0.3s ease 0s;
+		border-left: none;
 	}
 	&__radiobtns {
 	}
@@ -88,6 +101,7 @@
 		}
 	}
 	&__helper-text {
+		margin-top: 4px;
 		position: absolute;
 		top: calc(100% + 4px);
 		left: 0;

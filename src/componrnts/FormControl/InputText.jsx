@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import HelperText from './helperText';
 
 
 const InputText = ({ input, meta, helperText, ...props }) => {
@@ -15,7 +16,6 @@ const InputText = ({ input, meta, helperText, ...props }) => {
 		eneblFilled: `#d0cfcf`,
 		error: `#CB3D40`,
 		disabled: `#bcbcbc`,
-		// fileType: `rgba(0isDisebled, 0, 0, 0.87)`,
 	};
 	const styleVisible = { opacity: 1, visibility: 'visible', };
 	const transition = `opacity 0.3s ease 0s, visibility 0.3s ease 0s`;
@@ -51,15 +51,19 @@ const InputText = ({ input, meta, helperText, ...props }) => {
 	};
 
 	return (
-		<div onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
-			<input {...props} {...input} style={borderStyle} />
+		<div >
+			<input onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}
+				{...props} {...input} style={borderStyle} />
 			<div className="form__label-text" style={styleInputText}>
 				<span style={styleInputText} >{props.placeholder}</span>
 			</div>
-			<div className="form__helper-text">
-				{hasError && <span style={styleHelpText}>{meta.error}<br /></span>}
-				<span style={styleHelpText}>{helperText}</span>
-			</div>
+			<HelperText
+				hasError={hasError}
+				styleHelpText={styleHelpText}
+				errorText={meta.error}
+				helperText={helperText}
+			/>
+
 		</div>
 	)
 }
