@@ -11,6 +11,14 @@ const Login = (props) => {
 
 	const onSubmit = (formData) => {
 		console.log(formData);
+		// const data = {
+		// 	name: formData.name,
+		// 	email: formData.email,
+		// 	phone: formData.phone,
+		// 	position_id: formData.position_id,
+		// 	photo: formData.photo,
+		// }
+		// console.log(data);
 	}
 
 	const formData = {
@@ -31,7 +39,7 @@ const Login = (props) => {
 					<Form
 						onSubmit={(values, form) => {
 							onSubmit(values);
-							// console.log(values);
+							console.log(values);
 						}}
 						initialValues={{ ...formData, }}
 						render={({ handleSubmit, form, submitting, pristine, errors, values }) => {
@@ -49,7 +57,12 @@ const Login = (props) => {
 							// 	}
 							// 	console.log(render);
 							// }
+							// let fileTarget;
+							const onChangeFile = (e) => {
+								console.log(e.target.files[0].name);
+							}
 
+							// 
 							return (
 								<form onSubmit={handleSubmit} className="login__form form">
 									<div className="form__input-box">
@@ -109,6 +122,7 @@ const Login = (props) => {
 											name="photo"
 											id="file_form_type"
 											helperText="Your photo. Min size -70x70px. Format - jpeg/jpg. Not be greater - 5 Mb"
+											onInput={onChangeFile}
 											hidden
 										/>
 

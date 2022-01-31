@@ -3,6 +3,8 @@ import HelperText from "./helperText";
 import { useState } from 'react';
 
 
+
+
 const InputFile = ({ input, meta, helperText, ...props }) => {
 
 	const [isHover, setIsHover] = useState(false);
@@ -17,6 +19,8 @@ const InputFile = ({ input, meta, helperText, ...props }) => {
 		disable: `#D0CFCF`,
 		error: `#CB3D40`,
 	};
+
+
 
 	let uploadColor = [color.main];
 	let fileNameColor = [color.second, color.disable, , `none`];
@@ -63,10 +67,9 @@ const InputFile = ({ input, meta, helperText, ...props }) => {
 	const styleFileName = changeColor(...fileNameColor);
 	const styleHelpText = { ...changeColor(...helpColor), ...styleVisible };
 
-
 	return (<>
-		<label className="form__file form__input"
-			onClick={() => setTouchedLabel(true)}>
+		<label className="form__file form__input" tabIndex="0"
+			onBlur={() => setTouchedLabel(true)}>
 			<div className="form__file-box" onMouseEnter={() => setIsHover(true)}
 				onMouseLeave={() => setIsHover(false)}>
 				<div style={styleUpload} className="form__file-label">
