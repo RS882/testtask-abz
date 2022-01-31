@@ -2,7 +2,8 @@
 import BannerContainer from './Banner/BannerContainer';
 import ArticleContainer from './Article/ArticleContainer';
 import UsersContainer from './Users/UsersContainer';
-import LoginPageContainer from './../LoginPage/LoginPageContainer';
+
+import LoginMain from './LoginMain/LoginMain';
 
 
 const Main = (props) => {
@@ -12,7 +13,7 @@ const Main = (props) => {
 			<BannerContainer />
 			<ArticleContainer />
 			<UsersContainer />
-			<LoginPageContainer />
+			<LoginMain />
 
 		</main>
 	)

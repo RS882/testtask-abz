@@ -7,7 +7,8 @@ import { useDispatch } from 'react-redux';
 import { useMediaQuery } from './componrnts/Hook/useMediaQuery';
 import { setBreakPoints } from './componrnts/redux/mediaQuerySlice';
 import { useEffect } from 'react';
-import LoginPageContainer from './componrnts/LoginPage/LoginPageContainer';
+import LoginPage from './componrnts/LoginPage/LoginPage';
+
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
 
   return (
     <div className="app">
-      <Routes>
+      <Routes >
         <Route index element={
           <>
             <Header />
@@ -33,7 +34,7 @@ function App() {
             <Footer />
           </>
         } />
-        <Route path='/login' element={< LoginPageContainer />} />
+        <Route path='/login' element={< LoginPage />} />
       </Routes>
     </div>
   );

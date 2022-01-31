@@ -28,8 +28,6 @@ const ArticleContainer = (props) => {
 
 	const redirect = useNavigate();
 
-
-
 	return <Article
 		img={image}
 		title={titleMod}

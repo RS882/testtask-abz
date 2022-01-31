@@ -1,4 +1,4 @@
-import Login from "./LoginPage"
+import Login from "./Login"
 
 
 const LoginPageContainer = (props) => {
