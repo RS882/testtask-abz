@@ -1,4 +1,4 @@
-export const required = (value) => (value ? undefined : `This field is required`)
+export const required = (value) => (value ? undefined : `This field is required`);
 
 export const maxLength = (maxLength) => (value) =>
 	(value && value.length <= maxLength) ? undefined :
@@ -30,7 +30,10 @@ export const phoneValid = (value) => {
 		undefined : `Please enter a valid phone number`;
 }
 
-
+export const fileTypeValid = (value) => {
+	const valueType = value.split(`.`).reverse()[0]
+	return (valueType === 'jpeg' || valueType === 'jpg') ? undefined : `The photo format must be jpeg/jpg type`;
+}
 
 
 export const composeValidators = (...validators) => (value) =>

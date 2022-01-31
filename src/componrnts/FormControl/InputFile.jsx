@@ -1,17 +1,19 @@
 
 import HelperText from "./helperText";
 import { useState } from 'react';
+import { useEffect } from 'react';
 
-
-
-
-const InputFile = ({ input, meta, helperText, ...props }) => {
+const InputFile = ({ input, meta, helperText, restartFile, ...props }) => {
 
 	const [isHover, setIsHover] = useState(false);
 	const [touchedLabel, setTouchedLabel] = useState(false);
 
-	const hasError = meta.error && touchedLabel;
+	useEffect(() => {
+		restartFile && setTouchedLabel(!restartFile)
+	}, [restartFile])
 
+
+	const hasError = meta.error && touchedLabel;
 
 	const color = {
 		main: `rgba(0, 0, 0, 0.87)`,
@@ -19,7 +21,6 @@ const InputFile = ({ input, meta, helperText, ...props }) => {
 		disable: `#D0CFCF`,
 		error: `#CB3D40`,
 	};
-
 
 
 	let uploadColor = [color.main];
@@ -62,7 +63,6 @@ const InputFile = ({ input, meta, helperText, ...props }) => {
 		styleVisible = { opacity: 1, visibility: 'visible', };
 	};
 
-
 	const styleUpload = changeColor(...uploadColor);
 	const styleFileName = changeColor(...fileNameColor);
 	const styleHelpText = { ...changeColor(...helpColor), ...styleVisible };
@@ -76,7 +76,7 @@ const InputFile = ({ input, meta, helperText, ...props }) => {
 					Upload
 					<input {...input} {...props} />
 				</div>
-				<div style={styleFileName} className="form__file-file">{input.value || `Upload your photo`}</div>
+				<div style={styleFileName} className="form__file-file">{input.value.split(`\\`).reverse()[0] || `Upload your photo`}</div>
 			</div>
 			<HelperText
 				hasError={hasError}

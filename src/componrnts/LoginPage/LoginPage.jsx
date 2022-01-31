@@ -1,33 +1,24 @@
 import Button from "../button/button";
 import { Form, Field } from 'react-final-form'
 import InputText from '../FormControl/InputText';
-import { composeValidators, required, minLength, maxLength, emailValid, phoneValid } from './../utilits/validators';
+import { composeValidators, required, minLength, maxLength, emailValid, phoneValid, fileTypeValid } from './../utilits/validators';
 import InputRadio from "../FormControl/InputRadio";
 import InputFile from './../FormControl/InputFile';
+import { useState } from 'react';
 
 const Login = (props) => {
 
-
-
 	const onSubmit = (formData) => {
 		console.log(formData);
-		// const data = {
-		// 	name: formData.name,
-		// 	email: formData.email,
-		// 	phone: formData.phone,
-		// 	position_id: formData.position_id,
-		// 	photo: formData.photo,
-		// }
-		// console.log(data);
-	}
-
+	};
 	const formData = {
 		name: ``,
 		email: ``,
 		phone: ``,
 		position_id: props.positions[0].id + ``,
 		photo: null,
-	}
+	};
+	const [restartFile, setRestartFile] = useState(false);
 
 	return (
 		<div className="login">
@@ -35,34 +26,14 @@ const Login = (props) => {
 				<div className="login__wrapper">
 					<h2 className="login__title">{props.title}</h2>
 					<h4 className="login__subtitle">{props.subtitle}</h4>
-
 					<Form
 						onSubmit={(values, form) => {
 							onSubmit(values);
-							console.log(values);
+							form.restart();
+							setRestartFile(true)
 						}}
 						initialValues={{ ...formData, }}
-						render={({ handleSubmit, form, submitting, pristine, errors, values }) => {
-
-							// console.log(form.getState());
-
-							const minLengtText2 = minLength(2);
-							const maxLengtText60 = maxLength(60);
-							const maxLengtText100 = maxLength(100);
-							// const addFile = (e) => {
-							// 	console.log(e);
-							// 	let render = new FileReader()
-							// 	render.onload = () => {
-							// 		// const img = document.createElement
-							// 	}
-							// 	console.log(render);
-							// }
-							// let fileTarget;
-							const onChangeFile = (e) => {
-								console.log(e.target.files[0].name);
-							}
-
-							// 
+						render={({ handleSubmit, submitting, pristine, errors, }) => {
 							return (
 								<form onSubmit={handleSubmit} className="login__form form">
 									<div className="form__input-box">
@@ -71,9 +42,8 @@ const Login = (props) => {
 											className="form__input"
 											type={`text`}
 											name="name"
-
 											placeholder="Your name"
-											validate={composeValidators(required, minLengtText2, maxLengtText60)}
+											validate={composeValidators(required, minLength(2), maxLength(60))}
 											helperText="Your name should contain 2-60 characters" />
 									</div>
 									<div className="form__input-box">
@@ -83,7 +53,7 @@ const Login = (props) => {
 											type={`email`}
 											name="email"
 											placeholder="Email"
-											validate={composeValidators(required, minLengtText2, maxLengtText100, emailValid)}
+											validate={composeValidators(required, minLength(2), maxLength(100), emailValid)}
 											helperText="Your email, must be a valid email according to RFC2822" />
 									</div>
 									<div className="form__input-box">
@@ -111,27 +81,25 @@ const Login = (props) => {
 													/>
 												</label>
 											)}
-
 										</div>
 									</div>
 									<div>
 										<Field
 											component={InputFile}
-											validate={composeValidators(required)}
+											validate={composeValidators(required, fileTypeValid)}
 											type={`file`}
 											name="photo"
 											id="file_form_type"
 											helperText="Your photo. Min size -70x70px. Format - jpeg/jpg. Not be greater - 5 Mb"
-											onInput={onChangeFile}
+											restartFile={restartFile}
 											hidden
 										/>
-
 									</div>
 									<div className="form__submit">
 										<Button
-											disabled={props.disebledBtn}
 											onClickBtn={onSubmit}
 											btnType={'submit'}
+											btnDisabled={submitting || pristine || Object.keys(errors).length > 0}
 											text={'Sign up'} />
 									</div>
 								</form>

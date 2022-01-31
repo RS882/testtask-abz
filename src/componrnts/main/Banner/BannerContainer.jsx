@@ -2,8 +2,8 @@ import { useSelector } from "react-redux";
 import { cutString } from "../../utilits/functions";
 import bannerImg from "./../../../assets/img/Banner_photo.webp"
 import Banner from "./Banner";
-import { onClickBtn } from '../../utilits/recirect';
 import { cutTextWithDot } from './../../utilits/functions';
+import { useNavigate } from 'react-router-dom';
 
 
 const BannerContainer = (props) => {
@@ -21,10 +21,12 @@ const BannerContainer = (props) => {
 
 	const titleMod = cutString(title, 50);
 
+	const redirect = useNavigate();
+
 	return <Banner titleMod={titleMod}
 		articleTextMod={articleTextMod}
 		bannerImg={bannerImg}
-		onClickBtn={onClickBtn}
+		onClickBtn={() => redirect(`/login`)}
 	/>
 
 }

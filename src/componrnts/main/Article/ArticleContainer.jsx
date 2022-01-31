@@ -1,10 +1,10 @@
 import image_296x260 from './../../../assets/img/Image-296x260.svg';
 import image_328x287 from './../../../assets/img/Image-328x287.svg';
 import image_387x340 from './../../../assets/img/Image-387x340.svg';
-import { onClickBtn } from '../../utilits/recirect';
 import Article from './Article';
 import { useSelector } from 'react-redux';
 import { cutTextWithDot, cutString } from './../../utilits/functions';
+import { useNavigate } from 'react-router-dom';
 
 const ArticleContainer = (props) => {
 	const { is768, is1024 } = useSelector(state => state.mediaQuery.breakPoints);
@@ -26,12 +26,16 @@ const ArticleContainer = (props) => {
 	const titleMod = cutString(title, 50);
 	const subtitleMod = cutString(subtitle, 50);
 
+	const redirect = useNavigate();
+
+
+
 	return <Article
 		img={image}
 		title={titleMod}
 		subtitle={subtitleMod}
 		text={textMod}
-		onClickBtn={onClickBtn}
+		onClickBtn={() => redirect(`/login`)}
 	/>
 }
 //=========================================================
