@@ -3,7 +3,7 @@ import Header from './componrnts/header/Header';
 import Main from './componrnts/main/Main';
 import Footer from './componrnts/footer/Footer';
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from './componrnts/Hook/useMediaQuery';
 import { setBreakPoints } from './componrnts/redux/mediaQuerySlice';
 import { useEffect } from 'react';
@@ -23,9 +23,12 @@ function App() {
     dispatch(setBreakPoints(breakPoints));
   }, [breakPoints]);
 
+  const isBodyLock = useSelector(state => state.modal.isBodyLock);
+
+  document.body.style.overflow = isBodyLock ? 'hidden' : 'auto';
 
   return (
-    <div className="app">
+    <div className="app" >
       <Routes >
         <Route index element={
           <>

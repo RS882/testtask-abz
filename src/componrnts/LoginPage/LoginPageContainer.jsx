@@ -33,7 +33,7 @@ const LoginPageContainer = (props) => {
 	const modal = {
 		title: `Congratulations`,
 		text: `You have successfully passed the registration `,
-		onClickBtn: () => { },
+		onClickBtn: () => setIsModal(false),
 		btnText: `Great`,
 	}
 

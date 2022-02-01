@@ -9,7 +9,7 @@
 	align-items: center;
 	background-color: rgba(0, 0, 0, 0.5);
 	z-index: 100;
-	transition: opacity 0.3s ease 0s, visibility 0.3s ease 0s;
+	animation: show-modal 0.3s ease;
 
 	&__text-box {
 		width: 328px;
@@ -33,5 +33,14 @@
 	&__btn {
 		display: flex;
 		justify-content: flex-end;
+	}
+}
+
+@keyframes show-modal {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
 	}
 }

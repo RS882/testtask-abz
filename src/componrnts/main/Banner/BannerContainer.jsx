@@ -4,6 +4,7 @@ import bannerImg from "./../../../assets/img/Banner_photo.webp"
 import Banner from "./Banner";
 import { cutTextWithDot } from './../../utilits/functions';
 import { useNavigate } from 'react-router-dom';
+import { useHeaderWhenScroll } from './../../Hook/useHeaderWhenScroll';
 
 
 const BannerContainer = (props) => {
@@ -23,12 +24,16 @@ const BannerContainer = (props) => {
 
 	const redirect = useNavigate();
 
-	return <Banner titleMod={titleMod}
-		articleTextMod={articleTextMod}
-		bannerImg={bannerImg}
-		onClickBtn={() => redirect(`/login`)}
-	/>
+	const containerRef = useHeaderWhenScroll();
 
+	return (
+		<div ref={containerRef}>
+			<Banner titleMod={titleMod}
+				articleTextMod={articleTextMod}
+				bannerImg={bannerImg}
+				onClickBtn={() => redirect(`/login`)}
+			/>
+		</div>)
 }
 
 export default BannerContainer;

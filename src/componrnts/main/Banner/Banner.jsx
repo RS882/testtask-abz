@@ -1,7 +1,7 @@
 import Button from './../../button/button';
 
-
 const Banner = (props) => {
+
 
 	return (
 		<div className="main__banner banner">

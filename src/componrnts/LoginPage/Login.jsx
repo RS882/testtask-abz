@@ -10,6 +10,7 @@ import Modal from "../modal/modal";
 const Login = (props) => {
 
 	const onSubmit = (formData) => {
+		props.setIsModal(true)
 		console.log(formData);
 	};
 	const formData = {
@@ -32,8 +33,8 @@ const Login = (props) => {
 					<Form
 						onSubmit={(values, form) => {
 							onSubmit(values);
-							form.restart();
-							setRestartFile(true)
+							// form.restart();
+							// setRestartFile(true)
 						}}
 						initialValues={{ ...formData, }}
 						render={({ handleSubmit, submitting, pristine, errors, }) => {
