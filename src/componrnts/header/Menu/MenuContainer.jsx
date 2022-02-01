@@ -24,9 +24,6 @@ const MenuContainer = (props) => {
 
 	const onClickItem = (e) => dispatch(addVisitedLink(e.currentTarget.id));
 
-
-
-
 	return <Menu menuItems={menuItems}
 		onClickItem={onClickItem}
 		visitedLinkId={visitedLinkId}

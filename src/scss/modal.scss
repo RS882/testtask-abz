@@ -1,0 +1,37 @@
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 100;
+	transition: opacity 0.3s ease 0s, visibility 0.3s ease 0s;
+
+	&__text-box {
+		width: 328px;
+		border-radius: 4px;
+		background-color: #fff;
+		@media (min-width: ($md3 + px)) {
+			width: 452px;
+		}
+	}
+	&__wrapper {
+		margin: 24px;
+	}
+	&__titile {
+		font-size: 22px;
+		line-height: 31px;
+		margin-bottom: 4px;
+	}
+	&__text {
+		margin-bottom: 33px;
+	}
+	&__btn {
+		display: flex;
+		justify-content: flex-end;
+	}
+}

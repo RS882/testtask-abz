@@ -5,6 +5,7 @@ import { composeValidators, required, minLength, maxLength, emailValid, phoneVal
 import InputRadio from "../FormControl/InputRadio";
 import InputFile from '../FormControl/InputFile';
 import { useState } from 'react';
+import Modal from "../modal/modal";
 
 const Login = (props) => {
 
@@ -20,8 +21,10 @@ const Login = (props) => {
 	};
 	const [restartFile, setRestartFile] = useState(false);
 
+
 	return (
 		<div className="login">
+			{props.isModal && <Modal {...props.modal} />}
 			<div className="login__container container">
 				<div className="login__wrapper">
 					<h2 className="login__title">{props.title}</h2>
@@ -112,7 +115,7 @@ const Login = (props) => {
 				</div>
 
 			</div>
-		</div>
+		</div >
 	)
 }
 
