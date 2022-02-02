@@ -3,7 +3,7 @@ import image_328x287 from './../../../assets/img/Image-328x287.svg';
 import image_387x340 from './../../../assets/img/Image-387x340.svg';
 import Article from './Article';
 import { useSelector } from 'react-redux';
-import { cutTextWithDot, cutString } from './../../utilits/functions';
+
 import { useNavigate } from 'react-router-dom';
 
 const ArticleContainer = (props) => {
@@ -22,9 +22,7 @@ const ArticleContainer = (props) => {
 	let image = is768 ? image_296x260 : image_328x287;
 	image = is1024 ? image_387x340 : image;
 
-	const textMod = cutTextWithDot(text, is768, is1024, false);
-	const titleMod = cutString(title, 50);
-	const subtitleMod = cutString(subtitle, 50);
+
 
 	const redirect = useNavigate();
 
