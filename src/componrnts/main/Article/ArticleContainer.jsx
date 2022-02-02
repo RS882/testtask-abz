@@ -16,7 +16,7 @@ const ArticleContainer = (props) => {
 	a vast understanding of User design thinking as they'll 
 	be building web interfaces with accessibility in mind. 
 	They should also be excited to learn, as the world of 
-	Front-End Development keeps evolving.`;
+	Front-End Development keeps evolving. `;
 
 
 	let image = is768 ? image_296x260 : image_328x287;
@@ -27,6 +27,7 @@ const ArticleContainer = (props) => {
 	const subtitleMod = cutString(subtitle, 50);
 
 	const redirect = useNavigate();
+
 
 	return <Article
 		img={image}

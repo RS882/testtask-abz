@@ -21,3 +21,16 @@ export const cutTextWithDot = (text, is768, is1024, cutFromDot = true) => {
 	const textMod = !is768 ? text768 : cutString(text, 365);
 	return !is1024 ? textMod : cutString(text, 860);
 };
+
+// export const cutTextWithDotBanner = (text, is768) => {
+// 	const dotPos = text.indexOf('.') + 1;
+// 	let text768;
+// 	if (cutFromDot) {
+// 		text768 = (dotPos && dotPos < 117) ? cutString(text, dotPos, '') :
+// 			cutString(text, 120);
+// 	} else {
+// 		text768 = cutString(text, 315);
+// 	}
+// 	const textMod = !is768 ? text768 : cutString(text, 365);
+// 	return !is1024 ? textMod : cutString(text, 860);
+// };

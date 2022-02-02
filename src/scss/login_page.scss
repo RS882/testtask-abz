@@ -76,14 +76,13 @@
 	&__file-label {
 		padding: 14px 15px 14px 16px;
 		border-radius: 4px 0 0 4px;
-
 		transition: color 0.3s ease 0s, border 0.3s ease 0s;
 	}
 	&__file-file {
 		padding: 14px 16px;
 		width: 100%;
 		border-radius: 0 4px 4px 0;
-		transition: color 0.3s ease 0s, border 0.3s ease 0s;
+		transition: color 0.3s ease 0s;
 		border-left: none;
 	}
 	&__radiobtns {
@@ -99,7 +98,6 @@
 		left: 12px;
 		transform: translateY(-50%);
 		background-color: $bgColor;
-
 		font-size: 12px;
 		line-height: 16.8px;
 		padding: 0 4px;
@@ -107,11 +105,8 @@
 		text-align: center;
 		opacity: 0;
 		visibility: hidden;
-
 		span {
-			opacity: 0;
-			visibility: hidden;
-			transition: opacity 0.3s ease 0s, visibility 0.3s ease 0s;
+			transition: opacity 0.3s ease 0s, visibility 0.3s ease 0s, color 0.3s ease 0s;
 		}
 	}
 	&__helper-text {
@@ -122,6 +117,9 @@
 		padding: 0px 16px;
 		font-size: 12px;
 		line-height: 16.8px;
+		span {
+			transition: opacity 0.3s ease 0s, visibility 0.3s ease 0s, color 0.3s ease 0s;
+		}
 	}
 }
 
@@ -135,7 +133,7 @@
 	}
 	&__label {
 		cursor: pointer;
-		// display: block;
+
 		margin-bottom: 8px;
 		display: flex;
 		align-items: center;

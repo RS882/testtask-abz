@@ -6,7 +6,7 @@ const InputRadio = ({ input, positionName, ...props }) => {
 	if (input.checked) {
 		checkStyle = { border: `1px solid #00BDD3` };
 		spanCheckStyle = { opacity: 1 };
-	}
+	};
 
 	return (
 		<div className="radio__label">

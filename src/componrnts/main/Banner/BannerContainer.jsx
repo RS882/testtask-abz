@@ -10,7 +10,7 @@ import { useHeaderWhenScroll } from './../../Hook/useHeaderWhenScroll';
 const BannerContainer = (props) => {
 	const { is768, is1024 } = useSelector(state => state.mediaQuery.breakPoints);
 
-	const title = `Test assignment for front-end developers`
+	const title = `Test assignment for front-end developers `
 
 	const articleText = `Front-end developers make sure the user sees and 
 	interacts with all the necessary elements to ensure conversion.
@@ -28,8 +28,8 @@ const BannerContainer = (props) => {
 
 	return (
 		<div ref={containerRef}>
-			<Banner titleMod={titleMod}
-				articleTextMod={articleTextMod}
+			<Banner titleMod={title}
+				articleTextMod={articleText}
 				bannerImg={bannerImg}
 				onClickBtn={() => redirect(`/login`)}
 			/>

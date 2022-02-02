@@ -6,49 +6,42 @@ import HelperText from './helperText';
 const InputText = ({ input, meta, helperText, ...props }) => {
 
 	const [isHover, setIsHover] = useState(false);
-	const isActiveTextInput = meta.active;
-	const isEneblFille = input.value && !meta.active;
 	const hasError = meta.error && meta.touched;
-	const isDisebled = props.disabled;
 
 	const colorFrame = {
 		active: `#00BDD3`,
-		eneblFilled: `#d0cfcf`,
+		enebl: `#d0cfcf`,
 		error: `#CB3D40`,
 		disabled: `#bcbcbc`,
-	};
-	const styleVisible = { opacity: 1, visibility: 'visible', };
-	const transition = `opacity 0.3s ease 0s, visibility 0.3s ease 0s`;
-
-	let styleInputText = { opacity: 0, visibility: `hidden`, color: colorFrame.eneblFilled, };
-	let borderStyle = { border: `1px solid ${colorFrame.eneblFilled}`, };
-	let styleHelpText = { opacity: 0, visibility: `hidden`, color: `inherit`, };
-
-	if (isActiveTextInput) {
-		styleInputText = { ...styleVisible, color: colorFrame.active };
-		borderStyle = { border: `2px solid ${colorFrame.active}`, };
+		eneblFilled: `#7E7E7E`,
 	};
 
-	if (isEneblFille) {
-		styleInputText = { ...styleVisible, color: colorFrame.eneblFilled, };
-	}
+	let borderColor = [];
+	let textInputStyle = [, 0, `hidden`];
+	let textHelperStyle = textInputStyle;
+
+
+	const changeBorderStyle = (color = colorFrame.enebl, width = 1,) => ({ border: `${width}px solid ${color}`, });
+	const changeTextStyle = (color = colorFrame.eneblFilled, opacity = 1, visibility = 'visible',) =>
+		({ color: color, opacity: opacity, visibility: visibility, });
+
+	if (meta.active) {
+		const color = colorFrame.active;
+		borderColor = [color, 2];
+		textInputStyle = [color];
+	};
+	if (input.value && !meta.active) textInputStyle = [colorFrame.eneblFilled];
 	if (hasError) {
-		styleInputText = { ...styleVisible, color: colorFrame.error };
-		borderStyle = { border: `2px solid ${colorFrame.error}`, };
-		styleHelpText = { ...styleVisible, color: colorFrame.error, };
+		const color = colorFrame.error;
+		borderColor = [color, 2];
+		textInputStyle = textHelperStyle = [color];
+	};
+	if (props.disabled) borderColor = textHelperStyle = [colorFrame.disabled];
+	if (isHover && !hasError) textHelperStyle = [`inherit`];
 
-	};
-	if (isDisebled) {
-		borderStyle = { border: `1px solid ${colorFrame.disabled}`, };
-		styleHelpText = { ...styleHelpText, color: colorFrame.disabled, };
-	};
-
-	if (isHover && !hasError) {
-		styleHelpText = { ...styleVisible, transition: transition };
-	};
-	if (isHover && isDisebled) {
-		styleHelpText = { ...styleHelpText, color: colorFrame.disabled, transition: transition, };
-	};
+	const borderStyle = { ...changeBorderStyle(...borderColor) };
+	const styleInputText = { ...changeTextStyle(...textInputStyle) };
+	const styleHelpText = { ...changeTextStyle(...textHelperStyle) };
 
 	return (
 		<div >

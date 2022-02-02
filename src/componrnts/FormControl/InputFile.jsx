@@ -10,8 +10,7 @@ const InputFile = ({ input, meta, helperText, restartFile, ...props }) => {
 
 	useEffect(() => {
 		restartFile && setTouchedLabel(!restartFile)
-	}, [restartFile])
-
+	}, [restartFile]);
 
 	const hasError = meta.error && touchedLabel;
 
@@ -21,7 +20,6 @@ const InputFile = ({ input, meta, helperText, restartFile, ...props }) => {
 		disable: `#D0CFCF`,
 		error: `#CB3D40`,
 	};
-
 
 	let uploadColor = [color.main];
 	let fileNameColor = [color.second, color.disable, , `none`];
@@ -43,13 +41,9 @@ const InputFile = ({ input, meta, helperText, restartFile, ...props }) => {
 		fileNameColor = [color.second, color.main, , `none`,];
 	};
 
-	if (input.value) {
-		fileNameColor = [color.main, color.disable, , `none`,];
-	};
+	if (input.value) fileNameColor = [color.main, color.disable, , `none`,];
 
-	if (input.value && isHover) {
-		fileNameColor = [color.main, , , `none`,];
-	};
+	if (input.value && isHover) fileNameColor = [color.main, , , `none`,];
 
 	if (props.disabled) {
 		fileNameColor = [color.disable, , , `none`,];

@@ -50,6 +50,7 @@
 	&__title {
 		font-size: 40px;
 		line-height: 40px;
+		@include cut_string_elips(4);
 	}
 	&__subtitle {
 		font-size: 22px;
@@ -59,6 +60,11 @@
 	&__article {
 		margin-top: 20px;
 		margin-bottom: 32px;
+		@include cut_string_elips(4);
+
+		@media (min-width: ($md3 + px)) {
+			@include cut_string_elips(6);
+		}
 		@media (min-width: ($md1 + px)) {
 			margin-top: 32px;
 		}
