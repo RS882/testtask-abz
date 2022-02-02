@@ -47,19 +47,27 @@
 .article {
 	display: flex;
 	flex-direction: column;
+
 	&__title {
 		font-size: 40px;
 		line-height: 40px;
+		padding-right: 25px;
+		margin-right: -25px;
 		@include cut_string_elips(4);
 	}
 	&__subtitle {
 		font-size: 22px;
 		line-height: 28px;
 		margin-top: 10px;
+		padding-right: 25px;
+		margin-right: -25px;
+		@include cut_string_elips(2);
 	}
 	&__article {
 		margin-top: 20px;
 		margin-bottom: 32px;
+		padding-right: 25px;
+		margin-right: -25px;
 		@include cut_string_elips(4);
 
 		@media (min-width: ($md3 + px)) {

@@ -18,9 +18,7 @@ const BannerContainer = (props) => {
 	  frameworks are the must-have skillsets to look for when assessing 
 	  your front-end developers. `;
 
-	const articleTextMod = cutTextWithDot(articleText, is768, is1024);
 
-	const titleMod = cutString(title, 50);
 
 	const redirect = useNavigate();
 

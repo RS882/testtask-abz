@@ -63,14 +63,13 @@ const UsersContainer = (props) => {
 
 		console.log(`show more`);
 	}
-	const titleMod = cutString(title, 50);
-	const subtitleMod = cutString(subtitle, 50);
+
 
 	return <Users
 		users={JSON.parse(JSON.stringify(users))}
 		onClickBtn={onClickBtn}
-		title={titleMod}
-		subtitle={subtitleMod}
+		title={title}
+		subtitle={subtitle}
 		disebledBtn={false}
 	/>
 }

@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const ArticleContainer = (props) => {
 	const { is768, is1024 } = useSelector(state => state.mediaQuery.breakPoints);
 
-	const title = `Let's get acquainted `;
+	const title = ` Let's get acquainted `;
 	const subtitle = `I'm a good front-end developer `;
 	const text = `What defines a good front-end developer 
 	is one that has skilled knowledge of HTML, CSS, JS with 
@@ -31,9 +31,9 @@ const ArticleContainer = (props) => {
 
 	return <Article
 		img={image}
-		title={titleMod}
-		subtitle={subtitleMod}
-		text={textMod}
+		title={title}
+		subtitle={subtitle}
+		text={text}
 		onClickBtn={() => redirect(`/login`)}
 	/>
 }

@@ -11,7 +11,7 @@ const Article = (props) => {
 						<img src={props.img} alt="front-end developer" />
 					</div>
 					<div className="article-main__article article">
-						<h2 className="article__title">{props.title}</h2>
+						<h2 className="article__title ">{props.title}</h2>
 						<h4 className="article__subtitle">{props.subtitle}</h4>
 						<article className="article__article article__article-art">{props.text}</article>
 						<div className="article__btn article__btn-art">
