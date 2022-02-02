@@ -7,6 +7,7 @@ import InputFile from '../FormControl/InputFile';
 import { useState } from 'react';
 import Modal from "../modal/modal";
 
+
 const Login = (props) => {
 
 	const onSubmit = (formData) => {
@@ -21,6 +22,8 @@ const Login = (props) => {
 		photo: null,
 	};
 	const [restartFile, setRestartFile] = useState(false);
+
+	const [loadFile, setLoadFile] = useState(null);
 
 
 	return (
@@ -37,7 +40,9 @@ const Login = (props) => {
 							// setRestartFile(true)
 						}}
 						initialValues={{ ...formData, }}
-						render={({ handleSubmit, submitting, pristine, errors, }) => {
+						render={({ handleSubmit, submitting, pristine, errors, values }) => {
+
+
 							return (
 								<form onSubmit={handleSubmit} className="login__form form">
 									<div className="form__input-box">
@@ -96,6 +101,7 @@ const Login = (props) => {
 											id="file_form_type"
 											helperText="Your photo. Min size -70x70px. Format - jpeg/jpg. Not be greater - 5 Mb"
 											restartFile={restartFile}
+											setLoadFile={setLoadFile}
 											hidden
 										/>
 									</div>
