@@ -81,6 +81,7 @@
 		padding: 14px 15px 14px 16px;
 		border-radius: 4px 0 0 4px;
 		transition: color 0.3s ease 0s, border 0.3s ease 0s;
+		text-align: start;
 	}
 	&__file-file {
 		padding: 14px 16px;
@@ -88,6 +89,7 @@
 		border-radius: 0 4px 4px 0;
 		transition: color 0.3s ease 0s;
 		border-left: none;
+		text-align: start;
 	}
 	&__radiobtns {
 	}

@@ -6,6 +6,7 @@ import InputRadio from "../FormControl/InputRadio";
 import InputFile from '../FormControl/InputFile';
 import { useState } from 'react';
 import Modal from "../modal/modal";
+import { fileWeightValid } from './../utilits/validators';
 
 
 const Login = (props) => {
@@ -41,6 +42,9 @@ const Login = (props) => {
 						}}
 						initialValues={{ ...formData, }}
 						render={({ handleSubmit, submitting, pristine, errors, values }) => {
+							// console.log(`render`);
+							console.log(loadFile);
+							// console.log(values);
 
 
 							return (
@@ -95,13 +99,14 @@ const Login = (props) => {
 									<div>
 										<Field
 											component={InputFile}
-											validate={composeValidators(required, fileTypeValid)}
+											validate={composeValidators(required, fileTypeValid(loadFile),
+												fileWeightValid(loadFile))}
 											type={`file`}
 											name="photo"
-											id="file_form_type"
 											helperText="Your photo. Min size -70x70px. Format - jpeg/jpg. Not be greater - 5 Mb"
 											restartFile={restartFile}
 											setLoadFile={setLoadFile}
+											data={loadFile}
 											hidden
 										/>
 									</div>

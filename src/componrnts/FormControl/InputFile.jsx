@@ -6,13 +6,18 @@ import { useRef } from 'react';
 
 
 const InputFile = ({ input, meta, helperText, restartFile, setLoadFile, ...props }) => {
-	// console.log(input);
+
+	// console.log(meta.data);
+
+	let loadedFile = useRef(null);
 	const [isHover, setIsHover] = useState(false);
 	const [touchedLabel, setTouchedLabel] = useState(false);
-
 	useEffect(() => {
 		restartFile && setTouchedLabel(!restartFile)
 	}, [restartFile]);
+	useEffect(() => {
+		return loadedFile.current && setLoadFile(loadedFile.current.files[0])
+	}, [input.value]);
 
 	const hasError = meta.error && touchedLabel;
 
@@ -63,16 +68,6 @@ const InputFile = ({ input, meta, helperText, restartFile, setLoadFile, ...props
 	const styleFileName = changeColor(...fileNameColor);
 	const styleHelpText = { ...changeColor(...helpColor), ...styleVisible };
 
-	let count = useRef(null);
-
-	// console.log(count.current);
-	// count.current && setLoadFile(count.current.files)
-
-	useEffect(() => {
-
-		count.current && setLoadFile(count.current.files)
-	})
-
 	return (<>
 		<label className="form__file form__input" tabIndex="0"
 			onBlur={() => setTouchedLabel(true)}>
@@ -80,7 +75,7 @@ const InputFile = ({ input, meta, helperText, restartFile, setLoadFile, ...props
 				onMouseLeave={() => setIsHover(false)}>
 				<div style={styleUpload} className="form__file-label">
 					Upload
-					<input ref={count} {...input} {...props} />
+					<input ref={loadedFile} {...input} {...props} />
 				</div>
 				<div style={styleFileName} className="form__file-file">{input.value.split(`\\`).reverse()[0] || `Upload your photo`}</div>
 			</div>
