@@ -23,7 +23,7 @@ const Login = (props) => {
 		loadFile && readImageSize(loadFile, setImgSize)
 	}, [loadFile])
 
-	console.log(imgSize);
+
 
 	//------------------
 

@@ -50,12 +50,12 @@ export const fileWeightValid = type => () => {
 export const fileSizeValid = size => () => {
 
 	if (Object.keys(size).length > 0) {
-		return (size.width >= 50000 && size.height >= 50000) ? undefined :
+		return (size.width >= 70 && size.height >= 70) ? undefined :
 			`Photo size-${size.width}x${size.height}px. Min size of photo must be 70x70px`;
 	} else {
 		return undefined;
 	}
 };
 
-export const composeValidators = (...validators) => (value) =>
+export const composeValidators = (...validators) => value =>
 	validators.reduce((error, validator) => error || validator(value), undefined);
