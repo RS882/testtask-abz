@@ -41,12 +41,21 @@ export const fileTypeValid = type => () => {
 export const fileWeightValid = type => () => {
 	if (type) {
 		const size = +type.size / (1024 * 1024);
-		return (size <= 5) ? undefined : `Photo size-${size.toFixed(2)}Mb. Size must < 5 Mb`;
+		return (size <= 5) ? undefined : `Photo -${size.toFixed(2)}Mb. Must be < 5 Mb`;
 	} else {
 		return undefined;
 	}
 };
 
+export const fileSizeValid = size => () => {
+
+	if (Object.keys(size).length > 0) {
+		return (size.width >= 50000 && size.height >= 50000) ? undefined :
+			`Photo size-${size.width}x${size.height}px. Min size of photo must be 70x70px`;
+	} else {
+		return undefined;
+	}
+};
 
 export const composeValidators = (...validators) => (value) =>
 	validators.reduce((error, validator) => error || validator(value), undefined);

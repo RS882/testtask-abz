@@ -5,10 +5,13 @@ export const cutArray = (arr, n = 0) => arr.reduce((res, el, i, ar) => {
 	return res;
 }, []);
 
+//-----------------------------------------------------------
+
 export const cutString = (str, num = 10, endOfStr = '...') => {
 	if (str.length > num) return str.substr(0, num) + endOfStr;
 	return str;
 };
+//--------------------------------------------------------------
 export const cutTextWithDot = (text, is768, is1024, cutFromDot = true) => {
 	const dotPos = text.indexOf('.') + 1;
 	let text768;
@@ -21,4 +24,16 @@ export const cutTextWithDot = (text, is768, is1024, cutFromDot = true) => {
 	const textMod = !is768 ? text768 : cutString(text, 365);
 	return !is1024 ? textMod : cutString(text, 860);
 };
+//---------------------------------------------------------------
+export const readImageSize = (file, setFunc) => {
+	const reader = new FileReader();
+	reader.readAsDataURL(file);
+	reader.onload = () => {
+		const image = new Image();
+		image.src = reader.result;
+		image.onload = () => {
+			setFunc({ width: image.width, height: image.height, });
+		};
+	};
+}
 

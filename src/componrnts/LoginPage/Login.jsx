@@ -1,15 +1,31 @@
 import Button from "../button/button";
 import { Form, Field } from 'react-final-form'
 import InputText from '../FormControl/InputText';
-import { composeValidators, required, minLength, maxLength, emailValid, phoneValid, fileTypeValid } from '../utilits/validators';
+import { composeValidators, required, minLength, maxLength, emailValid, phoneValid, fileTypeValid, fileSizeValid } from '../utilits/validators';
 import InputRadio from "../FormControl/InputRadio";
 import InputFile from '../FormControl/InputFile';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from "../modal/modal";
 import { fileWeightValid } from './../utilits/validators';
+import { readImageSize } from "../utilits/functions";
 
 
 const Login = (props) => {
+
+
+	const [restartFile, setRestartFile] = useState(false);
+
+	const [loadFile, setLoadFile] = useState(null);
+
+	const [imgSize, setImgSize] = useState({});
+
+	useEffect(() => {
+		loadFile && readImageSize(loadFile, setImgSize)
+	}, [loadFile])
+
+	console.log(imgSize);
+
+	//------------------
 
 	const onSubmit = (formData) => {
 		props.setIsModal(true)
@@ -22,10 +38,6 @@ const Login = (props) => {
 		position_id: props.positions[0].id + ``,
 		photo: null,
 	};
-	const [restartFile, setRestartFile] = useState(false);
-
-	const [loadFile, setLoadFile] = useState(null);
-
 
 	return (
 		<div className="login">
@@ -37,15 +49,11 @@ const Login = (props) => {
 					<Form
 						onSubmit={(values, form) => {
 							onSubmit(values);
-							// form.restart();
-							// setRestartFile(true)
+							form.restart();
+							setRestartFile(true)
 						}}
 						initialValues={{ ...formData, }}
 						render={({ handleSubmit, submitting, pristine, errors, values }) => {
-							// console.log(`render`);
-							console.log(loadFile);
-							// console.log(values);
-
 
 							return (
 								<form onSubmit={handleSubmit} className="login__form form">
@@ -100,13 +108,13 @@ const Login = (props) => {
 										<Field
 											component={InputFile}
 											validate={composeValidators(required, fileTypeValid(loadFile),
-												fileWeightValid(loadFile))}
+												fileWeightValid(loadFile), fileSizeValid(imgSize))}
 											type={`file`}
 											name="photo"
 											helperText="Your photo. Min size -70x70px. Format - jpeg/jpg. Not be greater - 5 Mb"
 											restartFile={restartFile}
 											setLoadFile={setLoadFile}
-											data={loadFile}
+											data={loadFile, imgSize}
 											hidden
 										/>
 									</div>

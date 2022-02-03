@@ -7,7 +7,7 @@ import { useRef } from 'react';
 
 const InputFile = ({ input, meta, helperText, restartFile, setLoadFile, ...props }) => {
 
-	// console.log(meta.data);
+	//console.log(meta.data);
 
 	let loadedFile = useRef(null);
 	const [isHover, setIsHover] = useState(false);
