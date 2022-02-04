@@ -35,8 +35,7 @@ const LoginPageContainer = (props) => {
 		text: `You have successfully passed the registration `,
 		onClickBtn: () => setIsModal(false),
 		btnText: `Great`,
-	}
-
+	};
 
 	return (
 		<Login
@@ -47,7 +46,6 @@ const LoginPageContainer = (props) => {
 			isModal={isModal}
 			setIsModal={setIsModal}
 			titleStyle={props.titleStyle}
-
 		/>
 	)
 }

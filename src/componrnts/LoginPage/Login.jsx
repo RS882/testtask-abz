@@ -23,8 +23,6 @@ const Login = (props) => {
 		loadFile && readImageSize(loadFile, setImgSize)
 	}, [loadFile])
 
-
-
 	//------------------
 
 	const onSubmit = (formData) => {
