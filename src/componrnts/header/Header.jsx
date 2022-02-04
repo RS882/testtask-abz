@@ -12,7 +12,15 @@ const Header = () => {
 	const is1024 = useSelector(state => state.mediaQuery.breakPoints.is1024);
 	const isScroll = useSelector(state => state.header.isScroll);
 	const [activeClass, setActiveClass] = useState('');
-	useEffect(() => { if (is1024) setActiveClass('') }, [is1024]);
+	const disptch = useDispatch();
+	useEffect(() => {
+		if (is1024) {
+			setActiveClass('')
+			disptch(changeIsBodyLock(false))
+
+		}
+
+	}, [is1024]);
 
 	const dispatch = useDispatch();
 	const changeIsLock = (is) => dispatch(changeIsBodyLock(is));
