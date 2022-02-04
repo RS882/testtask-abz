@@ -12,7 +12,7 @@
 			margin: 176px 0 175px 0;
 		}
 		@media (min-width: ($md2 + px)) {
-			margin: 175px 0;
+			margin: 175px 0 173px 0;
 		}
 		@media (min-width: ($md1 + px)) {
 			margin: 180px 0 175px 0;
@@ -28,7 +28,8 @@
 			flex: 1 0 296px;
 		}
 		@media (min-width: ($md2 + px)) {
-			margin-right: 40px;
+			margin-top: 0px;
+
 			flex: 1 0 387px;
 		}
 		@media (min-width: ($md1 + px)) {
@@ -42,6 +43,10 @@
 		@media (min-width: ($md3 + px)) {
 			text-align: end;
 			padding-left: 28px;
+		}
+		@media (min-width: ($md2 + px)) {
+			padding-top: 4px;
+			margin-right: 1px;
 		}
 	}
 }
