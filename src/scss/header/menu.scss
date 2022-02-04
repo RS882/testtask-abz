@@ -1,7 +1,6 @@
 .menu {
 	margin: 0px 0 7px 0px;
 	overflow-y: auto;
-
 	@media (min-width: ($md2 + px)) {
 		overflow-y: visible;
 		margin: 0;
@@ -28,23 +27,24 @@
 	}
 
 	&__item {
-		padding: 0px 0px 0px 16px;
+		padding: 0px 0px 0px 10px;
 		margin-left: 8px;
 		margin-right: 8px;
+
 		max-width: 200px;
 		height: 40px;
 		line-height: $lineHeight;
 		display: flex;
 		align-items: center;
 		transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
-		&:hover,
+
 		&:focus {
 			background-color: rgba($color: $secondaryColor, $alpha: 0.1);
 			color: $secondaryColor;
 			border-radius: 4px;
 		}
 		&:not(:last-child) {
-			margin-bottom: 2px;
+			margin-bottom: 8px;
 		}
 
 		@media (min-width: ($md2 + px)) {
@@ -53,7 +53,7 @@
 		}
 		a {
 			@include cut_first_string;
-			text-transform: capitalize;
+			//text-transform: capitalize;
 		}
 	}
 }

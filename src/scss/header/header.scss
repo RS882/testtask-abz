@@ -69,10 +69,12 @@
 .logo {
 	&__box {
 		display: block;
-		//margin: 16px;
+
 		width: 104px;
 		height: 26px;
-
+		&._active {
+			margin: 16px;
+		}
 		img {
 			width: 100%;
 		}

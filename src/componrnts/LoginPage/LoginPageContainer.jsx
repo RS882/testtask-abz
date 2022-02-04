@@ -46,6 +46,7 @@ const LoginPageContainer = (props) => {
 			modal={modal}
 			isModal={isModal}
 			setIsModal={setIsModal}
+			titleStyle={props.titleStyle}
 
 		/>
 	)

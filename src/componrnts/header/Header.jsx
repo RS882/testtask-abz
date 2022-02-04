@@ -36,8 +36,8 @@ const Header = () => {
 		<header className="header" style={styleHeader}>
 			<div onTransitionEnd={endTransition} className="header__container container">
 				<div className={`header__body ${activeClass}`} style={styleHeaderBurger}>
-					<div className="header__logo logo">
-						<NavLink to={'/login'} className="logo__box">
+					<div className="header__logo logo ">
+						<NavLink to={'/login'} className={`logo__box ${activeClass}`}>
 							<img src={logo} alt='logo' />
 						</NavLink>
 					</div>

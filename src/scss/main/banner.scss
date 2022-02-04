@@ -2,7 +2,7 @@
 	position: relative;
 	background-color: #edecea;
 	max-height: 469px;
-
+	overflow: hidden;
 	@media (min-width: ($md3 + px)) {
 		max-height: 500px;
 	}
@@ -12,14 +12,15 @@
 
 	&__bg {
 		position: absolute;
-		bottom: -11px;
-		left: calc(50% - 5px);
+		bottom: -23px;
+		left: calc(50% - 10px);
 		transform: translateX(calc(-50% + 20px));
 		width: $md1 + px;
 		height: 380px;
 		background-position: center center;
 		background-size: contain;
 		background-repeat: no-repeat;
+
 		@media (min-width: ($md3 + px)) {
 			top: 0;
 			transform: translateX(-50%);

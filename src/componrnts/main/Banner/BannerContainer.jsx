@@ -8,7 +8,7 @@ import { cutString } from "../../utilits/functions";
 
 
 const BannerContainer = (props) => {
-	const { is768, is1024 } = useSelector(state => state.mediaQuery.breakPoints);
+	const { is768 } = useSelector(state => state.mediaQuery.breakPoints);
 
 	const title = `Test assignment for front-end developers `
 

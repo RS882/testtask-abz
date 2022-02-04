@@ -44,7 +44,7 @@ const Login = (props) => {
 			{props.isModal && <Modal {...props.modal} />}
 			<div className="login__container container">
 				<div className="login__wrapper">
-					<h2 className="login__title">{props.title}</h2>
+					<h2 className="login__title" style={props.titleStyle}>{props.title}</h2>
 					<h4 className="login__subtitle">{props.subtitle}</h4>
 					<Form
 						onSubmit={(values, form) => {
