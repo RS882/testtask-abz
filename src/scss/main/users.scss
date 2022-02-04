@@ -1,4 +1,5 @@
 .users {
+	margin-top: 2px;
 	&__container {
 	}
 	&__wrapper {
@@ -10,13 +11,19 @@
 		font-size: 40px;
 		line-height: 40px;
 		margin-bottom: 10px;
-		@include cut_first_string;
+		@include cut_string_elips(3);
+		@media (min-width: ($md3 + px)) {
+			@include cut_first_string;
+		}
 	}
 	&__subtitle {
 		font-size: 22px;
 		line-height: 28px;
 		margin-bottom: 32px;
-		@include cut_first_string;
+		@include cut_string_elips(3);
+		@media (min-width: ($md3 + px)) {
+			@include cut_first_string;
+		}
 	}
 	&__grid {
 		display: grid;

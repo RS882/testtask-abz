@@ -1,4 +1,4 @@
-import { cutString } from "../../utilits/functions";
+
 import Users from "./Users"
 
 const UsersContainer = (props) => {
@@ -34,26 +34,26 @@ const UsersContainer = (props) => {
 			"registration_timestamp": 1537661281,
 			"photo": "https://frontend-test-assignment-api.abz.agency/images/users/5b977ba1e527036.jpeg"
 		},
-		{
-			"id": "37",
-			"name": "Lisa",
-			"email": "lisa.medina@example.com",
-			"phone": "+380564753087",
-			"position": "Security",
-			"position_id": "3",
-			"registration_timestamp": 1537639019,
-			"photo": "https://frontend-test-assignment-api.abz.agency/images/users/5b977ba20bd9537.jpeg"
-		},
-		{
-			"id": "42",
-			"name": "Lorraine",
-			"email": "lorraine.morris@example.com",
-			"phone": "+380945198009",
-			"position": "Designer",
-			"position_id": "4",
-			"registration_timestamp": 1537629182,
-			"photo": "https://frontend-test-assignment-api.abz.agency/images/users/5b977ba293d2f42.jpeg"
-		}
+		// {
+		// 	"id": "37",
+		// 	"name": "Lisa",
+		// 	"email": "lisa.medina@example.com",
+		// 	"phone": "+380564753087",
+		// 	"position": "Security",
+		// 	"position_id": "3",
+		// 	"registration_timestamp": 1537639019,
+		// 	"photo": "https://frontend-test-assignment-api.abz.agency/images/users/5b977ba20bd9537.jpeg"
+		// },
+		// {
+		// 	"id": "42",
+		// 	"name": "Lorraine",
+		// 	"email": "lorraine.morris@example.com",
+		// 	"phone": "+380945198009",
+		// 	"position": "Designer",
+		// 	"position_id": "4",
+		// 	"registration_timestamp": 1537629182,
+		// 	"photo": "https://frontend-test-assignment-api.abz.agency/images/users/5b977ba293d2f42.jpeg"
+		// }
 	]
 
 	const title = `Our cheerful users `;

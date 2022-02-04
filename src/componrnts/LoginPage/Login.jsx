@@ -77,7 +77,7 @@ const Login = (props) => {
 											validate={composeValidators(required, minLength(2), maxLength(100), emailValid)}
 											helperText="Your email, must be a valid email according to RFC2822" />
 									</div>
-									<div className="form__input-box">
+									<div className="form__input-box form__input-box-last">
 										<Field
 											component={InputText}
 											className="form__input"
