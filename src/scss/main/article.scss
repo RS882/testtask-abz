@@ -9,7 +9,7 @@
 
 		@media (min-width: ($md3 + px)) {
 			flex-direction: row;
-			margin: 169px 0 175px 0;
+			margin: 176px 0 175px 0;
 		}
 		@media (min-width: ($md2 + px)) {
 			margin: 175px 0;
@@ -20,7 +20,9 @@
 	}
 	&__img {
 		margin-bottom: 40px;
+
 		@media (min-width: ($md3 + px)) {
+			margin-top: 51px;
 			margin-bottom: 0px;
 			margin-right: 12px;
 			flex: 1 0 296px;
@@ -39,15 +41,7 @@
 	&__article {
 		@media (min-width: ($md3 + px)) {
 			text-align: end;
+			padding-left: 28px;
 		}
 	}
 }
-
-// ._rigth {
-// 	text-align: end;
-// 	// display: inline-flex;
-// 	// justify-content: flex-end;
-// 	// span {
-// 	// 	border: 1px solid rgb(6, 160, 101);
-// 	// }
-// }

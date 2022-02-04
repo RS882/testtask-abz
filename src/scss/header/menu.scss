@@ -37,7 +37,7 @@
 		display: flex;
 		align-items: center;
 		transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
-
+		&:hover,
 		&:focus {
 			background-color: rgba($color: $secondaryColor, $alpha: 0.1);
 			color: $secondaryColor;
@@ -53,7 +53,6 @@
 		}
 		a {
 			@include cut_first_string;
-			//text-transform: capitalize;
 		}
 	}
 }

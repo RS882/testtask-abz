@@ -18,7 +18,9 @@
 		text-align: center;
 		line-height: 57px;
 		background-color: #fff;
-
 		@include cut_first_string;
+		@media (min-width: ($md3 + px)) {
+			padding-top: 3px;
+		}
 	}
 }
