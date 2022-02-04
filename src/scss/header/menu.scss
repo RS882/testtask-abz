@@ -1,18 +1,24 @@
 .menu {
 	margin: 0px 0 7px 0px;
 	overflow-y: auto;
+
 	@media (min-width: ($md2 + px)) {
 		overflow-y: visible;
 		margin: 0;
+		min-width: 490px;
+		margin-bottom: 3px;
 	}
 	&__list {
 		display: flex;
 		flex-wrap: wrap;
 		flex-direction: column;
+
 		@media (min-width: ($md2 + px)) {
 			flex-direction: row;
 			align-items: center;
-			justify-content: space-between;
+			margin-right: -17px;
+
+			//justify-content: space-between;
 		}
 	}
 
@@ -30,7 +36,6 @@
 		padding: 0px 0px 0px 10px;
 		margin-left: 8px;
 		margin-right: 8px;
-
 		max-width: 200px;
 		height: 40px;
 		line-height: $lineHeight;
@@ -46,11 +51,16 @@
 		&:not(:last-child) {
 			margin-bottom: 8px;
 		}
-
 		@media (min-width: ($md2 + px)) {
-			padding: 8px 16px;
-			margin: 0px 0px 0px 0px;
+			padding: 0px 14px 0px 14px;
+			margin-left: 0px;
+			margin-right: 0px;
+			&:not(:last-child) {
+				margin-bottom: 0px;
+				margin-right: 3px;
+			}
 		}
+
 		a {
 			@include cut_first_string;
 		}
