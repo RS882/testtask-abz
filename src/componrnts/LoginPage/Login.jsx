@@ -10,6 +10,7 @@ import { fileWeightValid } from './../utilits/validators';
 import { readImageSize } from "../utilits/functions";
 
 
+
 const Login = (props) => {
 
 
@@ -42,19 +43,20 @@ const Login = (props) => {
 			name: "name",
 			placeholder: "Your name",
 			validate: composeValidators(required, minLength(2), maxLength(60)),
-			helperText: "Your name should contain 2-60 characters"
+			helperText: "Your name should contain 2-60 characters",
 		},
 		{
 			name: "email",
 			placeholder: "Email",
 			validate: composeValidators(required, minLength(2), maxLength(100), emailValid),
-			helperText: "Your email, must be a valid email according to RFC282"
+			helperText: "Your email, must be a valid email according to RFC282",
 		},
 		{
 			name: "phone",
 			placeholder: "Phone",
 			validate: composeValidators(required, phoneValid),
-			helperText: "Your phone number should start with code of Ukraine +380"
+			helperText: "Your phone number should start with code of Ukraine +380",
+
 		},
 
 	]
@@ -84,10 +86,7 @@ const Login = (props) => {
 												component={InputText}
 												className="form__input"
 												type={`text`}
-												name={el.name}
-												placeholder={el.placeholder}
-												validate={el.validate}
-												helperText={el.helperText} />
+												{...el} />
 										</div>
 									})
 									}
