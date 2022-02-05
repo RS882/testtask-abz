@@ -37,6 +37,28 @@ const Login = (props) => {
 		photo: null,
 	};
 
+	const textFields = [
+		{
+			name: "name",
+			placeholder: "Your name",
+			validate: composeValidators(required, minLength(2), maxLength(60)),
+			helperText: "Your name should contain 2-60 characters"
+		},
+		{
+			name: "email",
+			placeholder: "Email",
+			validate: composeValidators(required, minLength(2), maxLength(100), emailValid),
+			helperText: "Your email, must be a valid email according to RFC282"
+		},
+		{
+			name: "phone",
+			placeholder: "Phone",
+			validate: composeValidators(required, phoneValid),
+			helperText: "Your phone number should start with code of Ukraine +380"
+		},
+
+	]
+
 	return (
 		<div className="login">
 			{props.isModal && <Modal {...props.modal} />}
@@ -55,38 +77,21 @@ const Login = (props) => {
 
 							return (
 								<form onSubmit={handleSubmit} className="login__form form">
-									<div className="form__input-box">
-										<Field
-											component={InputText}
-											className="form__input"
-											type={`text`}
+									{textFields.map((el, i, arr) => {
+										const addClass = (i === arr.length - 1) ? 'form__input-box-last' : ''
+										return <div className={`form__input-box ${addClass}`} key={i}>
+											<Field
+												component={InputText}
+												className="form__input"
+												type={`text`}
+												name={el.name}
+												placeholder={el.placeholder}
+												validate={el.validate}
+												helperText={el.helperText} />
+										</div>
+									})
+									}
 
-											name="name"
-											placeholder="Your name"
-											validate={composeValidators(required, minLength(2), maxLength(60))}
-											helperText="Your name should contain 2-60 characters" />
-									</div>
-									<div className="form__input-box">
-										<Field
-											component={InputText}
-											className="form__input"
-
-											type={`text`}
-											name="email"
-											placeholder="Email"
-											validate={composeValidators(required, minLength(2), maxLength(100), emailValid)}
-											helperText="Your email, must be a valid email according to RFC2822" />
-									</div>
-									<div className="form__input-box form__input-box-last">
-										<Field
-											component={InputText}
-											className="form__input"
-											type={`text`}
-											name="phone"
-											placeholder="Phone"
-											validate={composeValidators(required, phoneValid)}
-											helperText="Your phone number should start with code of Ukraine +380" />
-									</div>
 									<div className="form__radiobtns radio">
 										<h5 className="radio__title">Select your position</h5>
 										<div className="radio__radios">
@@ -104,6 +109,7 @@ const Login = (props) => {
 											)}
 										</div>
 									</div>
+
 									<div>
 										<Field
 											component={InputFile}

@@ -1,7 +1,7 @@
-
 import notPhoto from './../../../assets/img/Photo-cover.svg';
 import { useState } from 'react';
 import { showPhoneNum } from './../../utilits/functions';
+
 const UserCard = (props) => {
 
 	const [userPhoto, setUserPhoto] = useState(props.photo);
