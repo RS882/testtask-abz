@@ -36,4 +36,13 @@ export const readImageSize = (file, setFunc) => {
 		};
 	};
 }
+//------------------------------------------------------------
+export const showPhoneNum = phoneNum => {
+	const res = phoneNum.split('');
+	const arrMod = (arr, arrModPos, modElem = ' ') => arrModPos.forEach(e => arr.splice(e, 0, modElem));
+	arrMod(res, [3, 7, 11, 14]);
+	arrMod(res, [4], '(');
+	arrMod(res, [8], ')');
+	return res.join('');
+}
 

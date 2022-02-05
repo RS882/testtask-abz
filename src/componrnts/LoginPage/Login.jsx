@@ -60,6 +60,7 @@ const Login = (props) => {
 											component={InputText}
 											className="form__input"
 											type={`text`}
+
 											name="name"
 											placeholder="Your name"
 											validate={composeValidators(required, minLength(2), maxLength(60))}
@@ -69,7 +70,8 @@ const Login = (props) => {
 										<Field
 											component={InputText}
 											className="form__input"
-											type={`email`}
+
+											type={`text`}
 											name="email"
 											placeholder="Email"
 											validate={composeValidators(required, minLength(2), maxLength(100), emailValid)}
@@ -79,7 +81,7 @@ const Login = (props) => {
 										<Field
 											component={InputText}
 											className="form__input"
-											type={`tel`}
+											type={`text`}
 											name="phone"
 											placeholder="Phone"
 											validate={composeValidators(required, phoneValid)}

@@ -1,9 +1,12 @@
 
 import notPhoto from './../../../assets/img/Photo-cover.svg';
 import { useState } from 'react';
+import { showPhoneNum } from './../../utilits/functions';
 const UserCard = (props) => {
 
 	const [userPhoto, setUserPhoto] = useState(props.photo);
+
+	const phone = showPhoneNum(props.phone);
 
 	const onErrorImg = () => {
 		// console.clear();
@@ -28,9 +31,9 @@ const UserCard = (props) => {
 						<a href={`mailto:${props.email}`}>{props.email}</a>
 					</div>
 				</div>
-				<div className="usercard__item item-card" data-title={props.phone}>
+				<div className="usercard__item item-card" data-title={phone}>
 					<div className="item-card__contacts " >
-						<a href={`tel:${props.phone}`}>{props.phone}</a>
+						<a href={`tel:${props.phone}`}>{phone}</a>
 					</div>
 				</div>
 			</div>
