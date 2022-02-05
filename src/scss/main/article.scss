@@ -15,7 +15,8 @@
 			margin: 175px 0 173px 0;
 		}
 		@media (min-width: ($md1 + px)) {
-			margin: 180px 0 175px 0;
+			margin: 180px 0 190px 0;
+			justify-content: space-between;
 		}
 	}
 	&__img {
@@ -29,11 +30,11 @@
 		}
 		@media (min-width: ($md2 + px)) {
 			margin-top: 0px;
-
 			flex: 1 0 387px;
 		}
 		@media (min-width: ($md1 + px)) {
 			margin-right: 103px;
+			max-width: 387px;
 		}
 		img {
 			width: 100%;
@@ -47,6 +48,11 @@
 		@media (min-width: ($md2 + px)) {
 			padding-top: 4px;
 			margin-right: 1px;
+		}
+		@media (min-width: ($md1 + px)) {
+			padding-top: 20px;
+			padding-left: 0;
+			min-width: 680px;
 		}
 	}
 }
