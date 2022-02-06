@@ -12,6 +12,18 @@ export const getUsers = createAsyncThunk(
 		} else {
 			return thunkAPI.rejectWithValue(res);
 		}
+	}
+);
 
+export const addUsers = createAsyncThunk(
+	'users/addUsers',
+	async (url, thunkAPI) => {
+		const res = await userAPI.addUsers(url)
+			.then(response => response.data);
+		if (res.success) {
+			return res;
+		} else {
+			return thunkAPI.rejectWithValue(res);
+		}
 	}
 );

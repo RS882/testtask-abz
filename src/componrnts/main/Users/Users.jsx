@@ -20,6 +20,7 @@ const Users = (props) => {
 							onClickBtn={props.onClickBtn}
 							btnType={'button'}
 							text={`Show more`}
+							hiddenBtn={props.hiddenBtn}
 						/>
 					</div>
 
