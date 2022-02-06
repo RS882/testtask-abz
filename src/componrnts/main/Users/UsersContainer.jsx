@@ -1,5 +1,9 @@
 
 import Users from "./Users"
+import { useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
+import { getUsers } from "../../redux/thunkCreation";
 
 const UsersContainer = (props) => {
 
@@ -96,6 +100,11 @@ const UsersContainer = (props) => {
 		}
 	]
 
+	const dispatch = useDispatch();
+	useEffect(() => {
+
+		dispatch(getUsers(3))
+	})
 
 
 	const title = `Our cheerful users `;

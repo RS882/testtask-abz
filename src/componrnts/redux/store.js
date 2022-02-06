@@ -11,7 +11,9 @@ const store = configureStore({
 		mediaQuery: mediaQueryReducer,
 		modal: modalReducer,
 		users: usersReducer,
-	}
+	},
+	// middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(),],
+
 })
 
 window.store = store;
