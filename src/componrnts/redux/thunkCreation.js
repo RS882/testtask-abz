@@ -18,8 +18,11 @@ export const getUsers = createAsyncThunk(
 export const addUsers = createAsyncThunk(
 	'users/addUsers',
 	async (url, thunkAPI) => {
-		const res = await userAPI.addUsers(url)
-			.then(response => response.data);
+		const res = await userAPI.getNextPage(url)
+			.then(response => {
+				//console.log(response);
+				return response.data
+			});
 		if (res.success) {
 			return res;
 		} else {
