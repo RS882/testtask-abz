@@ -4,6 +4,8 @@ import LoginPageContainer from './LoginPageContainer';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+
+
 const LoginPage = (props) => {
 
 	const redirect = useNavigate();
@@ -20,8 +22,10 @@ const LoginPage = (props) => {
 		marginBottom: '20px'
 	};
 
+
 	return (
 		<div>
+
 			<div className="login-page">
 				<LoginPageContainer titleStyle={titleStyle} />
 			</div>

@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import Modal from "../modal/modal";
 import { fileWeightValid } from './../utilits/validators';
 import { readImageSize } from "../utilits/functions";
+import ModalText from "../modal/modalText";
 
 
 
@@ -61,9 +62,11 @@ const Login = (props) => {
 
 	]
 
+	const TextModal = Modal(ModalText);
+
 	return (
 		<div className="login">
-			{props.isModal && <Modal {...props.modal} />}
+			{props.isModal && <TextModal {...props.modal} />}
 			<div className="login__container container">
 				<div className="login__wrapper">
 					<h2 className="login__title" style={props.titleStyle}>{props.title}</h2>
