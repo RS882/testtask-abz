@@ -9,12 +9,13 @@
 	align-items: center;
 	background-color: rgba(0, 0, 0, 0.5);
 	z-index: 100;
-	animation: show-modal 0.3s ease;
+
 	&__text-box {
 		margin-top: 16px;
 		width: 328px;
 		border-radius: 4px;
 		background-color: #fff;
+		animation: show-modal 0.3s ease;
 		@media (min-width: ($md3 + px)) {
 			width: 452px;
 		}

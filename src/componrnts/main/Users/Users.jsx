@@ -11,7 +11,7 @@ const Users = (props) => {
 
 	return (
 		<div className="main__users users">
-			<PreloaderModal />
+			{props.showModal && <PreloaderModal />}
 			<div className="users__container container">
 				<div className="users__wrapper ">
 					<h2 className="users__title ">{props.title}</h2>
@@ -21,7 +21,7 @@ const Users = (props) => {
 					</div>
 					<div className="users__btn ">
 						<Button
-							disabled={props.disebledBtn}
+							btnDisabled={props.disebledBtn}
 							onClickBtn={props.onClickBtn}
 							btnType={'button'}
 							text={`Show more`}
