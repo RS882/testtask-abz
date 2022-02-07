@@ -29,7 +29,17 @@ export const usersSlice = createSlice({
 			nextPage: ``,
 		},
 		isFetching: false,
-		errorMessage: ``,
+		errorMessage: {
+			"message": "Validation failed",
+			"fails": {
+				"count": [
+					"The count must be an integer."
+				],
+				"page": [
+					"The page must be at least 1."
+				]
+			}
+		},
 
 	},
 	reducers: {},

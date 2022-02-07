@@ -10,4 +10,8 @@ export const userAPI = {
 	getUsers: (pageSize = 3, currentPage = 1) => instance.get(`users?page=${currentPage}&count=${pageSize}`),
 	getNextPage: url => axios.get(url),
 
+};
+
+export const regAPI = {
+	getPosition: () => instance.get(`positions`),
 }
