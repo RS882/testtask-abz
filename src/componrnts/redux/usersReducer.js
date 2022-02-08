@@ -7,6 +7,7 @@ const pendingUsers = (state) => {
 
 const rejectedUsers = (state, action) => {
 	state.isFetching = false;
+	state.isError = true;
 	if (action.error) {
 		state.errorMessage = action.error.message;
 	} else if (!action.payload.success) {
@@ -29,20 +30,16 @@ export const usersSlice = createSlice({
 			nextPage: ``,
 		},
 		isFetching: false,
-		errorMessage: {
-			"message": "Validation failed",
-			"fails": {
-				"count": [
-					"The count must be an integer."
-				],
-				"page": [
-					"The page must be at least 1."
-				]
-			}
-		},
+		isError: false,
+		errorMessage: null,
 
 	},
-	reducers: {},
+	reducers: {
+		clearError: (state) => {
+			state.isError = false;
+			state.errorMessage = null;
+		}
+	},
 	extraReducers: {
 		[getUsers.pending]: pendingUsers,
 		[getUsers.fulfilled]: (state, action) => {
@@ -64,7 +61,7 @@ export const usersSlice = createSlice({
 	}
 });
 
-export const { } = usersSlice.actions;
+export const { clearError } = usersSlice.actions;
 export default usersSlice.reducer;
 
 

@@ -33,6 +33,7 @@ const Login = (props) => {
 
 	const onSubmit = (formData) => {
 		setIsModal(true);
+
 		console.log(formData);
 	};
 	const formData = {

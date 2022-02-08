@@ -11,19 +11,17 @@ const PreloaderModal = (props) => {
 
 	const dispatch = useDispatch();
 
-
 	const users = useSelector(state => state.users.users);
 	const isFetching = useSelector(state => state.users.isFetching)
 	const changeIsLock = (is) => dispatch(changeIsBodyLock(is));
+
 	const isShowModal = isFetching && users.users.length > 0
 
 	useEffect(() => {
 		changeIsLock(isShowModal)
 	}, [isShowModal])
 
-
 	const PreloaderModal = Modal(Preloader)
-
 	return (
 		<>
 			{isShowModal && <PreloaderModal />}
