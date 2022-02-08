@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addUsers, getUsers } from './thunkCreation';
+import { addUsers, getUsers, getPositions } from './thunkCreation';
 
 const pendingUsers = (state) => {
 	state.isFetching = true;
@@ -29,6 +29,7 @@ export const usersSlice = createSlice({
 			totalUsers: 0,
 			nextPage: ``,
 		},
+		positions: [],
 		isFetching: false,
 		isError: false,
 		errorMessage: null,
@@ -58,6 +59,13 @@ export const usersSlice = createSlice({
 			state.users.totalUsers = action.payload.total_users;
 		},
 		[addUsers.rejected]: rejectedUsers,
+
+		[getPositions.pending]: pendingUsers,
+		[getPositions.fulfilled]: (state, action) => {
+			state.positions = action.payload.positions;
+		},
+		[getPositions.rejected]: rejectedUsers,
+
 	}
 });
 

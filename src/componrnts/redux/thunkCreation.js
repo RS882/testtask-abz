@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { userAPI } from './../../api/api';
+import { regAPI, userAPI } from './../../api/api';
 
 const usersThunk = (name, funcAPI) => createAsyncThunk(
 	name,
@@ -16,3 +16,4 @@ const usersThunk = (name, funcAPI) => createAsyncThunk(
 
 export const getUsers = usersThunk('users/getUsers', userAPI.getUsers);
 export const addUsers = usersThunk('users/addUsers', userAPI.getNextPage);
+export const getPositions = usersThunk('users/positions', regAPI.getPosition);

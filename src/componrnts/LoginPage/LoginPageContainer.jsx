@@ -1,38 +1,25 @@
 
 import Login from "./Login"
+import { useEffect } from 'react';
+import { getPositions } from './../redux/thunkCreation';
+import { useDispatch, useSelector } from "react-redux";
 
 
 
 const LoginPageContainer = (props) => {
 
-
-
+	const positions = useSelector(state => state.users.positions);
+	const dispatch = useDispatch();
 	const title = `Register to get a work`;
 	const subtitle = `Your personal data is stored according to the Privacy Policy`;
-	const positions = [
-		{
-			"id": 1,
-			"name": "Security"
-		},
-		{
-			"id": 2,
-			"name": "Designer"
-		},
-		{
-			"id": 3,
-			"name": "Content manager"
-		},
-		{
-			"id": 4,
-			"name": "Lawyer"
-		}
-	];
 
-
+	useEffect(() => {
+		dispatch(getPositions());
+	}, []);
 
 	return (
 		<Login
-			positions={JSON.parse(JSON.stringify(positions))}
+			positions={positions}
 			title={title}
 			subtitle={subtitle}
 			titleStyle={props.titleStyle}

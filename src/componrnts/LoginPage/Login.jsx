@@ -40,7 +40,7 @@ const Login = (props) => {
 		name: ``,
 		email: ``,
 		phone: ``,
-		position_id: props.positions[0].id + ``,
+		position_id: props.positions.length > 0 && props.positions[0].id + ``,
 		photo: null,
 	};
 
