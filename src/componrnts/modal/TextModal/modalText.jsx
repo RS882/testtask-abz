@@ -1,5 +1,6 @@
 
-import Button from '../button/button';
+import Button from './../../button/button';
+
 const ModalText = (props) => {
 
 	return (

@@ -5,15 +5,19 @@ import { composeValidators, required, minLength, maxLength, emailValid, phoneVal
 import InputRadio from "../FormControl/InputRadio";
 import InputFile from '../FormControl/InputFile';
 import { useState, useEffect } from 'react';
-import Modal from "../modal/modal";
+
 import { fileWeightValid } from './../utilits/validators';
 import { readImageSize } from "../utilits/functions";
-import ModalText from "../modal/modalText";
+import { useDispatch } from "react-redux";
+import { changeIsModal } from "../redux/modalReducer";
+
 
 
 
 const Login = (props) => {
 
+	const dispatch = useDispatch();
+	const setIsModal = (is) => dispatch(changeIsModal(is));
 
 	const [restartFile, setRestartFile] = useState(false);
 
@@ -28,7 +32,7 @@ const Login = (props) => {
 	//------------------
 
 	const onSubmit = (formData) => {
-		props.setIsModal(true)
+		setIsModal(true);
 		console.log(formData);
 	};
 	const formData = {
@@ -62,11 +66,11 @@ const Login = (props) => {
 
 	]
 
-	const TextModal = Modal(ModalText);
+
 
 	return (
 		<div className="login">
-			{props.isModal && <TextModal {...props.modal} />}
+
 			<div className="login__container container">
 				<div className="login__wrapper">
 					<h2 className="login__title" style={props.titleStyle}>{props.title}</h2>
@@ -105,9 +109,7 @@ const Login = (props) => {
 														name="position_id"
 														value={el.id + ''}
 														positionName={el.name}
-														hidden
-
-													/>
+														hidden />
 												</label>
 											)}
 										</div>
@@ -124,8 +126,7 @@ const Login = (props) => {
 											restartFile={restartFile}
 											setLoadFile={setLoadFile}
 											data={loadFile, imgSize}
-											hidden
-										/>
+											hidden />
 									</div>
 									<div className="form__submit">
 										<Button

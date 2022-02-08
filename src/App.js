@@ -8,6 +8,7 @@ import { useMediaQuery } from './componrnts/Hook/useMediaQuery';
 import { setBreakPoints } from './componrnts/redux/mediaQuerySlice';
 import { useEffect } from 'react';
 import LoginPage from './componrnts/LoginPage/LoginPage';
+import ModalPage from './componrnts/modal/ModalPage';
 
 
 
@@ -39,6 +40,7 @@ function App() {
         } />
         <Route path='/login' element={< LoginPage />} />
       </Routes>
+      <ModalPage />
     </div>
   );
 }
