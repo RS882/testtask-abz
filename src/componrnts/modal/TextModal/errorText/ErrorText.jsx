@@ -4,6 +4,8 @@ const ErrorText = (props) => {
 	const errorMessage = useSelector(state => state.users.errorMessage);
 	const addErrorText = (errorMessage) => errorMessage !== undefined && errorMessage.map((el, i) => <div key={i}>{el}</div>);
 
+
+
 	return (
 		<>
 			{errorMessage && (
