@@ -24,7 +24,7 @@ const PreloaderModal = (props) => {
 	const PreloaderModal = Modal(Preloader)
 	return (
 		<>
-			{isShowModal && <PreloaderModal />}
+			{isShowModal && <PreloaderModal bgColor={'none'} />}
 		</>
 	)
 }
