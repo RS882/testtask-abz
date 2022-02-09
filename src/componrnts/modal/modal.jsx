@@ -1,10 +1,9 @@
 
-const Modal = (Component) => (bgColor, ...props) => {
+const Modal = (Component) => (props) => {
 
-	const bgC = bgColor.bgColor || 'rgba(0, 0, 0, 0.5)'
 
 	return (
-		<div className="modal" style={{ backgroundColor: `${bgC}`, }}>
+		<div className="modal" style={{ backgroundColor: `${props.bgColor || 'rgba(0, 0, 0, 0.5)'}`, }}>
 
 			<Component {...props} />
 
