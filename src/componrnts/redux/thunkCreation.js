@@ -28,15 +28,15 @@ export const regUser = createAsyncThunk(
 				return response.data.token
 			})
 			.then(token => {
-				console.log(data);
+
 
 				return regAPI.regUser(data, token)
 			})
 			.then(response => {
-				console.log(response.data);
+
 				return response.data
 			});
-		console.log(res);
+
 		if (res.success) {
 			return res;
 		} else {
