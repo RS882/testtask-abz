@@ -10,5 +10,7 @@ export const userAPI = {
 export const regAPI = {
 	getPosition: () => axios.get(`positions`),
 	getToken: () => axios.get(`token`),
-	regUser: (data, token) => axios.post(`users`, { ...data }, { headers: { 'Token': token, }, })
+	regUser: (data, token) => axios.post(`users`,
+		data,
+		{ headers: { 'Token': token, 'Content-Type': 'multipart/form-data', } })
 };

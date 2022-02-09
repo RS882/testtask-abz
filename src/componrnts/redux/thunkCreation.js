@@ -18,13 +18,25 @@ export const getUsers = usersThunk('users/getUsers', userAPI.getUsers);
 export const addUsers = usersThunk('users/addUsers', userAPI.getNextPage);
 export const getPositions = usersThunk('users/positions', regAPI.getPosition);
 
-export const regUser = (data) => createAsyncThunk(
-	'users/token',
-	async (arg, thunkAPI) => {
+export const regUser = createAsyncThunk(
+	'users/regUser',
+	async (data, thunkAPI) => {
+
 		const res = await regAPI.getToken()
-			.then(response => response.data.token)
-			.then(token => regAPI.regUser(data, token))
-			.then(response => response.data);
+			.then(response => {
+
+				return response.data.token
+			})
+			.then(token => {
+				console.log(data);
+
+				return regAPI.regUser(data, token)
+			})
+			.then(response => {
+				console.log(response.data);
+				return response.data
+			});
+		console.log(res);
 		if (res.success) {
 			return res;
 		} else {

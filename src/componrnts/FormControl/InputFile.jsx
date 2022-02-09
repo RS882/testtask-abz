@@ -7,7 +7,7 @@ import { useRef } from 'react';
 
 const InputFile = ({ input, meta, helperText, restartFile, setLoadFile, ...props }) => {
 
-	//console.log(meta.data);
+
 
 	let loadedFile = useRef(null);
 	const [isHover, setIsHover] = useState(false);
@@ -16,6 +16,7 @@ const InputFile = ({ input, meta, helperText, restartFile, setLoadFile, ...props
 		restartFile && setTouchedLabel(!restartFile)
 	}, [restartFile]);
 	useEffect(() => {
+
 		return loadedFile.current && setLoadFile(loadedFile.current.files[0])
 	}, [input.value]);
 

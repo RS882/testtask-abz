@@ -14,7 +14,8 @@ const UsersContainer = (props) => {
 
 	const dispatch = useDispatch();
 	const users = useSelector(state => state.users.users);
-	const isFetching = useSelector(state => state.users.isFetching)
+	const isFetching = useSelector(state => state.users.isFetching);
+	const isReg = useSelector(state => state.users.isReg);
 	const { is768, is1024 } = useSelector(state => state.mediaQuery.breakPoints);
 
 	const [isShowMore, setIsShowMore] = useState(false);
@@ -23,8 +24,9 @@ const UsersContainer = (props) => {
 
 
 	useEffect(() => {
-		!isShowMore && dispatch(getUsers(numShowUsers))
-	}, [numShowUsers])
+		isReg && setIsShowMore(false);
+		!isShowMore && dispatch(getUsers(numShowUsers));
+	}, [numShowUsers, isReg])
 
 
 

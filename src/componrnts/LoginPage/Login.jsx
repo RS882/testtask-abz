@@ -10,6 +10,7 @@ import { fileWeightValid } from './../utilits/validators';
 import { readImageSize } from "../utilits/functions";
 import { useDispatch } from "react-redux";
 import { changeIsModal } from "../redux/modalReducer";
+import { regUser } from "../redux/thunkCreation";
 
 
 
@@ -32,9 +33,11 @@ const Login = (props) => {
 	//------------------
 
 	const onSubmit = (formData) => {
-		setIsModal(true);
 
-		console.log(formData);
+		// const data = { ...formData, phone: loadFile, };
+		// //dispatch(regUser(data))
+		// console.log(data);
+		// setIsModal(true);
 	};
 	const formData = {
 		name: ``,
@@ -77,9 +80,39 @@ const Login = (props) => {
 					<h4 className="login__subtitle">{props.subtitle}</h4>
 					<Form
 						onSubmit={(values, form) => {
-							onSubmit(values);
-							form.restart();
-							setRestartFile(true)
+							// onSubmit(values);
+
+							// var formData = new FormData(); 
+							// //file from input type='file' var fileField = document.querySelector('input[type="file"]'); formData.append('position_id', 2); formData.append('name', 'Jhon'); formData.append('email', 'Jhon@gmail.com'); formData.append('phone', '+380955388485'); formData.append('photo', fileField.files[0]);
+							// fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users',
+							// 	{
+							// 		method: 'POST', body: formData,
+							// 		headers: { 'Token': token, },
+							// 	})
+							// 	.then(function (response) { return response.json(); })
+							// 	.then(function (data) {
+							// 		console.log(data); if (data.success) {
+							// 			// process success response } else { // proccess server errors }
+							// 		})
+							// 	.catch(function (error) { // proccess network errors })
+
+
+							console.log(`values`);
+							console.log(values);
+							//form.restart();
+							//setRestartFile(true)
+							const formData = new FormData();
+							formData.append('name', values.name);
+							formData.append('email', values.email);
+							formData.append('phone', values.phone);
+							formData.append('position_id', values.position_id);
+							formData.append('photo', loadFile);
+
+							console.log(formData.getAll('photo'));
+							const data = { ...values, photo: loadFile, };
+							dispatch(regUser(formData))
+							//console.log(data);
+							setIsModal(true);
 						}}
 						initialValues={{ ...formData, }}
 						render={({ handleSubmit, submitting, pristine, errors, values }) => {

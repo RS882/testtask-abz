@@ -6,12 +6,14 @@ const pendingUsers = (state) => {
 };
 
 const rejectedUsers = (state, action) => {
+
 	state.isFetching = false;
 	state.isError = true;
 	if (action.error) {
 		state.errorMessage = action.error.message;
 	} else if (!action.payload.success) {
 		const error = action.payload;
+
 		delete error.success;
 		state.errorMessage = error;
 	} else {
@@ -30,17 +32,20 @@ export const usersSlice = createSlice({
 			nextPage: ``,
 		},
 		positions: [],
-		// token: null,
+		regIdUser: null,
+		isReg: false,
 		isFetching: false,
 		isError: false,
 		errorMessage: null,
+
 
 	},
 	reducers: {
 		clearError: (state) => {
 			state.isError = false;
-			state.errorMessage = null;
-		}
+			//state.errorMessage = null;
+		},
+
 	},
 	extraReducers: {
 		[getUsers.pending]: pendingUsers,
@@ -71,7 +76,8 @@ export const usersSlice = createSlice({
 		[regUser.pending]: pendingUsers,
 		[regUser.fulfilled]: (state, action) => {
 			state.isFetching = false;
-			// state.token = action.payload.token;
+			state.regIdUser = action.payload.user_id;
+			state.isReg = action.payload.success;
 		},
 		[regUser.rejected]: rejectedUsers,
 
