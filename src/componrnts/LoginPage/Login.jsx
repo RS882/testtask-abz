@@ -1,9 +1,9 @@
 import Button from "../button/button";
 import { Form, Field } from 'react-final-form'
-import InputText from '../FormControl/InputText';
+import InputText from './FormControl/InputText';
 import { composeValidators, required, minLength, maxLength, emailValid, phoneValid, fileTypeValid, fileSizeValid } from '../utilits/validators';
-import InputRadio from "../FormControl/InputRadio";
-import InputFile from '../FormControl/InputFile';
+import InputRadio from "./FormControl/InputRadio";
+import InputFile from './FormControl/InputFile';
 import { useState, useEffect } from 'react';
 
 import { fileWeightValid } from './../utilits/validators';

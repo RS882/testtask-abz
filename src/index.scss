@@ -49,8 +49,8 @@ $md3: 767.98;
 //===============================================
 @import "./scss/resetStyle.scss";
 @import "./scss/App.scss";
-@import "./scss/login_page.scss";
-@import "./scss/modal.scss";
+@import "./componrnts/LoginPage/login_page.scss";
+@import "./componrnts/modal/modal.scss";
 
 .container {
 	max-width: none;
@@ -69,7 +69,7 @@ $md3: 767.98;
 		max-width: $maxWidthContainer + 30 + px;
 	}
 }
-@import "./scss/button.scss";
-@import "./scss/header/header.scss";
-@import "./scss/main/main.scss";
-@import "./scss/footer/footer.scss";
+@import "./componrnts/button/button.scss";
+@import "./componrnts/header/header.scss";
+@import "./componrnts/main/main.scss";
+@import "./componrnts/footer/footer.scss";

@@ -1,5 +1,3 @@
-@import "./userCard.scss";
-
 .main {
 	margin-top: 60px;
 	min-height: calc(100vh - 266px);
@@ -18,6 +16,6 @@
 	}
 }
 
-@import "./banner.scss";
-@import "./article.scss";
-@import "./users.scss";
+@import "./Banner/banner.scss";
+@import "./Article/article.scss";
+@import "./Users/users.scss";
