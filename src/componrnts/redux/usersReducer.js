@@ -6,8 +6,6 @@ const pendingUsers = (state) => {
 };
 
 const rejectedUsers = (state, action) => {
-	console.log(action);
-
 	state.isFetching = false;
 	state.isError = true;
 	if (action.error) {

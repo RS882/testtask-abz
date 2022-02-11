@@ -14,7 +14,7 @@
 		width: 328px;
 		border-radius: 4px;
 		background-color: #fff;
-		animation: show-modal 0.3s ease;
+
 		@media (min-width: ($md3 + px)) {
 			width: 452px;
 		}
@@ -36,14 +36,5 @@
 	&__btn {
 		display: flex;
 		justify-content: flex-end;
-	}
-}
-
-@keyframes show-modal {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
 	}
 }

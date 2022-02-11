@@ -41,7 +41,7 @@ const Login = (props) => {
 
 	//------------------
 
-	const onSubmit = async values => {
+	const onSubmit = async (values, form) => {
 
 		const formData = new FormData();
 		formData.append('name', values.name);
@@ -49,7 +49,7 @@ const Login = (props) => {
 		formData.append('phone', values.phone);
 		formData.append('position_id', values.position_id);
 		formData.append('photo', loadFile);
-		dispatch(regUser(formData))
+		const setData = await dispatch(regUser(formData));
 		setIsModal(true);
 
 	};
@@ -95,10 +95,11 @@ const Login = (props) => {
 					<Form
 						onSubmit={(values, form) => {
 							onSubmit(values);
+
 							isReg && form.restart();
 						}}
 						initialValues={{ ...formData, }}
-						render={({ handleSubmit, submitting, pristine, errors, values }) => {
+						render={({ handleSubmit, submitting, pristine, errors, }) => {
 
 							return (
 								<form onSubmit={handleSubmit} className="login__form form">
