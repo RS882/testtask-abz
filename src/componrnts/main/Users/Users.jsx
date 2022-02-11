@@ -1,6 +1,6 @@
 import Button from "../../button/button";
 
-import UserCard from "../userCard/UssrCard";
+import UserCard from "./userCard/UssrCard";
 
 const Users = (props) => {
 

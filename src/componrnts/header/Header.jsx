@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import logo from './../../assets/img/Logo.svg';
 import BurgerMenu from './burgerMenu/BurgerMenu';
 import MenuContainer from './Menu/MenuContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeIsBodyLock } from '../redux/modalReducer';
+import Logo from './logo/logo';
 
 
 
@@ -44,11 +43,7 @@ const Header = () => {
 		<header className="header" style={styleHeader}>
 			<div onTransitionEnd={endTransition} className="header__container container">
 				<div className={`header__body ${activeClass}`} style={styleHeaderBurger}>
-					<div className="header__logo logo ">
-						<NavLink to={'/login'} className={`logo__box ${activeClass}`}>
-							<img src={logo} alt='logo' />
-						</NavLink>
-					</div>
+					<Logo boxClass={"header__logo logo"} linkClass={`logo__box ${activeClass}`} />
 					<MenuContainer isBurgerMenu={activeClass === '_active' || false} />
 				</div>
 				<div className={`header__lock ${activeClass}`} onClick={onClickNotMenu}></div>

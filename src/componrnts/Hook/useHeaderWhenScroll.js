@@ -1,29 +1,15 @@
 import { useEffect, useRef } from "react"
-import { useDispatch } from 'react-redux';
-import { changeIsSrcoll } from "../redux/headerSlice";
 
-
-export const useHeaderWhenScroll = () => {
-	const containerRef = useRef(null)
-
-	const dispatch = useDispatch();
-	const setIsScroll = (is) => dispatch(changeIsSrcoll(is));
-
-	const callbackFunction = (entries) => {
-
-		entries[0].isIntersecting ? setIsScroll(false) : setIsScroll(true);
-	};
-
+export const useHeaderWhenScroll = (scroll) => {
+	const containerRef = useRef(null);
+	const callbackFunction = entries => entries[0].isIntersecting ? scroll(false) : scroll(true);
 	useEffect(() => {
-
+		const current = containerRef.current;
 		const observer = new IntersectionObserver(callbackFunction, { threshold: 1, })
-		if (containerRef.current) observer.observe(containerRef.current)
+		current && observer.observe(current);
+		return () => current && observer.unobserve(current);
+	}, [containerRef]);
 
-		return () => {
-			if (containerRef.current) observer.unobserve(containerRef.current)
-		}
-	}, [containerRef])
-
-	return containerRef
+	return containerRef;
 }
 

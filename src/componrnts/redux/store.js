@@ -12,7 +12,6 @@ const store = configureStore({
 		modal: modalReducer,
 		users: usersReducer,
 	},
-	// middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(),],
 
 })
 

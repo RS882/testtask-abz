@@ -1,10 +1,11 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import bannerImg from "./../../../assets/img/Banner_photo.webp"
 import Banner from "./Banner";
 
 import { useNavigate } from 'react-router-dom';
 import { useHeaderWhenScroll } from './../../Hook/useHeaderWhenScroll';
 import { cutString } from "../../utilits/functions";
+import { changeIsSrcoll } from "../../redux/headerSlice";
 
 
 const BannerContainer = (props) => {
@@ -25,7 +26,10 @@ const BannerContainer = (props) => {
 	};
 	const redirect = useNavigate();
 
-	const containerRef = useHeaderWhenScroll();
+	const dispatch = useDispatch();
+	const setIsScroll = (is) => dispatch(changeIsSrcoll(is));
+
+	const containerRef = useHeaderWhenScroll(setIsScroll);
 
 	return (
 		<div ref={containerRef}>

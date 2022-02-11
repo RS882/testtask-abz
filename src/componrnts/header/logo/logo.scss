@@ -1,0 +1,16 @@
+.logo {
+	&__box {
+		display: block;
+		width: 104px;
+		height: 26px;
+		&._active {
+			margin: 16px;
+		}
+		img {
+			width: 100%;
+		}
+		@media (min-width: ($md2 + px)) {
+			margin: 0;
+		}
+	}
+}
