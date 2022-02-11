@@ -6,11 +6,7 @@ const usersThunk = (name, funcAPI) => createAsyncThunk(
 	async (arg, thunkAPI) => {
 		const res = await funcAPI(arg)
 			.then(response => response.data);
-		if (res.success) {
-			return res;
-		} else {
-			return thunkAPI.rejectWithValue(res);
-		}
+		return res.success ? res : thunkAPI.rejectWithValue(res);
 	}
 )
 
@@ -27,11 +23,8 @@ export const regUser = createAsyncThunk(
 			.then(token => regAPI.regUser(data, token))
 			.then(response => response.data);
 
-		if (res.success) {
-			return res;
-		} else {
-			return thunkAPI.rejectWithValue(res);
-		}
+		return res.success ? res : thunkAPI.rejectWithValue(res);
+
 	}
 );
 

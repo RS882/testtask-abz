@@ -7,6 +7,7 @@ const pendingUsers = (state) => {
 
 const rejectedUsers = (state, action) => {
 	console.log(action);
+
 	state.isFetching = false;
 	state.isError = true;
 	if (action.error) {
@@ -33,7 +34,7 @@ export const usersSlice = createSlice({
 		},
 		positions: [],
 		regIdUser: null,
-		isReg: true,
+		isReg: false,
 		isFetching: false,
 		isError: false,
 		errorMessage: null,
@@ -43,7 +44,7 @@ export const usersSlice = createSlice({
 	reducers: {
 		clearError: (state) => {
 			state.isError = false;
-			//state.errorMessage = null;
+			state.errorMessage = null;
 		},
 
 	},

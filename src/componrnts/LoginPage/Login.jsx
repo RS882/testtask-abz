@@ -15,6 +15,7 @@ import { regUser } from "../redux/thunkCreation";
 
 
 
+
 const Login = (props) => {
 
 	const dispatch = useDispatch();
@@ -30,21 +31,25 @@ const Login = (props) => {
 
 	useEffect(() => {
 		loadFile && readImageSize(loadFile, setImgSize)
-	}, [loadFile])
+	}, [loadFile]);
+
+
+
+	useEffect(() => {
+		setRestartFile(true)
+	}, [isReg])
 
 	//------------------
 
 	const onSubmit = async values => {
-		console.log(values);
+
 		const formData = new FormData();
 		formData.append('name', values.name);
 		formData.append('email', values.email);
 		formData.append('phone', values.phone);
 		formData.append('position_id', values.position_id);
 		formData.append('photo', loadFile);
-		console.log(formData);
-
-		//dispatch(regUser(formData))
+		dispatch(regUser(formData))
 		setIsModal(true);
 
 	};
@@ -89,14 +94,8 @@ const Login = (props) => {
 					<h4 className="login__subtitle">{props.subtitle}</h4>
 					<Form
 						onSubmit={(values, form) => {
-							onSubmit(values)
-								.then(() => {
-
-									console.log(isReg)
-									isReg && form.restart();
-									isReg && setRestartFile(true)
-								});
-
+							onSubmit(values);
+							isReg && form.restart();
 						}}
 						initialValues={{ ...formData, }}
 						render={({ handleSubmit, submitting, pristine, errors, values }) => {
