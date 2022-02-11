@@ -23,19 +23,9 @@ export const regUser = createAsyncThunk(
 	async (data, thunkAPI) => {
 
 		const res = await regAPI.getToken()
-			.then(response => {
-
-				return response.data.token
-			})
-			.then(token => {
-
-
-				return regAPI.regUser(data, token)
-			})
-			.then(response => {
-
-				return response.data
-			});
+			.then(response => response.data.token)
+			.then(token => regAPI.regUser(data, token))
+			.then(response => response.data);
 
 		if (res.success) {
 			return res;
@@ -43,7 +33,5 @@ export const regUser = createAsyncThunk(
 			return thunkAPI.rejectWithValue(res);
 		}
 	}
-)
+);
 
-
-usersThunk('users/token', regAPI.getToken);

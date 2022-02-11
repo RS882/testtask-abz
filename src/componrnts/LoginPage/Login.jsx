@@ -44,7 +44,7 @@ const Login = (props) => {
 		formData.append('photo', loadFile);
 		console.log(formData);
 
-		dispatch(regUser(formData))
+		//dispatch(regUser(formData))
 		setIsModal(true);
 
 	};
@@ -91,8 +91,8 @@ const Login = (props) => {
 						onSubmit={(values, form) => {
 							onSubmit(values)
 								.then(() => {
-									debugger
-									console.log(i)
+
+									console.log(isReg)
 									isReg && form.restart();
 									isReg && setRestartFile(true)
 								});

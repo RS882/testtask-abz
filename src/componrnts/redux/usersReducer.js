@@ -33,7 +33,7 @@ export const usersSlice = createSlice({
 		},
 		positions: [],
 		regIdUser: null,
-		isReg: false,
+		isReg: true,
 		isFetching: false,
 		isError: false,
 		errorMessage: null,
