@@ -4,7 +4,7 @@ import UserCard from "./userCard/UssrCard";
 
 const Users = (props) => {
 
-	const usersElem = props.users.map(el => <UserCard {...el} key={el.id} />);
+	const usersElem = props.users.map(el => <UserCard {...el} key={el.id} className='users__user-card' />);
 
 
 

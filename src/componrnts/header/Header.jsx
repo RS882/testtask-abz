@@ -16,9 +16,7 @@ const Header = () => {
 		if (is1024) {
 			setActiveClass('')
 			disptch(changeIsBodyLock(false))
-
 		}
-
 	}, [is1024]);
 
 	const dispatch = useDispatch();

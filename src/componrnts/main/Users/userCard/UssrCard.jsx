@@ -8,10 +8,8 @@ const UserCard = (props) => {
 
 	const phone = showPhoneNum(props.phone);
 
-	const onErrorImg = () => {
-		// console.clear();
-		setUserPhoto(notPhoto);
-	}
+	const onErrorImg = () => setUserPhoto(notPhoto);
+
 	return (
 		<div className="usercard" >
 			<div className="usercard__body ">
