@@ -43,11 +43,11 @@ const Header = () => {
 		<header className="header" style={styleHeader}>
 			<div onTransitionEnd={endTransition} className="header__container container">
 				<div className={`header__body ${activeClass}`} style={styleHeaderBurger}>
-					<Logo boxClass={"header__logo logo"} linkClass={`logo__box ${activeClass}`} />
-					<MenuContainer isBurgerMenu={activeClass === '_active' || false} />
+					<Logo boxClass={"header__logo"} linkClass={activeClass} />
+					<MenuContainer addClass={"header__menu"} isBurgerMenu={activeClass === '_active' || false} />
 				</div>
 				<div className={`header__lock ${activeClass}`} onClick={onClickNotMenu}></div>
-				<BurgerMenu onClickBurgerBtn={onClickBurgerBtn} />
+				<BurgerMenu addClass={"header__burger"} onClickBurgerBtn={onClickBurgerBtn} />
 			</div>
 		</header>
 	)

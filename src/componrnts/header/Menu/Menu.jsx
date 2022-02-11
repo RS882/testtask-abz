@@ -5,7 +5,7 @@ import MenuItem from './menu_item/MenuItem';
 const Menu = (props) => {
 
 	const creatMenuItems = (menuItems, visited) => menuItems.map((el, i) =>
-		<MenuItem onClickItem={props.onClickItem} el={el} key={i + el} visited={visited} />);
+		<MenuItem onClickItem={props.onClickItem} el={el} key={i + el} visited={visited} addClass={'menu__item'} />);
 
 
 	const menuElements = props.isBurgerMenu ?
@@ -14,7 +14,7 @@ const Menu = (props) => {
 		) : <ul className="menu__list"> {creatMenuItems(props.menuItems, props.visitedLinkId)}</ul>;
 
 	return (
-		<div className="header__menu menu">	{menuElements}</div>
+		<div className={`${props.addClass} menu`}>	{menuElements}</div>
 	)
 }
 

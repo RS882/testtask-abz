@@ -25,6 +25,7 @@ const MenuContainer = (props) => {
 	const onClickItem = (e) => dispatch(addVisitedLink(e.currentTarget.id));
 
 	return <Menu menuItems={menuItems}
+		addClass={props.addClass}
 		onClickItem={onClickItem}
 		visitedLinkId={visitedLinkId}
 		isBurgerMenu={props.isBurgerMenu} />

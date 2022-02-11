@@ -5,8 +5,8 @@ import logo from './../../../assets/img/Logo.svg';
 const Logo = (props) => {
 
 	return (
-		<div className={props.boxClass}>
-			<NavLink to={'/login'} className={props.linkClass}>
+		<div className={`${props.boxClass} logo`}>
+			<NavLink to={'/login'} className={`logo__box ${props.linkClass}`}>
 				<img src={logo} alt='logo' />
 			</NavLink>
 		</div>

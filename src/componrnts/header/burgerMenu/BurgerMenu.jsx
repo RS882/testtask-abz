@@ -1,16 +1,13 @@
 
 import Logo from '../logo/logo';
-import burgerMenu from './../../../assets/img/Menu.svg';
+
+import BurgerButton from './burgerButton/burgerButton';
 
 const BurgerMenu = (props) => {
 	return (
-		<div className="header__burger burger">
-			<Logo boxClass={"burger__logo logo"} linkClass={"logo__box"} />
-			<button type="button" onClick={props.onClickBurgerBtn} className="burger__btn">
-				<div >
-					<img src={burgerMenu} alt='Menu burger' />
-				</div>
-			</button>
+		<div className={`${props.addClass} burger`} >
+			<Logo boxClass={"burger__logo"} />
+			<BurgerButton onClickBurgerBtn={props.onClickBurgerBtn} btnClass={"burger__btn"} />
 		</div>
 
 
