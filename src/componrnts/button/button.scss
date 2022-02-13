@@ -1,3 +1,4 @@
+// общие  стили для псевдоэдлементов на кнопке (размеры псевдоэлемента)
 @mixin btn_prop_pse($width, $height) {
 	content: "";
 	position: absolute;
@@ -23,7 +24,6 @@
 		text-align: center;
 		line-height: 50px;
 		transition: all 0.3s ease 0s;
-
 		user-select: none;
 		@include cut_first_string;
 

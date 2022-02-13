@@ -8,15 +8,18 @@ const pendingUsers = (state) => {
 const rejectedUsers = (state, action) => {
 	state.isFetching = false;
 	state.isError = true;
-	if (action.error) {
-		state.errorMessage = action.error.message;
-	} else if (!action.payload.success) {
-		const error = action.payload;
 
+	const error = action.payload !== undefined &&
+		action.payload.response !== undefined &&
+		action.payload.response.data !== undefined &&
+		action.payload.response.data;
+
+	if (!error) {
+		state.errorMessage = action.error !== undefined ?
+			action.error.message : 'Opps there seems to be an error ';
+	} else {
 		delete error.success;
 		state.errorMessage = error;
-	} else {
-		state.errorMessage = 'Opps there seems to be an error ';
 	}
 	console.log('Opps there seems to be an error ' + state.errorMessage)
 };

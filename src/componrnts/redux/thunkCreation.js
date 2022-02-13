@@ -17,14 +17,16 @@ export const getPositions = usersThunk('users/positions', regAPI.getPosition);
 export const regUser = createAsyncThunk(
 	'users/regUser',
 	async (data, thunkAPI) => {
-
 		const res = await regAPI.getToken()
 			.then(response => response.data.token)
-			.then(token => regAPI.regUser(data, token))
-			.then(response => response.data);
+			.then(async token => {
+				const ress = await regAPI.regUser(data, token)
+					.then(response => response.data)
+				return ress;
+			})
+			.catch(reject => thunkAPI.rejectWithValue(reject))
 
-		return res.success ? res : thunkAPI.rejectWithValue(res);
-
+		return res
 	}
 );
 

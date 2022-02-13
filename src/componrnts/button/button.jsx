@@ -1,5 +1,5 @@
 
-
+//компонента кнопка 
 const Button = (props) => {
 
 	return (

@@ -13,9 +13,6 @@ import { changeIsModal } from "../redux/modalReducer";
 import { regUser } from "../redux/thunkCreation";
 
 
-
-
-
 const Login = (props) => {
 
 	const dispatch = useDispatch();
@@ -41,7 +38,7 @@ const Login = (props) => {
 
 	//------------------
 
-	const onSubmit = async (values, form) => {
+	const onSubmit = async (values) => {
 
 		const formData = new FormData();
 		formData.append('name', values.name);
@@ -95,8 +92,7 @@ const Login = (props) => {
 					<Form
 						onSubmit={(values, form) => {
 							onSubmit(values);
-
-							isReg && form.restart();
+							form.restart();
 						}}
 						initialValues={{ ...formData, }}
 						render={({ handleSubmit, submitting, pristine, errors, }) => {
