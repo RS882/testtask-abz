@@ -11,9 +11,8 @@ export const mediaQuery = createSlice({
 		},
 	},
 	reducers: {
-
+		// устанвливает true если ширина больше брейкпоинта
 		setBreakPoints: (state, action) => {
-
 			state.breakPoints = action.payload;
 		},
 	}

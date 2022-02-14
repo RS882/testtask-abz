@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { addUsers, getUsers, getPositions, regUser } from './thunkCreation';
-
+// функция выполняется в процессе асинх загрузки
 const pendingUsers = (state) => {
 	state.isFetching = true;
 };
-
+// функция обрабоки ошибок
 const rejectedUsers = (state, action) => {
 	state.isFetching = false;
 	state.isError = true;
@@ -34,14 +34,15 @@ export const usersSlice = createSlice({
 			nextPage: ``,
 		},
 		positions: [],
-		regIdUser: null,
-		isReg: false,
-		isFetching: false,
-		isError: false,
+		regIdUser: null,// рег номер пользователя
+		isReg: false,// прошла регистрация или нет
+		isFetching: false,// идет запрос или нет
+		isError: false,// есть ошибка или нет
 		errorMessage: null,
 
 	},
 	reducers: {
+		// очищаем ошибки 
 		clearError: (state) => {
 			state.isError = false;
 			state.errorMessage = null;
@@ -49,6 +50,7 @@ export const usersSlice = createSlice({
 
 	},
 	extraReducers: {
+		// статовая загрузка списка пользователей
 		[getUsers.pending]: pendingUsers,
 		[getUsers.fulfilled]: (state, action) => {
 			state.isFetching = false;
@@ -57,7 +59,7 @@ export const usersSlice = createSlice({
 			state.users.totalUsers = action.payload.total_users;
 		},
 		[getUsers.rejected]: rejectedUsers,
-
+		// добавление пользователей  (showMore)
 		[addUsers.pending]: pendingUsers,
 		[addUsers.fulfilled]: (state, action) => {
 			state.isFetching = false;
@@ -66,14 +68,14 @@ export const usersSlice = createSlice({
 			state.users.totalUsers = action.payload.total_users;
 		},
 		[addUsers.rejected]: rejectedUsers,
-
+		// добавляем список позиций
 		[getPositions.pending]: pendingUsers,
 		[getPositions.fulfilled]: (state, action) => {
 			state.isFetching = false;
 			state.positions = action.payload.positions;
 		},
 		[getPositions.rejected]: rejectedUsers,
-
+		// добавляем рег данные нового пользователя
 		[regUser.pending]: pendingUsers,
 		[regUser.fulfilled]: (state, action) => {
 			state.isFetching = false;

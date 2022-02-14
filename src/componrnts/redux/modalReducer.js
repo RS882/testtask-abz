@@ -8,10 +8,12 @@ export const modalSlice = createSlice({
 		isBodyLock: false,
 	},
 	reducers: {
+		// устанвливает откыто ли модльное окно и залочена прокрутка страницы
 		changeIsModal: (state, action) => {
 			state.isModal = action.payload;
 			state.isBodyLock = action.payload;
 		},
+		// устанвливает залочена ли прокрутка страницы
 		changeIsBodyLock: (state, action) => {
 			state.isBodyLock = action.payload;
 		}
