@@ -29,6 +29,7 @@
 	}
 	&__grid {
 		display: grid;
+		// автозаполнение с переносом если не помещаются
 		grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
 		gap: 20px;
 		margin-bottom: 50px;

@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { showPhoneNum } from './../../../utilits/functions';
 
 const UserCard = (props) => {
-
+	//карточка пользователя
 	const [userPhoto, setUserPhoto] = useState(props.photo);
-
+	// выводим телефон в нужном формате
 	const phone = showPhoneNum(props.phone);
-
+	// показываем картинку если у пользователя нет фото
 	const onErrorImg = () => setUserPhoto(notPhoto);
 
 	return (

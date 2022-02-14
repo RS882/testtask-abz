@@ -1,17 +1,16 @@
-
 import Button from '../button/button';
 import LoginPageContainer from './LoginPageContainer';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 
-
 const LoginPage = (props) => {
-
+	// отдельная страница логина
+	// редиректим на основную страницу
 	const redirect = useNavigate();
+	// проверка значений брейкпоинта
 	const { is768 } = useSelector(state => state.mediaQuery.breakPoints);
-
-
+	// стиль заголовка от рамера окна
 	const titleStyle = is768 ? {
 		fontSize: '40px',
 		lineHeight: '40px',
@@ -21,11 +20,8 @@ const LoginPage = (props) => {
 		lineHeight: '28px',
 		marginBottom: '20px'
 	};
-
-
 	return (
 		<div>
-
 			<div className="login-page">
 				<LoginPageContainer titleStyle={titleStyle} />
 			</div>
