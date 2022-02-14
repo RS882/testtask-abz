@@ -1,8 +1,7 @@
-
 import Button from './../../button/button';
 
 const Article = (props) => {
-
+	// страница с картикой и статьей
 	return (
 		<div className="main__article article-main">
 			<div className="article-main__container container">
@@ -24,5 +23,4 @@ const Article = (props) => {
 		</div>
 	)
 }
-//=========================================================
 export default Article;

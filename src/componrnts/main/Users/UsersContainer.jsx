@@ -1,13 +1,9 @@
-
 import Users from "./Users"
 import { useEffect } from 'react';
-
 import { useDispatch } from 'react-redux';
 import { addUsers, getUsers } from "../../redux/thunkCreation";
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-
-
 
 
 const UsersContainer = (props) => {
@@ -29,8 +25,9 @@ const UsersContainer = (props) => {
 	}, [numShowUsers, isReg])
 
 
-
+	// текст заголовка
 	const title = `Our cheerful users `;
+	// текст подзаголовка
 	const subtitle = `The best specialists are shown below`;
 
 

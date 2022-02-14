@@ -2,7 +2,7 @@ import Button from './../../button/button';
 
 
 const Banner = (props) => {
-
+	// главный баннер
 	return (
 		<div className="main__banner banner">
 			<div className="banner__bg" style={{ backgroundImage: `url(${props.bannerImg})` }}></div>
