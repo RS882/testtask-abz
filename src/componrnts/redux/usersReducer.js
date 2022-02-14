@@ -40,7 +40,6 @@ export const usersSlice = createSlice({
 		isError: false,
 		errorMessage: null,
 
-
 	},
 	reducers: {
 		clearError: (state) => {

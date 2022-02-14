@@ -5,7 +5,6 @@ import modalReducer from "./modalReducer";
 import usersReducer from "./usersReducer";
 
 const store = configureStore({
-
 	reducer: {
 		header: headerReducer,
 		mediaQuery: mediaQueryReducer,
@@ -15,6 +14,6 @@ const store = configureStore({
 
 })
 
-window.store = store;
+//window.store = store;
 
 export default store;

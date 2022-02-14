@@ -8,6 +8,7 @@ export const headerSlice = createSlice({
 		isScroll: false,
 	},
 	reducers: {
+
 		addVisitedLink: (state, action) => {
 			if (!state.visitedLinkId.includes(action.payload)) {
 				state.visitedLinkId = [...state.visitedLinkId, action.payload];
