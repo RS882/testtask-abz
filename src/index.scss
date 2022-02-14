@@ -21,26 +21,25 @@ $maxWidth: 2560;
 // Ширина ограничивающего контейнера (0 = нет ограничения)
 $maxWidthContainer: 1170;
 // Общий отступ у контейнера
-// (30 = по 15px слева и справа, 0 = нет отступа)
-$containerPadding: 0;
-
+$containerPadding: 221.98;
 // Ширина страбатывания первого брейкпоинта
 $containerWidth: $maxWidthContainer + $containerPadding;
 
 //=======================================================
-$md1: $containerWidth + 221.98; //без px
+// Брейкпоинты
+$md1: $containerWidth;
 $md2: 1023.98;
 $md3: 767.98;
 
 //=========================================
-
+// обрезаем тест на $str строк с ...
 @mixin cut_string_elips($str) {
 	display: -webkit-box;
 	-webkit-line-clamp: $str;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 }
-
+// обрезаем строку с ...
 @mixin cut_first_string {
 	overflow: hidden;
 	white-space: nowrap;
@@ -49,8 +48,6 @@ $md3: 767.98;
 //===============================================
 @import "./scss/resetStyle.scss";
 @import "./scss/App.scss";
-@import "./componrnts/LoginPage/login_page.scss";
-@import "./componrnts/modal/modal.scss";
 
 .container {
 	max-width: none;
@@ -69,6 +66,8 @@ $md3: 767.98;
 		max-width: $maxWidthContainer + 30 + px;
 	}
 }
+@import "./componrnts/LoginPage/login_page.scss";
+@import "./componrnts/modal/modal.scss";
 @import "./componrnts/button/button.scss";
 @import "./componrnts/header/header.scss";
 @import "./componrnts/main/main.scss";
