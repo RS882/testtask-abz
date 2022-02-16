@@ -12,6 +12,8 @@ const UsersContainer = (props) => {
 	const isFetching = useSelector(state => state.users.isFetching);
 	// зареган ли пользователь
 	const isReg = useSelector(state => state.users.isReg);
+	// получаем значение был ли скролл boolean
+	const isScroll = useSelector(state => state.header.isScroll);
 	// проверка значений брейкпоинта
 	const { is768, is1024 } = useSelector(state => state.mediaQuery.breakPoints);
 	// если была нажата кнопка showMore -true
@@ -21,9 +23,9 @@ const UsersContainer = (props) => {
 	useEffect(() => {
 		// возврщаем занчение нажатие кнопки showMore -fals- если пользователь уже зареган
 		isReg && setIsShowMore(false);
-		// если не был нажата showMore - стартово загружаем пользователь
-		!isShowMore && dispatch(getUsers(numShowUsers));
-	}, [numShowUsers, isReg])
+		// если не был нажата showMore и началась прокрутка страницы- стартово загружаем пользователь
+		!isShowMore && isScroll && dispatch(getUsers(numShowUsers));
+	}, [numShowUsers, isReg, isScroll])
 	// текст заголовка
 	const title = `Our cheerful users `;
 	// текст подзаголовка

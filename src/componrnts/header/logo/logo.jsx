@@ -7,7 +7,7 @@ const Logo = (props) => {
 	return (
 		<div className={`${props.boxClass} logo`}>
 			<NavLink to={'/login'} className={`logo__box ${props.linkClass}`}>
-				<img src={logo} alt='logo' />
+				<img src={logo} alt='logo' width='104' height='26' />
 			</NavLink>
 		</div>
 	)

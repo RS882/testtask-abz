@@ -5,7 +5,7 @@ const BurgerButton = (props) => {
 	return (
 		<button type="button" onClick={props.onClickBurgerBtn} className={props.btnClass}>
 			<div >
-				<img src={burgerMenu} alt='Menu burger' />
+				<img src={burgerMenu} alt='Menu burger' width='24' height='24' />
 			</div>
 		</button>
 	)

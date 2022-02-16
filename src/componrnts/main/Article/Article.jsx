@@ -7,7 +7,7 @@ const Article = (props) => {
 			<div className="article-main__container container">
 				<div className="article-main__body">
 					<div className="article-main__img">
-						<img src={props.img} alt="front-end developer" />
+						<img src={props.img} alt="front-end developer" width='328' height='287' />
 					</div>
 					<div className="article-main__article article">
 						<h2 className="article__title ">{props.title}</h2>

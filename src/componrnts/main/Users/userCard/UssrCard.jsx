@@ -15,7 +15,7 @@ const UserCard = (props) => {
 			<div className="usercard__body ">
 				<div className="usercard__item item-card" >
 					<div className="item-card__img">
-						<img onError={onErrorImg} src={userPhoto || notPhoto} alt='user' />
+						<img onError={onErrorImg} src={userPhoto || notPhoto} alt='user' width='70' height='70' />
 					</div>
 				</div>
 				<div className="usercard__item item-card" data-title={props.name}>
