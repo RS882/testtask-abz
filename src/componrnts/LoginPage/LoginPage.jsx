@@ -6,8 +6,7 @@ import { useSelector } from 'react-redux';
 
 const LoginPage = (props) => {
 	// отдельная страница логина
-	// редиректим на основную страницу
-	const redirect = useNavigate();
+
 	// проверка значений брейкпоинта
 	const { is768 } = useSelector(state => state.mediaQuery.breakPoints);
 	// стиль заголовка от рамера окна
@@ -20,6 +19,9 @@ const LoginPage = (props) => {
 		lineHeight: '28px',
 		marginBottom: '20px'
 	};
+	// редиректим на основную страницу
+	const redirect = useNavigate();
+	const redirectToMain = () => redirect(`/`);
 	return (
 		<div>
 			<div className="login-page">
@@ -27,7 +29,7 @@ const LoginPage = (props) => {
 			</div>
 			<div className="login-page__btn">
 				<Button
-					onClickBtn={() => redirect(`/`)}
+					onClickBtn={redirectToMain}
 					btnType={'button'}
 					text={'Back'}
 				/>

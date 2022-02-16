@@ -4,6 +4,7 @@ import { clearError } from "../../redux/usersReducer";
 import Modal from "../modal";
 import ErrorText from "./errorText/ErrorText";
 import ModalText from './modalText';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -11,9 +12,13 @@ const TextModal = (props) => {
 
 	const isModal = useSelector(state => state.modal.isModal);
 	const isError = useSelector(state => state.users.isError);
+	const isReg = useSelector(state => state.users.isReg)
 	const dispatch = useDispatch();
 	const setIsModal = (is) => dispatch(changeIsModal(is));
 	const clearErrorFalse = () => dispatch(clearError());
+	// редиректим на основную страницу
+	const redirect = useNavigate();
+	const redirectToMain = () => redirect(`/`);
 
 	const modal = {
 		title: isError ? 'Opps there seems to be an error ' : `Congratulations`,
@@ -21,6 +26,7 @@ const TextModal = (props) => {
 		onClickBtn: () => {
 			clearErrorFalse();//очищаем сообщение об ошибке в стейте
 			setIsModal(false);// закрыввем модальное окно
+			isReg && redirectToMain();		// редирект на главную страницу
 		},
 		btnText: isError ? `Back` : `Great`,
 	};

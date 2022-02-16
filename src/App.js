@@ -36,10 +36,12 @@ function App() {
     dispatch(setScrollWidth(elem.offsetWidth - elem.clientWidth));
     elem.style.overflowY = `auto`;
   }, []);
-  // лочим страницу если isBodyLock true( сработало модальное окно) + убираем сдивиг при пропадении полосу прокрутки
+  // лочим страницу если isBodyLock true( сработало модальное окно) 
   const isBodyLock = useSelector(state => state.modal.isBodyLock);
   document.body.style.overflow = isBodyLock ? 'hidden' : 'auto';
+  //+ убираем сдивиг при пропадении полосу прокрутки
   const appScroll = { paddingRight: isBodyLock ? `${scrollWidth}px` : '' };
+
   return (
     <div className="app" ref={appRef} style={appScroll}>
       <Routes >

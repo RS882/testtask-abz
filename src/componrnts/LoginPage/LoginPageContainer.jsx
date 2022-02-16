@@ -22,6 +22,7 @@ const LoginPageContainer = (props) => {
 			title={title}
 			subtitle={subtitle}
 			titleStyle={props.titleStyle}
+
 		/>
 	)
 }
