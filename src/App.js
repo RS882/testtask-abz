@@ -1,18 +1,22 @@
 
 import Header from './componrnts/header/Header';
-import Main from './componrnts/main/Main';
-import Footer from './componrnts/footer/Footer';
+
+
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from './componrnts/Hook/useMediaQuery';
 import { setBreakPoints } from './componrnts/redux/mediaQuerySlice';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, Suspense } from 'react';
 import LoginPage from './componrnts/LoginPage/LoginPage';
-import ModalPage from './componrnts/modal/ModalPage';
+
 import { setScrollWidth } from './componrnts/redux/modalReducer';
+import React from 'react';
 
+import PreloaderModal from './componrnts/modal/PreloaderModal/PreloaderModal';
 
-
+const Footer = React.lazy(() => import('./componrnts/footer/Footer'));
+const ModalPage = React.lazy(() => import('./componrnts/modal/ModalPage'));
+const Main = React.lazy(() => import('./componrnts/main/Main'));
 
 function App() {
   const dispatch = useDispatch();
@@ -44,17 +48,19 @@ function App() {
 
   return (
     <div className="app" ref={appRef} style={appScroll}>
-      <Routes >
-        <Route index element={
-          <>
-            <Header />
-            <Main />
-            <Footer />
-          </>
-        } />
-        <Route path='/login' element={< LoginPage />} />
-      </Routes>
-      <ModalPage />
+      <Suspense fallback={<PreloaderModal />}>
+        <Routes >
+          <Route index element={
+            <>
+              <Header />
+              <Main />
+              <Footer />
+            </>
+          } />
+          <Route path='/login' element={< LoginPage />} />
+        </Routes>
+        <ModalPage />
+      </Suspense>
     </div>
   );
 }
