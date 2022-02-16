@@ -12,6 +12,10 @@ const Header = () => {
 	const is1024 = useSelector(state => state.mediaQuery.breakPoints.is1024);
 	// получаем значение был ли скролл boolean
 	const isScroll = useSelector(state => state.header.isScroll);
+	// получаем значение ширины полосы прокрутки
+	const scrollWidth = useSelector(state => state.modal.scrollWidth);
+	// получаем заняение залочена ли страница
+	const isBodyLock = useSelector(state => state.modal.isBodyLock);
 	// устанвливаем занчение доп класса
 	const [activeClass, setActiveClass] = useState('');
 	const disptch = useDispatch();
@@ -38,15 +42,18 @@ const Header = () => {
 	// после окончания транзишена - если закрывалось бургер меню- убираем все доп классы. 
 	// убираем излишнюю анимацию меню при изменении ширины экрана
 	const endTransition = () => (activeClass === '_transition') && setActiveClass('');
-	// стиль hеader - при наличии прокуртки
-	const styleHeader = { backgroundColor: `rgba(255, 255, 255, ${isScroll ? ` 0.2` : `1`})`, };
-	// стиль hеader - при наличии наличии доп класса (бургер меню)
+	// стиль hеader 
+	const styleHeader = {
+		//- при наличии прокуртки
+		backgroundColor: `rgba(255, 255, 255, ${isScroll ? ` 0.2` : `1`})`,
+		// добаляем отступ  при локе страницы( пропадении скролла)
+		paddingRight: isBodyLock ? `${scrollWidth}px` : '',
+	};
+	// стиль - при наличии наличии доп класса (бургер меню)
 	const styleHeaderBurger = { backgroundColor: (activeClass === '_active') ? `#fff` : `inherit` };
-
-
 	return (
-		<header className="header" style={styleHeader}>
-			<div onTransitionEnd={endTransition} className="header__container container">
+		<header className="header" style={styleHeader} >
+			<div onTransitionEnd={endTransition} className="header__container container" >
 				<div className={`header__body ${activeClass}`} style={styleHeaderBurger}>
 					<Logo boxClass={"header__logo"} linkClass={activeClass} />
 					{/* при наличии доп класса передаем что меню -бургер */}

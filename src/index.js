@@ -10,7 +10,9 @@ import store from './componrnts/redux/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename='/testtask-abz'>
+    <BrowserRouter
+    // basename='/testtask-abz'
+    >
       <Provider store={store}>
         <App />
       </Provider>

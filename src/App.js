@@ -6,15 +6,18 @@ import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from './componrnts/Hook/useMediaQuery';
 import { setBreakPoints } from './componrnts/redux/mediaQuerySlice';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import LoginPage from './componrnts/LoginPage/LoginPage';
 import ModalPage from './componrnts/modal/ModalPage';
+import { setScrollWidth } from './componrnts/redux/modalReducer';
+
 
 
 
 function App() {
   const dispatch = useDispatch();
-
+  // получаем значение ширины полосы прокрутки
+  const scrollWidth = useSelector(state => state.modal.scrollWidth);
   const breakPoints = {
     // устанвливаем значения брейкпоинтов true/false
     is768: useMediaQuery('(min-width: 767.98px)'),
@@ -25,12 +28,20 @@ function App() {
     // диспачим значения брейкпоинтов в стейт при изменении брейкпоинтов
     dispatch(setBreakPoints(breakPoints));
   }, [breakPoints]);
-  // лочим страницу если isBodyLock true( сработало модальное окно)
+  // определяем ширину полосы прокрутки и диспачим ее в стейт
+  const appRef = useRef(null);
+  useEffect(() => {
+    const elem = appRef.current;
+    elem.style.overflowY = `scroll`;
+    dispatch(setScrollWidth(elem.offsetWidth - elem.clientWidth));
+    elem.style.overflowY = `auto`;
+  }, []);
+  // лочим страницу если isBodyLock true( сработало модальное окно) + убираем сдивиг при пропадении полосу прокрутки
   const isBodyLock = useSelector(state => state.modal.isBodyLock);
   document.body.style.overflow = isBodyLock ? 'hidden' : 'auto';
-
+  const appScroll = { paddingRight: isBodyLock ? `${scrollWidth}px` : '' };
   return (
-    <div className="app" >
+    <div className="app" ref={appRef} style={appScroll}>
       <Routes >
         <Route index element={
           <>
