@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import bannerImg from "./../../../assets/img/Banner_photo.webp"
+
 import Banner from "./Banner";
 
 import { useNavigate } from 'react-router-dom';
