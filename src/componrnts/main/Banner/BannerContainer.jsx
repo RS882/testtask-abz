@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import bannerImg from "./../../../assets/img/Banner_photo.webp"
+import bannerImg from "./../../../assets/img/Banner_photo.webp";
+import bannerImgMob3x from "./../../../assets/img/banner_mob@3x.webp";
 
 import Banner from "./Banner";
 
@@ -35,11 +36,12 @@ const BannerContainer = (props) => {
 	// привязывем реф для получение значения скрола
 	const containerRef = useHeaderWhenScroll(setIsScroll);
 
+
 	return (
 		<div ref={containerRef}>
 			<Banner titleMod={title}
 				articleTextMod={articleText}
-				bannerImg={bannerImg}
+				bannerImg={is768 ? bannerImg : bannerImgMob3x}
 				onClickBtn={() => redirect(`/login`)}
 			/>
 		</div>)

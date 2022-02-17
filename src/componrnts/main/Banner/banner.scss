@@ -13,8 +13,8 @@
 	&__bg {
 		position: absolute;
 		bottom: -23px;
-		left: calc(50% - 10px);
-		transform: translateX(calc(-50% + 20px));
+		left: calc(50%);
+		transform: translateX(calc(-50%));
 		width: $md1 + px;
 		height: 380px;
 		background-position: center center;
