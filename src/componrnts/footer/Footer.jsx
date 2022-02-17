@@ -11,11 +11,15 @@ const Footer = (props) => {
 	let bPoints = is768 ? footPrint_467x177 : footPrint_328x124;
 	bPoints = is1392 ? footPrint_972x177 : bPoints;
 
-	return (
-		<footer className='footer'>
+	//загружаем по мене прокрутки станицы
+	const isScroll = useSelector(state => state.scroll.articleIsScroll);
+
+	return (<>
+		{!isScroll && <footer className='footer'>
 			<div style={{ backgroundImage: `url(${bPoints})` }} className='footer__foot-img'></div>
 			<div className='footer__text'>© abz.agency specially for the test task </div>
-		</footer>
+		</footer>}
+	</>
 	)
 }
 

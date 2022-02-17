@@ -35,15 +35,21 @@ const UsersContainer = (props) => {
 		// если до этого showMore не была нажата- ставим занчение нажатия в true
 		!isShowMore && setIsShowMore(true);
 	}
-	return <Users
-		users={users.users}
-		onClickBtn={onClickBtn}
-		title={title}
-		subtitle={subtitle}
-		disebledBtn={isFetching}
-		// прячем кнопку showMore если нет сл. страницы для показа 
-		// или количество показанных пользователей равно количеству всех пользователей 
-		hiddenBtn={users.nextPage === null || +users.totalUsers == users.length}
-	/>
+
+	//загружаем по мене прокрутки станицы
+	const isScroll = useSelector(state => state.scroll.articleIsScroll);
+
+	return <>
+		{!isScroll && <Users
+			users={users.users}
+			onClickBtn={onClickBtn}
+			title={title}
+			subtitle={subtitle}
+			disebledBtn={isFetching}
+			// прячем кнопку showMore если нет сл. страницы для показа 
+			// или количество показанных пользователей равно количеству всех пользователей 
+			hiddenBtn={users.nextPage === null || +users.totalUsers == users.length}
+		/>}
+	</>
 }
 export default UsersContainer;

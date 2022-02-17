@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import { useHeaderWhenScroll } from './../../Hook/useHeaderWhenScroll';
 
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { changeArticleIsScroll } from '../../redux/scrollReducer';
 
 const ArticleContainer = (props) => {
 	// проверка значений брейкпоинта
@@ -27,32 +29,22 @@ const ArticleContainer = (props) => {
 	// редиректим на страницу регистарции при нажатии кнопки
 	const redirect = useNavigate();
 
-	const [scroll, setIsScroll] = useState(true)
-
-
-
-
-	const setScroll = (is) => {
-		// console.log(is);
-
-		const res = scroll ? is : scroll;
-		console.log(res);
-		setIsScroll(res);
-	};
-
+	//загружаем по мене прокрутки станицы
+	const isScroll = useSelector(state => state.scroll.articleIsScroll)
+	const dispatch = useDispatch();
+	const setScroll = (is) => dispatch(changeArticleIsScroll(is))
 	const articleRef = useHeaderWhenScroll(setScroll, 0);
-	console.log(scroll);
-	// console.log(res);
+
 
 
 	return <div ref={articleRef}>
-		<Article
+		{!isScroll && <Article
 			img={image}
 			title={title}
 			subtitle={subtitle}
 			text={text}
 			onClickBtn={() => redirect(`/login`)}
-		/>
+		/>}
 	</div>
 }
 export default ArticleContainer;
