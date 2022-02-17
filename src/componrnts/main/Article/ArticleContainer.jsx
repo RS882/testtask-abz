@@ -4,6 +4,9 @@ import image_387x340 from './../../../assets/img/Image-387x340.svg';
 import Article from './Article';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useHeaderWhenScroll } from './../../Hook/useHeaderWhenScroll';
+
+import { useState } from 'react';
 
 const ArticleContainer = (props) => {
 	// проверка значений брейкпоинта
@@ -24,12 +27,32 @@ const ArticleContainer = (props) => {
 	// редиректим на страницу регистарции при нажатии кнопки
 	const redirect = useNavigate();
 
-	return <Article
-		img={image}
-		title={title}
-		subtitle={subtitle}
-		text={text}
-		onClickBtn={() => redirect(`/login`)}
-	/>
+	const [scroll, setIsScroll] = useState(true)
+
+
+
+
+	const setScroll = (is) => {
+		// console.log(is);
+
+		const res = scroll ? is : scroll;
+		console.log(res);
+		setIsScroll(res);
+	};
+
+	const articleRef = useHeaderWhenScroll(setScroll, 0);
+	console.log(scroll);
+	// console.log(res);
+
+
+	return <div ref={articleRef}>
+		<Article
+			img={image}
+			title={title}
+			subtitle={subtitle}
+			text={text}
+			onClickBtn={() => redirect(`/login`)}
+		/>
+	</div>
 }
 export default ArticleContainer;

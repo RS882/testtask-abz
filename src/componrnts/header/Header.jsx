@@ -43,6 +43,8 @@ const Header = () => {
 	// убираем излишнюю анимацию меню при изменении ширины экрана
 	const endTransition = () => (activeClass === '_transition') && setActiveClass('');
 	// стиль hеader 
+	//console.log(isScroll);
+
 	const styleHeader = {
 		//- при наличии прокуртки
 		backgroundColor: `rgba(255, 255, 255, ${isScroll ? ` 0.2` : `1`})`,

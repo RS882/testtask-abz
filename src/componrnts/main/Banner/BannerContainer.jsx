@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import bannerImg from "./../../../assets/img/Banner_photo.webp";
-import bannerImgMob3x from "./../../../assets/img/banner_mob@3x.webp";
+import bannerImg from "./../../../assets/img/banner.webp";
+import bannerImgMob2x from "./../../../assets/img/banner_mob@2x.webp";
 
 import Banner from "./Banner";
 
@@ -41,7 +41,7 @@ const BannerContainer = (props) => {
 		<div ref={containerRef}>
 			<Banner titleMod={title}
 				articleTextMod={articleText}
-				bannerImg={is768 ? bannerImg : bannerImgMob3x}
+				bannerImg={is768 ? bannerImg : bannerImgMob2x}
 				onClickBtn={() => redirect(`/login`)}
 			/>
 		</div>)
