@@ -1,11 +1,12 @@
-import Users from "./Users"
-import { useEffect } from 'react';
+
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addUsers, getUsers } from "../../redux/thunkCreation";
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
-import { changeUsersIsScroll } from "../../redux/scrollReducer";
-import { useHeaderWhenScroll } from './../../Hook/useHeaderWhenScroll';
+import { useState, Suspense } from 'react';
+import PreloaderModal from './../../modal/PreloaderModal/PreloaderModal';
+const Users = React.lazy(() => import('./Users'))
+
 
 const UsersContainer = (props) => {
 	const dispatch = useDispatch();
@@ -38,22 +39,23 @@ const UsersContainer = (props) => {
 		!isShowMore && setIsShowMore(true);
 	}
 	//загружаем по мене прокрутки станицы
-	const isScroll = useSelector(state => state.scroll.usersIsScroll);
-	// const setScroll = (is) => dispatch(changeUsersIsScroll(is))
-	// const usersRef = useHeaderWhenScroll(setScroll);
-	// console.log(isScroll);
+	const isScroll = useSelector(state => state.scroll.articleIsScroll);
+
 
 	return <div className='users_t'>
-		{!isScroll && <Users
-			users={users.users}
-			onClickBtn={onClickBtn}
-			title={title}
-			subtitle={subtitle}
-			disebledBtn={isFetching}
-			// прячем кнопку showMore если нет сл. страницы для показа 
-			// или количество показанных пользователей равно количеству всех пользователей 
-			hiddenBtn={users.nextPage === null || +users.totalUsers == users.length}
-		/>}
+		{isScroll &&
+			<Suspense fallback={<PreloaderModal />}>
+				<Users
+					users={users.users}
+					onClickBtn={onClickBtn}
+					title={title}
+					subtitle={subtitle}
+					disebledBtn={isFetching}
+					// прячем кнопку showMore если нет сл. страницы для показа 
+					// или количество показанных пользователей равно количеству всех пользователей 
+					hiddenBtn={users.nextPage === null || +users.totalUsers == users.length}
+				/>
+			</Suspense>}
 	</div>
 }
 export default UsersContainer;

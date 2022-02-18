@@ -15,7 +15,7 @@ const Footer = (props) => {
 	const isScroll = useSelector(state => state.scroll.articleIsScroll);
 
 	return (<>
-		{!isScroll && <footer className='footer'>
+		{isScroll && <footer className='footer'>
 			<div style={{ backgroundImage: `url(${bPoints})` }} className='footer__foot-img'></div>
 			<div className='footer__text'>© abz.agency specially for the test task </div>
 		</footer>}

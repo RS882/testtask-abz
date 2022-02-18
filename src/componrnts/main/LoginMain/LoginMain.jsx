@@ -1,8 +1,12 @@
 
-import LoginPageContainer from './../../LoginPage/LoginPageContainer';
-import { useSelector } from 'react-redux';
 
+import { useSelector } from 'react-redux';
+import React, { Suspense } from 'react';
+import PreloaderModal from './../../modal/PreloaderModal/PreloaderModal';
+
+const LoginPageContainer = React.lazy(() => import('./../../LoginPage/LoginPageContainer'))
 const LoginMain = (props) => {
+
 	// страница логина
 
 	//загружаем по мене прокрутки станицы
@@ -10,7 +14,9 @@ const LoginMain = (props) => {
 
 	return (
 		<div className="main__login">
-			{!isScroll && <LoginPageContainer />}
+			{isScroll && <Suspense fallback={<PreloaderModal />}>
+				<LoginPageContainer />
+			</Suspense>}
 		</div>
 	)
 }

@@ -40,7 +40,10 @@ const BannerContainer = (props) => {
 
 	useEffect(() => {
 		const current = containerRef.current;
-		const callbackFunction = entries => entries[0].isIntersecting ? setIsScroll(true) : setIsScroll(false);
+		const callbackFunction = (entries, observer) => {
+
+			return entries[0].isIntersecting ? setIsScroll(true) : setIsScroll(false)
+		};
 		// создаем асинх наблюдателя за пересечением. процент переченение 1 и отсупом сверху 60
 		const observer = new IntersectionObserver(callbackFunction, { threshold: 1.0, rootMargin: '60px 0px 0px 0px' })
 		//добавляем наблюдателя

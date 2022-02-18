@@ -4,9 +4,7 @@ import image_387x340 from './../../../assets/img/Image-387x340.svg';
 import Article from './Article';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useHeaderWhenScroll } from './../../Hook/useHeaderWhenScroll';
-
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeArticleIsScroll } from '../../redux/scrollReducer';
 
@@ -29,35 +27,31 @@ const ArticleContainer = (props) => {
 	// редиректим на страницу регистарции при нажатии кнопки
 	const redirect = useNavigate();
 
-	//загружаем по мене прокрутки станицы
-	const isScroll = useSelector(state => state.scroll.articleIsScroll)
-	// const dispatch = useDispatch();
-	// const setScroll = (is) => dispatch(changeArticleIsScroll(is))
-	// // const articleRef = useHeaderWhenScroll(setScroll);
-	// // const [isScroll, setIsScroll] = useState(false)
-	// const articleRef = useRef(null);
-	// //++++++++++++++++++++
-	// const callbackFunction = entries => entries[0].isIntersecting ? setScroll(true) : setScroll(false);
-	// useEffect(() => {
-	// 	const current = articleRef.current;
-	// 	console.log(articleRef.current);
-	// 	// создаем асинх наблюдателя за пересечением. процент переченение 1
-	// 	const observer = new IntersectionObserver(callbackFunction, { threshold: .1, })
-	// 	//добавляем наблюдателя
-	// 	observer.observe(current);
-	// 	// снимаем наблюдателя при демонтировки компоненті
-	// 	return () => observer.unobserve(current);
-	// }, [articleRef]);
+	const dispatch = useDispatch();
+	const setScroll = (is) => dispatch(changeArticleIsScroll(is))
+	const articleRef = useRef(null);
+	useEffect(() => {
+		const current = articleRef.current;
 
-	// console.log(isScroll);
-	return <div className='article_t'>
-		{!isScroll && <Article
+		const callbackFunction = entries => entries[0].isIntersecting ? setScroll(true) : setScroll(false);
+		// создаем асинх наблюдателя за пересечением. процент переченение 1
+		const observer = new IntersectionObserver(callbackFunction, { threshold: 1.0, rootMargin: '0px 0px 60px 0px' })
+		//добавляем наблюдателя
+		observer.observe(current);
+		// снимаем наблюдателя при демонтировки компоненті
+		return () => observer.unobserve(current);
+	}, [articleRef]);
+
+
+
+	return <div ref={articleRef}>
+		<Article
 			img={image}
 			title={title}
 			subtitle={subtitle}
 			text={text}
 			onClickBtn={() => redirect(`/login`)}
-		/>}
+		/>
 	</div>
 }
 export default ArticleContainer;
