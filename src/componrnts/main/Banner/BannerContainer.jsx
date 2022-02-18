@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import bannerImg from "./../../../assets/img/banner.webp";
-import bannerImgMob2x from "./../../../assets/img/banner_mob@2x.webp";
+import bannerImg from "./../../../assets/img/Banner_photo.webp";
+import bannerImg1x from "./../../../assets/img/banner.webp";
+import bannerImgMob from "./../../../assets/img/banner_mob@3x.webp";
+import bannerImgMob1x from "./../../../assets/img/banner_mob@1x.webp";
 
 import Banner from "./Banner";
 
@@ -52,18 +54,22 @@ const BannerContainer = (props) => {
 		return () => observer.unobserve(current);
 	}, [containerRef]);
 	//=================================
+
+	const isRetina = useSelector(state => state.mediaQuery.isRetina);
 	const [bgImg, setBgImg] = useState(null);
 
 	useEffect(() => {
-
-		setBgImg(is768 ? bannerImg : bannerImgMob2x);
+		//откладываем загрузку изображений
+		setBgImg({
+			backgroundImage: isRetina ? `url(${is768 ? bannerImg : bannerImgMob})`
+				: `url(${is768 ? bannerImg1x : bannerImgMob1x})`,
+		});
 	}, [])
 
 	return (
 		<div ref={containerRef} >
 			<Banner titleMod={title}
 				articleTextMod={articleText}
-
 				bannerImg={bgImg}
 				onClickBtn={() => redirect(`/login`)}
 			/>

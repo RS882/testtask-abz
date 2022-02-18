@@ -9,13 +9,18 @@ export const mediaQuery = createSlice({
 			is1024: null,
 			is1392: null,
 		},
+		isRetina: false,
 	},
 	reducers: {
 		// устанвливает true если ширина больше брейкпоинта
 		setBreakPoints: (state, action) => {
 			state.breakPoints = action.payload;
 		},
+		// устанвливает true если дисплей retina
+		setIsRetina: (state, action) => {
+			state.isRetina = action.payload;
+		}
 	}
 })
-export const { setBreakPoints } = mediaQuery.actions;
+export const { setBreakPoints, setIsRetina } = mediaQuery.actions;
 export default mediaQuery.reducer;

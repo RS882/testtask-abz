@@ -1,24 +1,20 @@
-
+import React from 'react';
 import Header from './componrnts/header/Header';
-
-
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from './componrnts/Hook/useMediaQuery';
-import { setBreakPoints } from './componrnts/redux/mediaQuerySlice';
+import { setBreakPoints, setIsRetina } from './componrnts/redux/mediaQuerySlice';
 import { useEffect, useRef, Suspense } from 'react';
-import LoginPage from './componrnts/LoginPage/LoginPage';
-
 import { setScrollWidth } from './componrnts/redux/modalReducer';
-import React from 'react';
-
 import PreloaderModal from './componrnts/modal/PreloaderModal/PreloaderModal';
+import { isRetina } from './componrnts/utilits/functions';
 
 const Footer = React.lazy(() => import('./componrnts/footer/Footer'));
 const ModalPage = React.lazy(() => import('./componrnts/modal/ModalPage'));
 const Main = React.lazy(() => import('./componrnts/main/Main'));
+const LoginPage = React.lazy(() => import('./componrnts/LoginPage/LoginPage'));
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
   // получаем значение ширины полосы прокрутки
   const scrollWidth = useSelector(state => state.modal.scrollWidth);
@@ -45,6 +41,9 @@ function App() {
   document.body.style.overflow = isBodyLock ? 'hidden' : 'auto';
   //+ убираем сдивиг при пропадении полосу прокрутки
   const appScroll = { paddingRight: isBodyLock ? `${scrollWidth}px` : '' };
+  // проверям дисплей на Retina
+  dispatch(setIsRetina(isRetina()));
+
 
   return (
     <div className="app" ref={appRef} style={appScroll}>

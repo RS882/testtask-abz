@@ -5,7 +5,7 @@ export const scrollSlice = createSlice({
 	name: 'scroll',
 	initialState: {
 		articleIsScroll: false,
-		usersIsScroll: false,
+
 	},
 	reducers: {
 		// был ли скролл Article
@@ -14,13 +14,9 @@ export const scrollSlice = createSlice({
 
 		},
 		// был ли скролл users
-		changeUsersIsScroll: (state, action) => {
-			state.usersIsScroll = state.usersIsScroll && action.payload;
-		}
-
 
 	},
 
 })
-export const { changeArticleIsScroll, changeUsersIsScroll } = scrollSlice.actions;
+export const { changeArticleIsScroll, } = scrollSlice.actions;
 export default scrollSlice.reducer;

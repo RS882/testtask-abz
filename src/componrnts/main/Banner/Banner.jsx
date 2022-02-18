@@ -8,7 +8,7 @@ const Banner = (props) => {
 
 	return (
 		<div className="main__banner banner">
-			<div className="banner__bg" style={{ backgroundImage: `url(${props.bannerImg})` }}></div>
+			<div className="banner__bg" style={props.bannerImg}></div>
 			<div className="banner__container container">
 				<div className="banner__article article">
 					<h1 className="article__title" >{props.titleMod} </h1>
