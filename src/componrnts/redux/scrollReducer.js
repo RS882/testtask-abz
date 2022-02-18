@@ -13,7 +13,7 @@ export const scrollSlice = createSlice({
 			state.articleIsScroll = state.articleIsScroll || action.payload;
 
 		},
-		// был ли скролл users
+
 
 	},
 

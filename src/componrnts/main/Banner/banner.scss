@@ -4,6 +4,7 @@
 	background-color: #edecea;
 	max-height: 469px;
 	overflow: hidden;
+	animation: bg_opacity 1s ease-in-out;
 	@media (min-width: ($md3 + px)) {
 		max-height: 500px;
 		height: calc(100vh - 60px);
@@ -33,6 +34,16 @@
 			left: calc(50%);
 		}
 	}
+
+	@keyframes bg_opacity {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
 	&__container {
 		z-index: 30;
 		max-height: inherit;

@@ -56,13 +56,19 @@ const BannerContainer = (props) => {
 	//=================================
 
 	const isRetina = useSelector(state => state.mediaQuery.isRetina);
-	const [bgImg, setBgImg] = useState(null);
+	const [bgImg, setBgImg] = useState({
+		backgroundImage: `none`,
+		display: `none`
+	});
+
 
 	useEffect(() => {
 		//откладываем загрузку изображений
 		setBgImg({
-			backgroundImage: isRetina ? `url(${is768 ? bannerImg : bannerImgMob})`
-				: `url(${is768 ? bannerImg1x : bannerImgMob1x})`,
+			backgroundImage:
+				isRetina === null ? `none` : isRetina ? `url(${is768 ? bannerImg : bannerImgMob})` :
+					`url(${is768 ? bannerImg1x : bannerImgMob1x})`,
+
 		});
 	}, [])
 

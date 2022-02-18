@@ -35,15 +35,14 @@ const App = () => {
     elem.style.overflowY = `scroll`;
     dispatch(setScrollWidth(elem.offsetWidth - elem.clientWidth));
     elem.style.overflowY = `auto`;
+    // проверям дисплей на Retina
+    dispatch(setIsRetina(isRetina()));
   }, []);
   // лочим страницу если isBodyLock true( сработало модальное окно) 
   const isBodyLock = useSelector(state => state.modal.isBodyLock);
   document.body.style.overflow = isBodyLock ? 'hidden' : 'auto';
   //+ убираем сдивиг при пропадении полосу прокрутки
   const appScroll = { paddingRight: isBodyLock ? `${scrollWidth}px` : '' };
-  // проверям дисплей на Retina
-  dispatch(setIsRetina(isRetina()));
-
 
   return (
     <div className="app" ref={appRef} style={appScroll}>
