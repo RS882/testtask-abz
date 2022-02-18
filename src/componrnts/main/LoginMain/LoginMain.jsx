@@ -12,12 +12,12 @@ const LoginMain = (props) => {
 	//загружаем по мене прокрутки станицы
 	const isScroll = useSelector(state => state.scroll.articleIsScroll);
 
-	return (
-		<div className="main__login">
-			{isScroll && <Suspense fallback={<PreloaderModal />}>
+	return (<>
+		{isScroll && <div className="main__login">
+			<Suspense fallback={<PreloaderModal />}>
 				<LoginPageContainer />
-			</Suspense>}
-		</div>
-	)
+			</Suspense>
+		</div>}
+	</>)
 }
 export default LoginMain;

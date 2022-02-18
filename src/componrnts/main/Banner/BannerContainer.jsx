@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { cutString } from "../../utilits/functions";
 import { changeIsSrcoll } from "../../redux/headerSlice";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useEffect } from "react";
 
 
@@ -51,12 +51,20 @@ const BannerContainer = (props) => {
 		// снимаем наблюдателя при демонтировки компоненті
 		return () => observer.unobserve(current);
 	}, [containerRef]);
+	//=================================
+	const [bgImg, setBgImg] = useState(null);
+
+	useEffect(() => {
+
+		setBgImg(is768 ? bannerImg : bannerImgMob2x);
+	}, [])
 
 	return (
 		<div ref={containerRef} >
 			<Banner titleMod={title}
 				articleTextMod={articleText}
-				bannerImg={is768 ? bannerImg : bannerImgMob2x}
+
+				bannerImg={bgImg}
 				onClickBtn={() => redirect(`/login`)}
 			/>
 		</div>)
