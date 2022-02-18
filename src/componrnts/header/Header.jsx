@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeIsBodyLock } from '../redux/modalReducer';
 import Logo from './logo/logo';
 
-
-
 const Header = () => {
 	// получаем значение брейкпоинта boolean
 	const is1024 = useSelector(state => state.mediaQuery.breakPoints.is1024);
@@ -18,17 +16,17 @@ const Header = () => {
 	const isBodyLock = useSelector(state => state.modal.isBodyLock);
 	// устанвливаем занчение доп класса
 	const [activeClass, setActiveClass] = useState('');
-	const disptch = useDispatch();
+	const dispatch = useDispatch();
 	useEffect(() => {
 		// при изменении ширины окна , убираем доп классы и разблокируем сколл на странице
 		// (если было открыто меню-бургер  и изменилась ширина- закрывем  меню-бургер, разлочиваем окно)
 		if (is1024) {
 			setActiveClass('')
-			disptch(changeIsBodyLock(false))
+			dispatch(changeIsBodyLock(false))
 		}
 	}, [is1024]);
 
-	const changeIsLock = (is) => disptch(changeIsBodyLock(is));
+	const changeIsLock = (is) => dispatch(changeIsBodyLock(is));
 	// при клике на бургер добавляем класс ( показывем бургер меню) и лочим страницу
 	const onClickBurgerBtn = () => {
 		setActiveClass('_active');
@@ -43,16 +41,16 @@ const Header = () => {
 	// убираем излишнюю анимацию меню при изменении ширины экрана
 	const endTransition = () => (activeClass === '_transition') && setActiveClass('');
 	// стиль hеader 
-	console.log(isScroll);
-
 	const styleHeader = {
 		//- при наличии прокуртки
-		backgroundColor: `rgba(255, 255, 255, ${isScroll ? ` 0.2` : `1`})`,
+		backgroundColor: `rgba(255, 255, 255, ${isScroll ? ` 1` : `0.2`})`,
 		// добаляем отступ  при локе страницы( пропадении скролла)
 		paddingRight: isBodyLock ? `${scrollWidth}px` : '',
 	};
 	// стиль - при наличии наличии доп класса (бургер меню)
 	const styleHeaderBurger = { backgroundColor: (activeClass === '_active') ? `#fff` : `inherit` };
+
+
 	return (
 		<header className="header" style={styleHeader} >
 			<div onTransitionEnd={endTransition} className="header__container container" >

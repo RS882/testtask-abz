@@ -5,9 +5,11 @@ import bannerImgMob2x from "./../../../assets/img/banner_mob@2x.webp";
 import Banner from "./Banner";
 
 import { useNavigate } from 'react-router-dom';
-import { useHeaderWhenScroll } from './../../Hook/useHeaderWhenScroll';
+
 import { cutString } from "../../utilits/functions";
 import { changeIsSrcoll } from "../../redux/headerSlice";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 
 const BannerContainer = (props) => {
@@ -34,11 +36,21 @@ const BannerContainer = (props) => {
 	// функция изменения значения isScroll- для изменения стиля header при скороле
 	const setIsScroll = (is) => dispatch(changeIsSrcoll(is));
 	// привязывем реф для получение значения скрола
-	const containerRef = useHeaderWhenScroll(setIsScroll);
+	const containerRef = useRef(null);
 
+	useEffect(() => {
+		const current = containerRef.current;
+		const callbackFunction = entries => entries[0].isIntersecting ? setIsScroll(true) : setIsScroll(false);
+		// создаем асинх наблюдателя за пересечением. процент переченение 1 и отсупом сверху 60
+		const observer = new IntersectionObserver(callbackFunction, { threshold: 1.0, rootMargin: '60px 0px 0px 0px' })
+		//добавляем наблюдателя
+		observer.observe(current);
+		// снимаем наблюдателя при демонтировки компоненті
+		return () => observer.unobserve(current);
+	}, [containerRef]);
 
 	return (
-		<div ref={containerRef}>
+		<div ref={containerRef} >
 			<Banner titleMod={title}
 				articleTextMod={articleText}
 				bannerImg={is768 ? bannerImg : bannerImgMob2x}

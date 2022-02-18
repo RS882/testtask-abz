@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { addUsers, getUsers } from "../../redux/thunkCreation";
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import { changeUsersIsScroll } from "../../redux/scrollReducer";
+import { useHeaderWhenScroll } from './../../Hook/useHeaderWhenScroll';
 
 const UsersContainer = (props) => {
 	const dispatch = useDispatch();
@@ -35,11 +37,13 @@ const UsersContainer = (props) => {
 		// если до этого showMore не была нажата- ставим занчение нажатия в true
 		!isShowMore && setIsShowMore(true);
 	}
-
 	//загружаем по мене прокрутки станицы
-	const isScroll = useSelector(state => state.scroll.articleIsScroll);
+	const isScroll = useSelector(state => state.scroll.usersIsScroll);
+	// const setScroll = (is) => dispatch(changeUsersIsScroll(is))
+	// const usersRef = useHeaderWhenScroll(setScroll);
+	// console.log(isScroll);
 
-	return <>
+	return <div className='users_t'>
 		{!isScroll && <Users
 			users={users.users}
 			onClickBtn={onClickBtn}
@@ -50,6 +54,6 @@ const UsersContainer = (props) => {
 			// или количество показанных пользователей равно количеству всех пользователей 
 			hiddenBtn={users.nextPage === null || +users.totalUsers == users.length}
 		/>}
-	</>
+	</div>
 }
 export default UsersContainer;

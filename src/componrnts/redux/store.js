@@ -16,6 +16,6 @@ const store = configureStore({
 
 })
 
-//window.store = store;
+window.store = store;
 
 export default store;

@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useHeaderWhenScroll } from './../../Hook/useHeaderWhenScroll';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeArticleIsScroll } from '../../redux/scrollReducer';
 
@@ -31,13 +31,26 @@ const ArticleContainer = (props) => {
 
 	//загружаем по мене прокрутки станицы
 	const isScroll = useSelector(state => state.scroll.articleIsScroll)
-	const dispatch = useDispatch();
-	const setScroll = (is) => dispatch(changeArticleIsScroll(is))
-	const articleRef = useHeaderWhenScroll(setScroll, 0);
+	// const dispatch = useDispatch();
+	// const setScroll = (is) => dispatch(changeArticleIsScroll(is))
+	// // const articleRef = useHeaderWhenScroll(setScroll);
+	// // const [isScroll, setIsScroll] = useState(false)
+	// const articleRef = useRef(null);
+	// //++++++++++++++++++++
+	// const callbackFunction = entries => entries[0].isIntersecting ? setScroll(true) : setScroll(false);
+	// useEffect(() => {
+	// 	const current = articleRef.current;
+	// 	console.log(articleRef.current);
+	// 	// создаем асинх наблюдателя за пересечением. процент переченение 1
+	// 	const observer = new IntersectionObserver(callbackFunction, { threshold: .1, })
+	// 	//добавляем наблюдателя
+	// 	observer.observe(current);
+	// 	// снимаем наблюдателя при демонтировки компоненті
+	// 	return () => observer.unobserve(current);
+	// }, [articleRef]);
 
-
-
-	return <div ref={articleRef}>
+	// console.log(isScroll);
+	return <div className='article_t'>
 		{!isScroll && <Article
 			img={image}
 			title={title}
