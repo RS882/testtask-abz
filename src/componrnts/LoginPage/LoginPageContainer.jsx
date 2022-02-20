@@ -12,10 +12,12 @@ const LoginPageContainer = (props) => {
 	// текст подзаголовка
 	const subtitle = `Your personal data is stored according to the Privacy Policy`;
 
+	const isScroll = useSelector(state => state.scroll.articleIsScroll);
+
 	useEffect(() => {
 		// получаем позиции пользователей
-		dispatch(getPositions());
-	}, []);
+		isScroll && dispatch(getPositions());
+	}, [isScroll]);
 	return (
 		<Login
 			positions={positions}
