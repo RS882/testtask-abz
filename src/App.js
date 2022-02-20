@@ -28,9 +28,10 @@ const App = () => {
     // диспачим значения брейкпоинтов в стейт при изменении брейкпоинтов
     dispatch(setBreakPoints(breakPoints));
   }, [breakPoints]);
-  // определяем ширину полосы прокрутки и диспачим ее в стейт
+
   const appRef = useRef(null);
   useEffect(() => {
+    // определяем ширину полосы прокрутки и диспачим ее в стейт
     const elem = appRef.current;
     elem.style.overflowY = `scroll`;
     dispatch(setScrollWidth(elem.offsetWidth - elem.clientWidth));

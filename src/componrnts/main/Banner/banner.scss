@@ -35,15 +35,6 @@
 		}
 	}
 
-	@keyframes bg_opacity {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
-	}
-
 	&__container {
 		z-index: 30;
 		max-height: inherit;

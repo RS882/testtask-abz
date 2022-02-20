@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeArticleIsScroll } from '../../redux/scrollReducer';
+import { useState } from 'react';
 
 const ArticleContainer = (props) => {
 	// проверка значений брейкпоинта
@@ -21,9 +22,8 @@ const ArticleContainer = (props) => {
 	thinking as they'll be building web interfaces with accessibility in mind. 
 	They should also be excited to learn, as the world 
 	of Front-End Development keeps evolving. `;
-	// выбор картики в зависимости от брейкпоинта
-	let image = is768 ? image_296x260 : image_328x287;
-	image = is1024 ? image_387x340 : image;
+
+
 	// редиректим на страницу регистарции при нажатии кнопки
 	const redirect = useNavigate();
 
@@ -32,7 +32,6 @@ const ArticleContainer = (props) => {
 	const articleRef = useRef(null);
 	useEffect(() => {
 		const current = articleRef.current;
-
 		const callbackFunction = entries => entries[0].isIntersecting ? setScroll(true) : setScroll(false);
 		// создаем асинх наблюдателя за пересечением. процент переченение 1
 		const observer = new IntersectionObserver(callbackFunction, { threshold: .7, rootMargin: '0px 0px 20% 0px' })
@@ -42,6 +41,12 @@ const ArticleContainer = (props) => {
 		return () => observer.unobserve(current);
 	}, [articleRef]);
 
+	let [image, setImage] = useState(``);
+
+	useEffect(() => {
+		// выбор картики в зависимости от брейкпоинта
+		setImage(is1024 ? image_387x340 : (is768 ? image_296x260 : image_328x287))
+	}, [is768, is1024])
 
 
 	return <div ref={articleRef}>
