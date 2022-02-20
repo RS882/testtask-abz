@@ -36,7 +36,7 @@ export const usersSlice = createSlice({
 		positions: [],
 		regIdUser: null,// рег номер пользователя
 		isReg: false,// прошла регистрация или нет
-		isFetching: false,// идет запрос или нет
+		isFetching: true,// идет запрос или нет
 		isError: false,// есть ошибка или нет
 		errorMessage: null,
 
@@ -47,6 +47,10 @@ export const usersSlice = createSlice({
 			state.isError = false;
 			state.errorMessage = null;
 		},
+		// закрузка завершена
+		stopFetching: (state) => {
+			state.isFetching = false;
+		}
 
 	},
 	extraReducers: {
@@ -87,7 +91,7 @@ export const usersSlice = createSlice({
 	}
 });
 
-export const { clearError } = usersSlice.actions;
+export const { clearError, stopFetching } = usersSlice.actions;
 export default usersSlice.reducer;
 
 

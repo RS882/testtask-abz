@@ -34,7 +34,7 @@ const ArticleContainer = (props) => {
 		const current = articleRef.current;
 		const callbackFunction = entries => entries[0].isIntersecting ? setScroll(true) : setScroll(false);
 		// создаем асинх наблюдателя за пересечением. процент переченение 1
-		const observer = new IntersectionObserver(callbackFunction, { threshold: .7, rootMargin: '0px 0px 20% 0px' })
+		const observer = new IntersectionObserver(callbackFunction, { threshold: .5, rootMargin: '0px 0px 20% 0px' })
 		//добавляем наблюдателя
 		observer.observe(current);
 		// снимаем наблюдателя при демонтировки компоненті

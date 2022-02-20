@@ -22,12 +22,14 @@ const UsersContainer = (props) => {
 	const [isShowMore, setIsShowMore] = useState(false);
 	// колличество добавляемых/(показываемых при старте) пользователей
 	const numShowUsers = is1024 ? 9 : (is768 ? 6 : 3);
+	//загружаем по мене прокрутки станицы
+	const isScroll = useSelector(state => state.scroll.articleIsScroll);
 	useEffect(() => {
 		// возврщаем занчение нажатие кнопки showMore -fals- если пользователь уже зареган
 		isReg && setIsShowMore(false);
 		// если не был нажата showMore 
-		!isShowMore && dispatch(getUsers(numShowUsers));
-	}, [numShowUsers, isReg])
+		!isShowMore && isScroll && dispatch(getUsers(numShowUsers));
+	}, [numShowUsers, isReg, isScroll])
 	// текст заголовка
 	const title = `Our cheerful users `;
 	// текст подзаголовка
@@ -38,10 +40,6 @@ const UsersContainer = (props) => {
 		// если до этого showMore не была нажата- ставим занчение нажатия в true
 		!isShowMore && setIsShowMore(true);
 	}
-	//загружаем по мене прокрутки станицы
-	const isScroll = useSelector(state => state.scroll.articleIsScroll);
-
-
 
 
 	return <div className='users_t'>

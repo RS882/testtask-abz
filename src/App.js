@@ -1,18 +1,20 @@
 import React from 'react';
-import Header from './componrnts/header/Header';
+import ModalPage from './componrnts/modal/ModalPage';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from './componrnts/Hook/useMediaQuery';
 import { setBreakPoints, setIsRetina } from './componrnts/redux/mediaQuerySlice';
-import { useEffect, useRef, Suspense } from 'react';
+import { useEffect, useRef, Suspense, useState } from 'react';
 import { setScrollWidth } from './componrnts/redux/modalReducer';
 import PreloaderModal from './componrnts/modal/PreloaderModal/PreloaderModal';
 import { isRetina } from './componrnts/utilits/functions';
+import { stopFetching } from './componrnts/redux/usersReducer';
 
 const Footer = React.lazy(() => import('./componrnts/footer/Footer'));
-const ModalPage = React.lazy(() => import('./componrnts/modal/ModalPage'));
+const Header = React.lazy(() => import('./componrnts/header/Header'));
 const Main = React.lazy(() => import('./componrnts/main/Main'));
 const LoginPage = React.lazy(() => import('./componrnts/LoginPage/LoginPage'));
+
 
 const App = () => {
   const dispatch = useDispatch();
@@ -45,21 +47,27 @@ const App = () => {
   //+ убираем сдивиг при пропадении полосу прокрутки
   const appScroll = { paddingRight: isBodyLock ? `${scrollWidth}px` : '' };
 
+  const [content, setContent] = useState(``)
+  useEffect(() => {
+    dispatch(stopFetching());
+    setContent(<Suspense fallback={<PreloaderModal />}>
+      <Routes >
+        <Route index element={
+          <>
+            <Header />
+            <Main />
+            <Footer />
+          </>
+        } />
+        <Route path='/login' element={< LoginPage />} />
+      </Routes>
+    </Suspense>)
+  }, [])
+
   return (
     <div className="app" ref={appRef} style={appScroll}>
-      <Suspense fallback={<PreloaderModal />}>
-        <Routes >
-          <Route index element={
-            <>
-              <Header />
-              <Main />
-              <Footer />
-            </>
-          } />
-          <Route path='/login' element={< LoginPage />} />
-        </Routes>
-        <ModalPage />
-      </Suspense>
+      <ModalPage />
+      {content}
     </div>
   );
 }

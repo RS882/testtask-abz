@@ -11,22 +11,24 @@ const PreloaderModal = (props) => {
 
 	const dispatch = useDispatch();
 
-	const users = useSelector(state => state.users.users);
+	// const users = useSelector(state => state.users.users);
 	const isFetching = useSelector(state => state.users.isFetching)
 	const changeIsLock = (is) => dispatch(changeIsBodyLock(is));
 	// показываем модальное окно если идет загузка и пользователи были загружены ранее
 	// (т.е. при первой загузке не показываем )
-	const isShowModal = isFetching && users.users.length > 0
+	// const isShowModal = isFetching && users.users.length > 0
 
 	useEffect(() => {
 		// блокировка прокрутки страницы
-		changeIsLock(isShowModal)
-	}, [isShowModal])
+		changeIsLock(isFetching)
+	}, [isFetching])
+
+
 
 	const PreloaderModal = Modal(Preloader)
 	return (
 		<>
-			{isShowModal && <PreloaderModal bgColor={'none'} />}
+			{isFetching && <PreloaderModal bgColor={'none'} />}
 		</>
 	)
 }
