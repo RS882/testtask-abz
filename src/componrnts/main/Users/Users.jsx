@@ -6,6 +6,7 @@ const Users = (props) => {
 	// страница  пользователей
 	const usersElem = props.users.map(el => <UserCard {...el} key={el.id} className='users__user-card' />);
 
+
 	return (
 		<div className="main__users users">
 			<div className="users__container container">

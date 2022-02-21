@@ -40,6 +40,7 @@ export const usersSlice = createSlice({
 		isError: false,// есть ошибка или нет
 		errorMessage: null,
 
+
 	},
 	reducers: {
 		// очищаем ошибки 
@@ -47,7 +48,7 @@ export const usersSlice = createSlice({
 			state.isError = false;
 			state.errorMessage = null;
 		},
-		// закрузка завершена
+		// загрузка завершена
 		stopFetching: (state) => {
 			state.isFetching = false;
 		}

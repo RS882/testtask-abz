@@ -23,7 +23,7 @@ const UserCard = (props) => {
 	const [helperProps, sethelperProps] = useState(initDate);
 
 	const hoverIn = {
-		onMouseEnter: (e) => sethelperProps({
+		onMouseEnter: e => sethelperProps({
 			text: e.target.innerText,
 			style: {
 				opacity: `1`,
@@ -32,21 +32,21 @@ const UserCard = (props) => {
 				left: `${e.clientX}px`,
 			},
 		}),
+		onWheel: () => sethelperProps(initDate),
 	};
-	const hoverOut = {
-		onMouseLeave: () => sethelperProps(initDate),
-	};
+	const hoverOut = { onMouseLeave: () => sethelperProps(initDate), };
 
 	return (
-		<div className="usercard" {...hoverOut}>
-			<div className="usercard__body "  >
+		<div className="usercard" >
+			<div className="usercard__body " >
 				<div className="usercard__item item-card" >
 					<div className="item-card__img">
 						<img onError={onErrorImg} src={userPhoto || notPhoto} alt='user' width='70' height='70' />
 					</div>
 				</div>
 				<div className="usercard__item item-card"  {...hoverOut} >
-					<h3 className="item-card__name " > <span {...hoverIn}>{props.name} </span></h3>
+					<h3 className="item-card__name " > <span {...hoverIn}>
+						{props.name} </span></h3>
 
 				</div>
 				<div className="usercard__item item-card" {...hoverOut}>
@@ -63,6 +63,7 @@ const UserCard = (props) => {
 					</div>
 				</div>
 			</div>
+			{/* всплывающая подсказка */}
 			<UserCardHelper {...helperProps} />
 		</div >
 	)
