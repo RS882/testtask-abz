@@ -10,42 +10,31 @@ const UserCard = (props) => {
 	const phone = showPhoneNum(props.phone);
 	// показываем картинку если у пользователя нет фото
 	const onErrorImg = () => setUserPhoto(notPhoto);
-
-	const [нelperProps, setCoordHelper] = useState({
-		x: null,
-		y: null,
+	// helper при наведении на поля карточки
+	const initDate = {
 		text: null,
 		style: {
 			opacity: `0`,
 			visibility: ` hidden`,
+			top: null,
+			left: null,
 		},
-
-	});
-
+	};
+	const [helperProps, sethelperProps] = useState(initDate);
 	const hover = {
 		onMouseEnter: (e) =>
-			setCoordHelper({
-				x: e.clientX,
-				y: e.clientY,
+			sethelperProps({
 				text: e.target.innerText,
 				style: {
 					opacity: `1`,
 					visibility: ` visible`,
+					top: `${e.clientY}px`,
+					left: `${e.clientX}px`,
+
 				},
 			}),
-		onMouseLeave: () => setCoordHelper({
-			x: null,
-			y: null,
-			text: null,
-			style: {
-				opacity: `0`,
-				visibility: ` hidden`,
-			},
-		}),
+		onMouseLeave: () => sethelperProps(initDate),
 	}
-
-
-
 
 	return (
 		<div className="usercard" >
@@ -73,7 +62,7 @@ const UserCard = (props) => {
 					</div>
 				</div>
 			</div>
-			<UserCardHelper {...нelperProps} />
+			<UserCardHelper {...helperProps} />
 		</div >
 	)
 }
